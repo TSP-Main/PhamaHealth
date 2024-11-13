@@ -1,5 +1,5 @@
 <?php include "../../private/settings.php";
-
+//
 
 if (($_POST['txtOldPassword']!="") && ($_POST['txtPassword']!="") && ($_POST['txtCPassword'] == $_POST['txtPassword']) ) {
 
