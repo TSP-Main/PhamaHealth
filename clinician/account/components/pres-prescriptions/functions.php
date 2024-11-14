@@ -437,6 +437,19 @@
 						);
 					
 					$add_query = $database->insert( 'tbl_follow_ups', $names );
+					
+					$lastInsertedId=$database->lastid();
+					$curDate = date("Y-m-d H:i:s");
+					
+					$names = array(
+							'fnotes_fid' => $lastInsertedId,
+							'fnotes_actions' => "Created Follow-up on approval", 
+							'fnotes_clinician' => $_SESSION['sess_prescriber_id'], 							
+							'fnotes_date' => $curDate							
+				
+						);					
+					$add_query = $database->insert( 'tbl_follow_up_notes', $names );
+					
 				}
 					
 			

@@ -18,6 +18,20 @@
 		
 		$sql = "SELECT * FROM tbl_follow_ups,tbl_patients,tbl_prescriptions WHERE patient_id=follow_up_patient_id and pres_id=follow_up_pres_id";
 		
+		if ($_GET['txtSearch']!="")
+		$sql .= " AND (pres_id = '" . $database->filter($_GET['txtSearch']) . "' OR patient_first_name = '" . $database->filter($_GET['txtSearch']) . "' OR patient_last_name = '" . $database->filter($_GET['txtSearch']). "' OR patient_phone = '" . $database->filter($_GET['txtSearch']). "' OR patient_email = '" . $database->filter($_GET['txtSearch']). "')";
+
+		if ($_GET['txtFrom']!="")
+		$sql.=" and follow_up_date>='".$database->filter($_GET['txtFrom'])."'";
+		
+		if ($_GET['txtTo']!="")
+		$sql.=" and follow_up_date<='".$database->filter($_GET['txtTo'])."'";
+		
+		if ($_GET['ty']=="")
+		$sql.=" and follow_up_active=1";
+		else if ($_GET['ty']=="cl")
+		$sql.=" and follow_up_active=2"; 
+		
 		/*if($_GET['txtSearchByTitle'] != "")
 		{
 			$sql .= " and (patient_first_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_middle_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_last_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_id like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || patient_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
@@ -133,7 +147,7 @@
 							'follow_up_active' => $_POST['cmbChgStatus']
 				);
 				
-				if ($_POST['cmbAction']==1)
+				if ($_POST['cmbAction']=="Follow-up Later")
 				{
 					
 					$update = array_merge($update, array(
@@ -148,6 +162,8 @@
 					'follow_up_id' => $fid		
 				);
 				
+				
+				
 				$updated = $database->update( 'tbl_follow_ups', $update, $where_clause, 1 );
 				
 				
@@ -160,7 +176,8 @@
 
 			'fnotes_fid' => $fid, 
 			'fnotes_actions' => $_POST['cmbAction'],
-			'fnotes_notes' => $_POST['txtNotes'], 			
+			'fnotes_notes' => $_POST['txtNotes'], 	
+			'fnotes_clinician' => $_SESSION['sess_prescriber_id'], 			
 			'fnotes_date' => $curDate
 		
 		);

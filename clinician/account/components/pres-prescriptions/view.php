@@ -2571,9 +2571,15 @@ function activateCustomerBtn()
                                                     <?php }
 														}?>
                                                     
-                                                    
-                                                    <div class="col-sm-12 col-md-12" style="padding-top:30px;display:none" id="cont_followup">
-                                                   
+                                                    <span id="cont_followup" style="display:none">
+                                                  
+                                                   <?php $sqlCheck="select * from tbl_conditions where condition_id='".$rowPres['pres_condition']."' and condition_followup=1";
+												   	$resCheck=$database->get_results($sqlCheck);
+													if (count($resCheck)>0)
+													{
+													 ?>
+                                                    <div class="col-sm-12 col-md-12" style="padding-top:30px;" >
+                                                  
                                                    <div class="row">
                                                    	 <div class="col-sm-7 col-md-7">
                                                     <label>Choose Patient Follow-Up Timeframe</label>
@@ -2597,7 +2603,11 @@ function activateCustomerBtn()
                                                         </div>
                                                         
                                                        </div>
+                                                       
+                                                      
                                                     </div>
+                                                     <?php } ?>
+                                                    </span>
                                                         
                                                         <?php if ($rowPres['pres_rejection_reason']!="") { ?>
                                                         <br /><br />

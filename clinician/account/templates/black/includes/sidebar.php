@@ -247,7 +247,33 @@ if ($_GET['c']!="")
                     </span> 
 					<?php } 
 					} ?>
+					
+                    
+                    <?php 
+					//--------order message
+					
+					
+					
+					if ($valueDirect['component_id']==266) { ?>
+                     <?php 
+					 
+					
+						$sqlCtr="select count(follow_up_id) as ctrFollow from tbl_follow_ups where follow_up_date<='".date("Y-m-d")."' and follow_up_active=1"; 
+						$resCtr=$database->get_results($sqlCtr);
+						$ctrF=$resCtr[0]['ctrFollow'];
+						
+					if ($ctrF>0)
+					{	
+					
+					?>
+                    <span class="alert-number">
+                   	<?php echo $ctrF; ?>
+                    </span> 
+					<?php } 
+					} ?>
 
+                    
+                    
 
                     </span>
 

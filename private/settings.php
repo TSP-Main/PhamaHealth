@@ -5,8 +5,8 @@ error_reporting(E_ALL);*/
 
 date_default_timezone_set('Europe/London');
 
-define("URL","http://{$_SERVER['SERVER_NAME']}/pharmahealth/");
-define("PATH","{$_SERVER['DOCUMENT_ROOT']}/pharmahealth/");
+define("URL","http://{$_SERVER['SERVER_NAME']}/pharmahealth-new/");
+define("PATH","{$_SERVER['DOCUMENT_ROOT']}/pharmahealth-new/");
 
 
 include_once(PATH."private/filenames.php");

@@ -64,7 +64,34 @@
 
 			<!-- Row -->
 	<div class="row flex-lg-nowrap">
+    
+   			<div class="col-12">
+        <div class="tab-menu-heading hremp-tabs p-0 ">
+        <div class="tabs-menu1">
+										<!-- Tabs -->
+										<ul class="nav panel-tabs">
+                                        
+                                       
+                                        <li><a href="?c=<?php echo $_GET['c']?>&ty="  <?php if ($_GET['ty']=="") { ?> class="active" <?php } ?> >Open</a></li>
+										
+                                        <li ><a href="?c=<?php echo $_GET['c']?>&ty=cl" <?php if ($_GET['ty']=="cl") { ?> class="active" <?php } ?>>Closed</a></li>
+                                        
+                                       
+                                            
+                                            
+                                            
+											
+											
+											
+										</ul>
+									</div>
+             </div>
+             
+             </div>	 
+    </div>
+    <div class="row flex-lg-nowrap">
 		<div class="col-12">
+        
 			<div class="row flex-lg-nowrap">
 				<div class="col-12 mb-3">
 					<div class="e-panel card">
@@ -82,7 +109,7 @@
 															<div class="input-group">
 																<div class="input-group-prepend">
 																	
-																</div><input class="form-control fc-datepicker" name="txtSearch" placeholder="" type="text">
+																</div><input class="form-control" name="txtSearch" placeholder="" type="text" value="<?php echo $_GET['txtSearch']?>">
 															</div>
 														</div>
 													</div>
@@ -95,22 +122,22 @@
 											
 											<div class="col-md-12 col-lg-12 col-xl-3">
 												<div class="form-group">
-													<label class="form-label">From:</label>
+													<label class="form-label">Follow up Date From:</label>
                                                     
                                                   
                                                     
-													<input class="form-control fc-datepicker" name="txtSearch" placeholder="" type="date">
+													<input class="form-control fc-datepicker" name="txtFrom" placeholder="" type="date" value="<?php echo $_GET['txtFrom']?>">
 												</div>
 											</div>
                                             
                                             
                                             <div class="col-md-12 col-lg-12 col-xl-3">
 												<div class="form-group">
-													<label class="form-label">To:</label>
+													<label class="form-label">Follow up Date To:</label>
                                                     
                                                   
                                                     
-													<input class="form-control fc-datepicker" name="txtSearch" placeholder="" type="date">
+													<input class="form-control fc-datepicker" name="txtTo" placeholder="" type="date" value="<?php echo $_GET['txtTo']?>">
 												</div>
 											</div>
                                             
@@ -178,7 +205,7 @@
 									<div class="card-body pb-0 pt-3">
 										<div>
 											<label><?php echo $row['message_subject']; ?></label>
-											<p >Order ID: <?php echo $row['pres_id']; ?>,<br /> <?php echo getConditionName($row['pres_condition']); ?>, <br />Date: <?php echo  date("d/m/Y",strtotime($row['pres_date'])); ?></p>
+											<p >Order ID: <a href="?c=pres-prescriptions&task=detail&id=<?php echo $row['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>,<br /> <?php echo getConditionName($row['pres_condition']); ?>, <br />Date: <?php echo  date("d/m/Y",strtotime($row['pres_date'])); ?></p>
 										</div>
 									</div>	
 												
@@ -192,7 +219,7 @@
 									
 									// Compare dates
 									if ($followUpDate < $currentDate) {
-										echo "<font style='color:#F00'>Past due</font>";
+										echo "<br><font style='color:#F00;font-size:13px'>Past due</font>";
 									} 
 
 									?>

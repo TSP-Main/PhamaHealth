@@ -2296,6 +2296,25 @@ function calculatePrice_plus($quantity, $medicationCost, $tier) {
 	return $totalCost." <font style='color:red;font-size:17px'>Save ".CURRENCY.$saving."</font>";
 }
 
+function calculatePriceOveride($basePrice, $targetTier) {
+    // Define the fraction increases for each tier
+    $fractions = array(0.20, 0.1667, 0.3929);
+
+    // Initialize the current price as the base price
+    $currentPrice = $basePrice;
+
+   // Loop through each tier up to the target tier, applying the corresponding fraction
+	for ($tier = 0; $tier < $targetTier - 1; $tier++) {
+		// Use the fraction for the current tier, or default to the last fraction if out of range
+		$fraction = isset($fractions[$tier]) ? $fractions[$tier] : $fractions[count($fractions) - 1];
+		$currentPrice += $currentPrice * $fraction;
+	}
+
+
+    // Return the calculated price, rounded to 2 decimal places
+    return formatToTens($currentPrice, 2);
+}
+
 function getMedicationStringWithInfo($presid)
 {
 	global $database;
