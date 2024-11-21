@@ -271,7 +271,7 @@
 											//if ($medicationCost>=6.5 && $medicationCost<10)
 											//$medicationCost=8;
 											
-											$tierPrice=calculatePrice_plus($quantity,$medicationCost, $tier);
+											$tierPrice=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
 										}
 										else
 										$tierPrice=calculatePrice($baseprice, $quantity);

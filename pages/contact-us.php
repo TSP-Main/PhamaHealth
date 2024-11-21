@@ -59,11 +59,13 @@ or via email. We are always happy to help, whether you actually want to buy from
 		<div class="form_box">
        		 <div class="form-group" id="id_inquiryType" style="display:none">
 				<select style="border:1px solid;" name="cmbReason" class="form-control"  data-validation="required" data-validation-error-msg="Select reason for contacting">
-                	<option value="">Reason for contacting us</option>
+                	<option value="" style="display:none">Reason for contacting us</option>
                     
                     <option value="Query">Query</option>
                     <option value="Feedback">Feedback</option>
                     <option value="Complaint">Complaint</option>
+                    <option value="Register  your Interest (Pharmacy Sign up)" <?php if ($_GET['contact']=="pharmacy") echo "selected"; ?>>Register  your Interest (Pharmacy Sign up)</option>
+                     
                     
                 </select>
 			</div>
@@ -78,7 +80,14 @@ or via email. We are always happy to help, whether you actually want to buy from
 				<input  type="email" class="form-control" id="txtEmail" name="txtEmail" data-validation="email required" data-validation-error-msg="Enter your Email address" placeholder="Email Address" />
 			</div>
 			<div class="form-group">
-				<textarea  name="txtMessage" placeholder="Message" id="txtMessage" class="form-control" data-validation="required" data-validation-error-msg="Enter Message"></textarea>
+				<textarea name="txtMessage" placeholder="Message" id="txtMessage" class="form-control" data-validation="required" data-validation-error-msg="Enter Message"><?php if ($_GET['contact'] == "pharmacy") { ?>
+Dear Pharma Health,
+
+We are interested in signing up to your service or wish to discuss it. Can you please contact us:
+(Please type preferred contact method and time)
+<?php } ?>
+</textarea>
+
 			</div>
 			
 			<div class="form-group">

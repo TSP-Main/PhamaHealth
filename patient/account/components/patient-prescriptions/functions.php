@@ -631,7 +631,7 @@ function saveMessage()
 	if ($totalCostPrice>=6.5)
 	{
 	$medicationCost=$totalCostPrice;
-	$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier);
+	$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
 	}
 	else
 	$priceTocharge=calculatePrice($baseprice, $quantity);

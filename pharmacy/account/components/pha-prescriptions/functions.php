@@ -954,6 +954,76 @@ function changepresStatus()
 				
 
 				SendMail($ToEmail, $FromEmail, $FromName, $SubjectSend, $BodySend);
+				
+				//------------send sms to patient informing to collect order---
+				
+				if ($rowMemberid['patient_marketing_emails']==1)
+				{
+				
+				// Your ClickSend API credentials
+				$username = SMS_USERNAME;
+				$apiKey = SMS_APIKEY;
+
+				// Recipient phone number (make sure to include country code, e.g., +14155552671)
+				$patientPhone=str_replace(" ","",$rowMemberid['patient_phone']);
+				$patientPhone = ltrim($patientPhone, '0');
+				$recipient = '+44'.$patientPhone;
+
+
+				$message = 'Your medication for Order ID: '.$orderId.' is ready for collection at your nominated pharmacy.';
+
+				$data = [
+					'messages' => [
+						[
+							'source' => 'php',
+							'from' => 'PHHEALTHUK', // Optional: Sender ID (should be alphanumeric, up to 11 chars)
+							'body' => $message,
+							'to' => $recipient,
+							'schedule' => '', // Optional: Unix timestamp if you want to schedule the message
+						]
+					]
+				];
+				
+				// Convert data to JSON
+				$jsonData = json_encode($data);
+				
+				// Initialize cURL
+				$ch = curl_init();
+				
+				// Set the ClickSend API endpoint
+				curl_setopt($ch, CURLOPT_URL, 'https://rest.clicksend.com/v3/sms/send');
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'Content-Type: application/json',
+					'Authorization: Basic ' . base64_encode("$username:$apiKey")
+				]);
+				
+				// Execute cURL request
+				$response = curl_exec($ch);
+				
+				
+				/*if (curl_errno($ch)) {
+					echo 'cURL error: ' . curl_error($ch);
+				} else {
+					
+					$responseData = json_decode($response, true);
+					print_r ($responseData);
+					if (isset($responseData['http_code']) && $responseData['http_code'] == 200) {
+						echo 'SMS sent successfully!';
+					} else {
+						echo 'Failed to send SMS: ' . $responseData['response_msg'];
+					}
+				}*/
+				
+				// Close cURL session
+				curl_close($ch);
+				}
+				
+				//-----------end sending sms--------
+				
+				
 				}
 				
 				
