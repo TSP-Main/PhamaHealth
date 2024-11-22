@@ -80,7 +80,7 @@ $row=$res[0];
                                 
                                 <div class="row" style="padding-top:15px;padding-left:7px">
 									<div class="col-md-4">
-											Patient Phone Number
+										    Phone Number
 									</div>
 									<div class="col-md-6" style="font-weight:500">
 										<?php echo  $row['patient_phone']; ?>
@@ -92,7 +92,7 @@ $row=$res[0];
 											Order ID
 									</div>
 									<div class="col-md-6" style="font-weight:500">
-										 <a href="?c=prescriptions&task=detail&id=<?php echo $rowPres['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>
+										 <a href="?c=pres-prescriptions&task=detail&id=<?php echo $row['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>
 									</div>
 								</div>
                               
@@ -134,7 +134,7 @@ $row=$res[0];
                                 
                                  <div class="row" style="padding-top:15px;padding-left:7px">
 									<div class="col-md-4">
-											Review Due date 
+											Review Due Date 
 									</div>
 									<div class="col-md-6" style="font-weight:500">
 										<?php echo  date("d M Y",strtotime($row['follow_up_date'])); ?>
