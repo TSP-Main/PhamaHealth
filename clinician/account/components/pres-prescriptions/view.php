@@ -3524,14 +3524,15 @@ $("#adminForm").validate({
 		
 			if ($('#txtReject').is(':visible'))
 			 {
-			if ($('#txtReject').val()=="")
-			$("#showErrorMsg").html("Please enter reason");
-			return false;
-			}
+					if ($('#txtReject').val()=="")
+					{
+					$("#showErrorMsg").html("Please enter reason");
+					return false;
+					}
 			
 		
+			}
 		
-		else
 		return true;
 	}
 	
