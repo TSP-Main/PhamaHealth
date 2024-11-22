@@ -141,6 +141,15 @@ $row=$res[0];
 									</div>
 								</div>
                                 
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Follow up added Date 
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo  date("d M Y",strtotime($row['follow_up_added_on'])); ?>
+									</div>
+								</div>
+                                
                                 
 							
                              <?php $currentStatus=$row['follow_up_active']; ?>

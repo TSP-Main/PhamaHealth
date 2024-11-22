@@ -436,12 +436,14 @@
 				
 				if ($followupDate!="")
 				{
+					$curDate = date("Y-m-d");
 					$names = array(
 							'follow_up_pres_id' => $_POST['hdId'],
 							'follow_up_patient_id' => $rowMemberid['patient_id'], 
 							'follow_up_condition' => $rowPatientDet['pres_condition'],
 							'follow_up_date' => $followupDate, 
 							'follow_up_added_by' => $_SESSION['sess_prescriber_id'], 
+							'follow_up_added_on' => $curDate, 
 							'follow_up_active' => 1	
 				
 						);
