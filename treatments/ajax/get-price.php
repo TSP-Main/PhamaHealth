@@ -6,8 +6,9 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 {
 	$sqlCategory="select * from tbl_medication_pricing where mp_medicine='".$database->filter($_POST['mid'])."' and mp_strength='".$database->filter($_POST['sid'])."' and mp_pack_size='".$database->filter($_POST['pid'])."' ";
 	$resCategory=$database->get_results($sqlCategory);
-	
 	$rowCategory=$resCategory[0];
+	
+	
 	
 	$prefix="";
 	if ($_SESSION['sess_tier']=="")
@@ -21,6 +22,13 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 	//$tierField="mp_tier".$tier."_price";
 	
 	//$baseprice=$rowCategory[$tierField];
+	
+	
+	//$sqlORide="select * from tbl_medication_price_override where po_medicine_id='".$database->filter($_POST['mid'])."'";
+	//$resORide=$database->get_results($sqlORide);
+	
+	if ($rowCategory['mp_override_active']==0)
+	{	
 	
 	if ($tier==1)
 	$baseprice = 20; 
@@ -54,11 +62,34 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 		//if ($medicationCost>=6.5 && $medicationCost<10)
 		//$medicationCost=8;
 		
-		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier);
+		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
 	}
 	else
 	$priceTocharge=calculatePrice($baseprice, $quantity);
-	
+	}
+	else
+	{
+		$medicationCost=$rowCategory['mp_medication_cost'];
+		$tier=$_POST['t'];
+		$costPrice=$rowCategory['mp_cost_price'];
+		$quantity=$_POST['quantity'];
+		
+		if ($rowCategory['mp_override_price']!="")
+		{
+			
+			$arrOR_price=unserialize(fnUpdateHTML($rowCategory['mp_override_price']));
+			
+			
+			$priceTocharge=$arrOR_price[$quantity-1];
+			if ($tier>1)
+			$priceTocharge=calculatePriceOveride($priceTocharge,$tier);
+			
+		}
+		else
+		$priceTocharge=0;
+		
+		
+	}
 	
 	
 	

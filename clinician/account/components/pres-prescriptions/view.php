@@ -260,11 +260,30 @@
                                         <li ><a href="?c=<?php echo $_GET['c']?>&ty=od" <?php if ($_GET['ty']=="od") { ?> class="active" <?php } ?>>Overdue <?php  $trOd=getOverDueTotal(); if ($trOd>0) { ?><span class="badge badge-danger side-badge"><?php echo $trOd; ?></span> <font style="color:red; font-size:10px">+ 3 days</font><?php } ?></a></li>
                                             
                                             
-                                            
+                     
+                   <li style="padding-top:5px;padding-left:15px"><button class="btn btn-outline-primary btn-svgs btn-svg-white" type="button" onclick="window.location='index.php?c=pres-followups'"><svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M5 8h14V6H5z" opacity=".3"></path><path d="M7 11h2v2H7zm12-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-4 3h2v2h-2zm-4 0h2v2h-2z"></path></svg> <span class="btn-svg-text">Follow Ups&nbsp;&nbsp;</span> 
+                     <?php                    
+                   	$sqlCtr="select count(follow_up_id) as ctrFollow from tbl_follow_ups where follow_up_date<='".date("Y-m-d")."' and follow_up_active=1"; 
+					$resCtr=$database->get_results($sqlCtr);
+					$ctrF=$resCtr[0]['ctrFollow'];
+						
+					if ($ctrF>0)
+					{	
+					
+					?>
+                    <span class="badge badge-danger side-badge" >
+                   	<?php echo $ctrF; ?>
+                    </span> 
+					<?php } 
+					 ?>
+
+                                        </button></li>    
 											
 											
 											
 										</ul>
+                                        
+                                        
 									</div>
              </div>
              
@@ -2582,14 +2601,17 @@ function activateCustomerBtn()
                                                   
                                                    <div class="row">
                                                    	 <div class="col-sm-7 col-md-7">
-                                                    <label>Choose Patient Follow-Up Timeframe</label>
+                                                    <label>Choose Patient Follow Up Review Time Frame</label>
                                                         <select name="cmbFollowup" id="cmbFollowup" class="form-control"  onchange="custom_date(this.value)">
                                                         	<option value="" style="display:none">Select Timeframe</option>
-                                                            <option value="2 weeks">2 weeks</option>
-                                                            <option value="1 month">1 month</option>
-                                                            <option value="3 months">3 months</option>
-                                                            <option value="6 months">6 months</option>
-                                                            <option value="custom">Custom date</option>
+                                                            <option value="2 weeks">2 Weeks</option>                                                           
+                                                            <option value="1 month">1 Month</option>
+                                                            <option value="2 months">2 Months</option>
+                                                            <option value="3 months">3 Months</option>
+                                                            <option value="6 months">6 Months</option>
+                                                            <option value="12 months">12 Months</option>
+                                                            <option value="custom">Custom Date</option>
+                                                            <option value="Follow up not required">Follow up not required</option>
                                                             
                                                         </select>
                                                         </div>
@@ -2624,7 +2646,9 @@ function activateCustomerBtn()
                                                         </select>
                                                         
                                                         <span id="showRejectLabel" style="display:none"><strong>Please enter reason to share with patient</strong></span>
-                                                        <textarea rows="5" placeholder="Please enter reason" cols="100" name="txtReject" style="margin-top:20px;display:none" id="txtReject" class="form-control"><?php echo $rowPres['pres_rejection_reason'] ?></textarea>
+                                                        <textarea rows="5" placeholder="Please enter reason" cols="100" name="txtReject" style="margin-top:20px;display:none"  id="txtReject" class="form-control"><?php echo $rowPres['pres_rejection_reason'] ?></textarea>
+                                                        
+                                                        <span id="showErrorMsg" class="error"></span>
                                                         </div>
                               
                               <?php if ($_GET['error']==1) { ?>
@@ -3353,6 +3377,7 @@ $("#adminForm").validate({
 		
 		
 		 $("#ckTermsAccept").hide();
+		 $("#showErrorMsg").html("");
 		
 		  var element = document.getElementById("btnApprove");    
 		  element.style.backgroundColor = "#dee5f7";     
@@ -3496,7 +3521,18 @@ $("#adminForm").validate({
 			alert ("Please select the outcome before submitting");
 			return false;
 		}
-		else
+		
+			if ($('#txtReject').is(':visible'))
+			 {
+					if ($('#txtReject').val()=="")
+					{
+					$("#showErrorMsg").html("Please enter reason");
+					return false;
+					}
+			
+		
+			}
+		
 		return true;
 	}
 	

@@ -140,6 +140,10 @@
 	{
 
 			global $database,$component;	
+			
+			
+			
+			
 
 			$update = array(
 
@@ -180,6 +184,21 @@
 		);
 		$updated = $database->update( 'tbl_medication_pricing', $update, $where_clause, 1 );
 
+
+		if ($_POST['ckOverride']==1)
+			{	
+			
+				$filteredArray = array_filter($_POST['txtOR']);
+				$strOverride = serialize($filteredArray);
+						
+				$update = array(
+				'mp_override_active' => $_POST['ckOverride'],
+				'mp_override_price' => $strOverride
+				);
+				
+			 $database->update( 'tbl_medication_pricing', $update, $where_clause, 1 );
+					
+			}
 		
 
 		if( $updated )

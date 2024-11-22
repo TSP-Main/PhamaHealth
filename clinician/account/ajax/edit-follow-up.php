@@ -25,7 +25,7 @@ $row=$res[0];
                     <div style="background-color:#F1F4FB; border:1px solid #039">
                     
                     	<div class="modal-header">
-							<h5 class="modal-title" style="color:#06C">Manage Follow Up</h5>
+							<h5 class="modal-title" style="color:#06C;font-size:20px">Follow Up Review</h5>
                             
                            
                             
@@ -36,66 +36,153 @@ $row=$res[0];
 						</div>
 						<div class="modal-body">
 							
-							 
-                             
-                             <div class="row" style="padding-top:10px;padding-left:7px">
-									<div class="col-md-3">
-											Order Id
+							 <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Patient Name
 									</div>
-									<div class="col-md-6">
-										<?php echo $row['pres_id'] ?>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo $name=$row['patient_first_name']." ".$row['patient_last_name']; ?>
+									</div>
+								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											DOB
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo  date("d M Y",strtotime($row['patient_dob'])); ?>
+                                        (<?php 
+									
+									$from = new DateTime($row['patient_dob']);
+									$to   = new DateTime('today');
+									echo $from->diff($to)->y;
+									
+									$row['patient_dob'] ?> years)
+									</div>
+								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Address
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php
+														$address=$row['patient_address1'];
+														if ($row['patient_address2']!="")
+														$address.=" ".$row['patient_address2'];
+														$address.=", ".$row['patient_city'];
+														$address.=", ".$row['patient_postcode'];
+														echo $address;
+														
+														?>
+									</div>
+								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+										    Phone Number
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo  $row['patient_phone']; ?>
+									</div>
+								</div>
+                             
+                             <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Order ID
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										 <a href="?c=pres-prescriptions&task=detail&id=<?php echo $row['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>
 									</div>
 								</div>
                               
-                               <div class="row" style="padding-top:10px;padding-left:7px">
-									<div class="col-md-3">
+                               <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
 											Condition
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6" style="font-weight:500">
 										<?php echo getConditionName($row['pres_condition']); ?>
 									</div>
 								</div>
                                 
-                                 <div class="row" style="padding-top:10px;padding-left:7px">
-									<div class="col-md-3">
-											Due Date
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Medication
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo getMedicationStringWithInfo($row['pres_id']); ?>
+									</div>
+								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Order Date
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo  date("d M Y",strtotime($row['pres_date'])); ?>
+									</div>
+								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Requested By (Clinician Name)
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo getUserNameByType('clinician',$row['follow_up_added_by']); ?>
+									</div>
+								</div>
+                                
+                                 <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Review Due Date 
+									</div>
+									<div class="col-md-6" style="font-weight:500">
 										<?php echo  date("d M Y",strtotime($row['follow_up_date'])); ?>
 									</div>
 								</div>
+                                
+                                <div class="row" style="padding-top:15px;padding-left:7px">
+									<div class="col-md-4">
+											Follow up added Date 
+									</div>
+									<div class="col-md-6" style="font-weight:500">
+										<?php echo  date("d M Y",strtotime($row['follow_up_added_on'])); ?>
+									</div>
+								</div>
+                                
+                                
 							
                              <?php $currentStatus=$row['follow_up_active']; ?>
                             
-                               <div class="row" style="padding-top:10px;padding-left:5px">
-									<div class="col-md-3">
+                               <div class="row" style="padding-top:15px;padding-left:5px">
+									<div class="col-md-4">
 											<label class="form-label mb-0 mt-2">Change Status</label>
 									</div>
 									<div class="col-md-6">
 											<select name="cmbChgStatus" id="cmbChgStatus" class="form-control" >
 												<option value="1" <?php if ($currentStatus==1) echo "Selected"; ?>>Open</option>
-                                                <option value="2" <?php if ($currentStatus==2) echo "Selected"; ?>>Close</option>
+                                                <option value="2" <?php if ($currentStatus==2) echo "Selected"; ?>>Closed</option>
                                              </select>
 									</div>
 									</div>
                                 
-                                <div class="row" style="padding-top:10px;padding-left:5px">
-									<div class="col-md-3">
+                                <div class="row" style="padding-top:15px;padding-left:5px">
+									<div class="col-md-4">
 											<label class="form-label mb-0 mt-2">Action Taken</label>
 									</div>
 									<div class="col-md-6">
 											<select name="cmbAction" id="cmbAction" class="form-control" onchange="fnTakeAction(this.value)" required>
-												<option value="">Select Action</option>
-                                                <option value="Follow-up Later">Follow-up Later</option>
-                                                <option value="Cancelled (Patient Decline)">Cancelled (Patient Decline)</option>
+												<option value="" style="display:none">Select Action</option>
+                                                <option value="Reschedule Follow Up Review">Reschedule Follow Up Review</option>
+                                                <option value="Cancelled (Patient Declined)">Cancelled (Patient Declined)</option>
                                                 <option value="Cancelled (Other Reason)">Cancelled (Other Reason)</option>
-                                                <option value="New Order Placed by Patient">New Order Placed by Patient</option>
+                                               
                                              </select>
 									</div>
 									</div>
                                     
-                                    <div class="row" style="padding-top:10px;padding-left:5px;display:none" id="id_follow_up_date" >
-									<div class="col-md-3">
+                                    <div class="row" style="padding-top:15px;padding-left:5px;display:none" id="id_follow_up_date" >
+									<div class="col-md-4">
 											<label class="form-label mb-0 mt-2">New Follow Up Date</label>
 									</div>
 									<div class="col-md-6">
@@ -104,8 +191,8 @@ $row=$res[0];
 									</div>
                                 
                                     
-                                    <div class="row" style="padding-top:10px;padding-left:5px">
-									<div class="col-md-3">
+                                    <div class="row" style="padding-top:15px;padding-left:5px">
+									<div class="col-md-4">
 											<label class="form-label mb-0 mt-2">Notes</label>
 									</div>
 									<div class="col-md-6">
@@ -119,7 +206,7 @@ $row=$res[0];
 									{
 								 
 								  ?> 
-                                    <div class="row" style="padding-top:10px;padding-left:5px">
+                                    <div class="row" style="padding-top:15px;padding-left:5px">
 									<div class="col-md-12">
 											<strong>Logs:</strong>
                                             
@@ -137,11 +224,11 @@ $row=$res[0];
 									   $rowLogs=$resLogs[$j];
 									   ?>  
                                     
-                                    <div class="row" style="padding-top:10px;padding-left:5px">
-									<div class="col-md-3">
+                                    <div class="row" style="padding-top:15px;padding-left:5px">
+									<div class="col-md-4">
 											<?php echo displayDateTimeFormat($rowLogs['fnotes_date']); ?>
 									</div>
-									<div class="col-md-9">
+									<div class="col-md-8">
                                     <?php if ($rowLogs['fnotes_actions']!="") { ?>
 											<strong><?php echo $rowLogs['fnotes_actions']; ?></strong>
                                      <?php } ?>
@@ -213,7 +300,7 @@ $row=$res[0];
 				function fnTakeAction(val)
 				{
 					
-					if (val=="Follow-up Later")
+					if (val=="Reschedule Follow Up Review")
 					$("#id_follow_up_date").show();
 					else 
 					$("#id_follow_up_date").hide();

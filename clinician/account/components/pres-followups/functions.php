@@ -18,14 +18,39 @@
 		
 		$sql = "SELECT * FROM tbl_follow_ups,tbl_patients,tbl_prescriptions WHERE patient_id=follow_up_patient_id and pres_id=follow_up_pres_id";
 		
-		if ($_GET['txtSearch']!="")
-		$sql .= " AND (pres_id = '" . $database->filter($_GET['txtSearch']) . "' OR patient_first_name = '" . $database->filter($_GET['txtSearch']) . "' OR patient_last_name = '" . $database->filter($_GET['txtSearch']). "' OR patient_phone = '" . $database->filter($_GET['txtSearch']). "' OR patient_email = '" . $database->filter($_GET['txtSearch']). "')";
+		$searchKeyword=str_replace("PH-","",$_GET['txtSearch']);
+		
+		if (!empty($_GET['txtSearch'])) {
+    $searchKeywords = explode(' ', trim($_GET['txtSearch'])); // Split by space
+    $sql .= " AND (";
+
+    $conditions = array();
+    foreach ($searchKeywords as $word) {
+        $word = $database->filter($word); // Sanitize each word
+        $conditions[] = "(pres_id LIKE '%$word%' 
+                          OR patient_first_name LIKE '%$word%' 
+                          OR patient_last_name LIKE '%$word%' 
+                          OR patient_phone LIKE '%$word%'						 
+                          OR patient_email LIKE '%$word%')";
+    }
+
+    // Combine all conditions with OR and append to SQL
+    $sql .= implode(' AND ', $conditions);
+    $sql .= ")";
+}
+
+
+		if ($_GET['txtDOB']!="")
+		$sql.=" and patient_dob>='".$database->filter($_GET['txtDOB'])."'";
 
 		if ($_GET['txtFrom']!="")
 		$sql.=" and follow_up_date>='".$database->filter($_GET['txtFrom'])."'";
 		
 		if ($_GET['txtTo']!="")
 		$sql.=" and follow_up_date<='".$database->filter($_GET['txtTo'])."'";
+		
+		if ($_GET['condition']!="")
+		$sql.=" and follow_up_condition='".$database->filter($_GET['condition'])."'";
 		
 		if ($_GET['ty']=="")
 		$sql.=" and follow_up_active=1";
@@ -147,7 +172,7 @@
 							'follow_up_active' => $_POST['cmbChgStatus']
 				);
 				
-				if ($_POST['cmbAction']=="Follow-up Later")
+				if ($_POST['cmbAction']=="Reschedule Follow Up Review")
 				{
 					
 					$update = array_merge($update, array(

@@ -212,20 +212,41 @@ include PATH."include/headerhtml.php"
 										$resPricing=$database->get_results($sqlPricing);
 										$rowPricing=$resPricing[0];
 										
-	
-										//$baseprice=$row[$tierField];
-										$quantity=1;
-										$medicationCost=$rowPricing['mp_medication_cost'];
-										$costPrice=$rowPricing['mp_cost_price'];
-										$totalCostPrice=$costPrice*$quantity;
-										
-										if ($totalCostPrice>=6.5)
+										if ($rowPricing['mp_override_active']==0)
 										{
-											$medicationCost=$totalCostPrice;
-											$tierPrice=calculatePrice_plus($quantity,$medicationCost, $tier);
+										//$baseprice=$row[$tierField];
+											$quantity=1;
+											$medicationCost=$rowPricing['mp_medication_cost'];
+											$costPrice=$rowPricing['mp_cost_price'];
+											$totalCostPrice=$costPrice*$quantity;
+											
+											if ($totalCostPrice>=6.5)
+											{
+												$medicationCost=$totalCostPrice;
+												$tierPrice=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
+											}
+											else
+											$tierPrice=calculatePrice($baseprice, $quantity);
 										}
 										else
-										$tierPrice=calculatePrice($baseprice, $quantity);
+										{
+											$medicationCost=$rowPricing['mp_medication_cost'];
+											$costPrice=$rowPricing['mp_cost_price'];
+											$quantity=1;
+											
+											if ($rowPricing['mp_override_price']!="")
+											{
+												
+												$arrOR_price=unserialize(fnUpdateHTML($rowPricing['mp_override_price']));
+												
+												
+												$tierPrice=$arrOR_price[$quantity-1];
+												if ($tier>1)
+												$tierPrice=calculatePriceOveride($priceTocharge,$tier);
+												
+											}
+											
+										}
 										
 									 
 				

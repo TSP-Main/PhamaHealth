@@ -2243,7 +2243,7 @@ function calculatePrice($basePrice, $quantity) {
     // Calculate the price
     $price = $basePrice * $factor;
 	
-	$saving=$price-$basePrice;
+	$saving=($basePrice*$quantity)-$price;
 	
 	if ($saving==0)
     return formatToTens($price);
@@ -2253,42 +2253,74 @@ function calculatePrice($basePrice, $quantity) {
 	
 }
 
-function calculatePrice_plus($quantity, $medicationCost, $tier) {
+function calculatePrice_plus($quantity, $medicationCost, $tier,$costPrice) {
     // Initialize the multipliers
     $multipliers = array(1, 0.6, 0.4, 0.3);
 
-    // Calculate the sum of multipliers
+    // Determine base price based on the tier
+    if ($tier == 1) {
+        $baseprice = 20;
+    } else if ($tier == 2) {
+        $baseprice = 24;
+    } else if ($tier == 3) {
+        $baseprice = 28;
+    } else if ($tier == 4) {
+        $baseprice = 39;
+    }
+
+    // Calculate price for quantity = 1
+    // First multiplier is always used for quantity = 1
+
+    // Calculate the sum of multipliers for the provided quantity
     $sumMultipliers = 0;
     for ($i = 0; $i < $quantity; $i++) {
         if ($i < count($multipliers)) {
             $sumMultipliers += $multipliers[$i];
         } else {
-            $sumMultipliers += $multipliers[count($multipliers) - 1]; // use the last multiplier (0.3) for remaining quantities
+            $sumMultipliers += $multipliers[count($multipliers) - 1]; // Use the last multiplier (0.3) for remaining quantities
         }
     }
 
-
-	if ($tier==1)
-	$baseprice = 20; 
-	else if ($tier==2)
-	$baseprice = 24; 
-	if ($tier==3)
-	$baseprice = 28; 
-	if ($tier==4)
-	$baseprice = 39; 
-
     // Calculate the base cost using the multipliers
     $baseCost = $baseprice * $sumMultipliers;
+	
+	//---Calculate price for one-----
+	
+	
+	 $priceForOneBaseCost = $baseprice * $multipliers[0];
+	
+	 if ($costPrice<=10)
+	 $costPrice=8;
+		 
+	 
+	 $priceForOne = formatToTens($priceForOneBaseCost + ($costPrice - 4), 2);
+	 
+	
+	 
+	 
+	  if ($medicationCost >= 6.5 && $medicationCost <= 10) {
+        $medicationCost = 8;
+    }
+	
+	
+	
+	//-----end calculate price for one--
+
+    // Adjust medication cost if within specific range
+    if ($medicationCost >= 6.5 && $medicationCost <= 10) {
+        $medicationCost = 8;
+    }
+	
+	
+	
 
     // Calculate the total cost
-	if ($medicationCost>=6.5 && $medicationCost<=10)
-	$medicationCost=8;
+    $totalCost = formatToTens($baseCost + ($medicationCost - 4), 2);
 	
 	
+   // $saving=$baseCost-$baseprice;
 	
-    $totalCost = formatToTens($baseCost + ($medicationCost - 4),2);
-
-    $saving=$baseCost-$baseprice;
+	$saving = $priceForOne * $quantity - $totalCost;
 	
 	if ($saving==0)
     return $totalCost;
@@ -2297,18 +2329,11 @@ function calculatePrice_plus($quantity, $medicationCost, $tier) {
 }
 
 function calculatePriceOveride($basePrice, $targetTier) {
-    // Define the fraction increases for each tier
-    $fractions = array(0.20, 0.1667, 0.3929);
-
-    // Initialize the current price as the base price
-    $currentPrice = $basePrice;
-
-   // Loop through each tier up to the target tier, applying the corresponding fraction
-	for ($tier = 0; $tier < $targetTier - 1; $tier++) {
-		// Use the fraction for the current tier, or default to the last fraction if out of range
-		$fraction = isset($fractions[$tier]) ? $fractions[$tier] : $fractions[count($fractions) - 1];
-		$currentPrice += $currentPrice * $fraction;
-	}
+    
+	if ($targetTier==2)
+	$currentPrice=$basePrice+4;
+	else if ($targetTier==3)
+	$currentPrice=$basePrice+8;
 
 
     // Return the calculated price, rounded to 2 decimal places
@@ -2453,7 +2478,7 @@ function getMedicineFromPrice($medId)
 	if ($totalCostPrice>=6.5)
 		{
 		$medicationCost=$totalCostPrice;	
-		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier);
+		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
 	}
 	else
 	$priceTocharge=calculatePrice($baseprice, $quantity);

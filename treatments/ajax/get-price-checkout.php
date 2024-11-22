@@ -35,7 +35,7 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 		//if ($medicationCost>=6.5 && $medicationCost<10)
 		//$medicationCost=8;
 		
-		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier);
+		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
 	}
 	else
 	$priceTocharge=calculatePrice($baseprice, $quantity);

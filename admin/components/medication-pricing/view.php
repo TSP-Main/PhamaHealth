@@ -236,6 +236,10 @@
                                                 <font style="color:#666; font-size:12px"><?php echo getConditionName_multi($row['med_conditions']); ?></font><br />
                                                 
                                                 <font style="color:#666; font-size:12px"><a href="<?php echo URL?>treatments/medicine?m=<?php echo $row['mp_medicine']; ?>" target="_blank" style="color:#09C">View Live Page</a></font>
+                                                
+                                               
+                                                
+                                                
 											</div>
 										</div>
 									</td>
@@ -252,7 +256,36 @@
 									 $mp_id = $row['mp_id'];
         for ($tier=1; $tier<=3; $tier++) { ?>
             <td valign="top">
-                <div id="pricing-section-<?php echo $mp_id . '-' . $tier; ?>">
+             <?php if ($row['mp_override_active']==1) { ?>
+                                                <span class="badge badge-pill badge-danger mt-2">Price Override</span>
+                                                
+                                                <div id="pricing-section-<?php echo $mp_id . '-' . $tier; ?>" <?php if ($row['mp_override_active']==1) { ?> style="border:1px solid #F00; padding:10px" <?php } ?>>
+                                                
+                                                <?php
+												 $arrOR_price=unserialize(fnUpdateHTML($row['mp_override_price']));
+												 $totalOR_qty=count($arrOR_price);
+												 
+												 		if ($totalOR_qty>0)
+														 {
+															 
+														for ($k=1;$k<=$totalOR_qty;$k++)
+														{
+															$priceOR=$arrOR_price[$k-1];
+															if ($tier>1)
+															$priceOR=calculatePriceOveride($priceOR,$tier);
+												?>
+												
+                                                	<div class='visible-row'>Qty <?php echo $k?>: <strong><?php echo CURRENCY . formatToTens($priceOR)?></strong></div>
+                                                    
+                                                  <?php } 
+												  } ?>
+                                                
+                                                </div>
+                                                
+                                                
+                                                <?php } else { ?>
+            
+                <div id="pricing-section-<?php echo $mp_id . '-' . $tier; ?>" >
                     <?php
                     for ($m=1; $m<=8; $m++) { 
                         $quantity = $m;
@@ -271,7 +304,7 @@
 
                         if ($totalCostPrice >= 6.5) {
                             $medicationCost = $totalCostPrice;
-                            $tierPrice = calculatePrice_plus($quantity, $medicationCost, $tier);
+                            $tierPrice = calculatePrice_plus($quantity, $medicationCost, $tier,$costPrice);
                         } else {
                             $tierPrice = calculatePrice($baseprice, $quantity);
                         }
@@ -284,9 +317,11 @@
                     }
                     ?>
                 </div>
+                 <a id="view-more-btn-<?php echo $mp_id . '-' . $tier; ?>" href="javascript:void(0);" onclick="showMoreRows('<?php echo $mp_id; ?>', <?php echo $tier; ?>)" style="text-decoration:underline; color:#06C; font-size:12px">View More</a>
+                <?php } ?>
 
                 <!-- "View More" link for each column -->
-                <a id="view-more-btn-<?php echo $mp_id . '-' . $tier; ?>" href="javascript:void(0);" onclick="showMoreRows('<?php echo $mp_id; ?>', <?php echo $tier; ?>)" style="text-decoration:underline; color:#06C; font-size:12px">View More</a>
+               
             </td>
         <?php } ?>
                                      
@@ -641,6 +676,86 @@ else
 					
 						</div>
 					</div>
+                    
+                    						
+                                            <h4 class="mb-5 mt-7 font-weight-bold">Price Override</h4>
+                                            <div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label">Enable / Disable</label>
+														</div>
+														<div class="col-md-9">
+															<label class="custom-switch">
+																<input type="checkbox" value="1" name="ckOverride" id="ckOverride"  class="custom-switch-input" onchange="togglePriceOverride()" <?php if ($row['mp_override_active']==1) echo "checked"; ?>>
+																<span class="custom-switch-indicator"></span>
+																<!--<span class="custom-switch-description">Yes/No</span>-->
+															</label>
+														</div>
+													</div>
+												</div>
+                                                <?php $totalOR_qty=1; ?>
+                                                <div id="cont_price_override" <?php if ($row['mp_override_active']!=1) { ?> style="display:none" <?php } ?>>
+													
+                                                    <h6 style="color:#C30; font-size:16px">Please enter tier 1 price for quantities</h6>
+													<div class="form-group">
+                                                    
+                                                   <?php 
+												   if ($row['mp_override_price']!="")
+												   {
+												    $arrOR_price=unserialize(fnUpdateHTML($row['mp_override_price']));
+												  		 // print_r ($arrOR_price);
+														 $totalOR_qty=count($arrOR_price);
+												   }
+														 
+														 if ($totalOR_qty>0)
+														 {
+															 
+														for ($k=1;$k<=$totalOR_qty;$k++)
+														{
+															$priceOR=$arrOR_price[$k-1];
+												    ?> 
+                                                    
+                                                    <div class="row" id="qty_row_<?php echo $k; ?>">
+															<div class="col-xl-3">
+																<label class="form-label mb-0 mt-2">Price of Quantity <?php echo $k; ?></label>
+															</div>
+															<div class="col-xl-4">
+																<input type="text" class="form-control" name="txtOR[]" id="txtOR_<?php echo $k; ?>" placeholder="" value="<?php echo $priceOR; ?>">
+															</div>
+														</div>
+                                                   <?php }
+												   } else { ?>
+                                                   
+                                                   <div class="row" id="qty_row_1">
+															<div class="col-xl-3">
+																<label class="form-label mb-0 mt-2">Price of Quantity 1</label>
+															</div>
+															<div class="col-xl-4">
+																<input type="text" class="form-control" name="txtOR[]" id="txtOR_1" placeholder="" value="">
+															</div>
+														</div>
+                                                   
+                                                   
+                                                   <?php } ?>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <div class="row" style="padding-top:15px">
+															<div class="col-xl-3">
+                                                            </div>
+                                                            <div class="col-xl-4">
+                                                            <button class="btn btn-pill btn-secondary" type="button" onclick="addNewRow()">Add More</button>
+                                                            </div>
+                                                         </div>
+                                                        
+                                                        
+                                                        
+													</div>
+													
+													
+												</div>
+											
 				
 						
 					<div class="row row-sm">
@@ -665,6 +780,46 @@ else
 			  ?>
 
  <script language="javascript">
+ 
+ $(document).ready(function() {
+    // Set an initial variable for the row count
+    rowCount = <?php echo $totalOR_qty; ?>; // Adjust this if you already have rows populated on the edit page
+    
+    // Check if rows exist on page load and adjust rowCount accordingly
+    while ($('#qty_row_' + rowCount).length > 0) {
+        rowCount++;
+    }
+});
+ 
+  function togglePriceOverride() {
+        if ($('#ckOverride').is(':checked')) {
+            $('#cont_price_override').show();
+        } else {
+            $('#cont_price_override').hide();
+        }
+    }
+	
+	function addNewRow() {
+	
+    // Generate HTML for the new row using backticks for template literals
+    const newRow = `
+        <div class="row" id="qty_row_${rowCount}" style="padding-top: 15px;">
+            <div class="col-xl-3">
+                <label class="form-label mb-0 mt-2">Price of Quantity ${rowCount}</label>
+            </div>
+            <div class="col-xl-4">
+                <input type="text" class="form-control" name="txtOR[]" id="txtOR_${rowCount}" placeholder="" value="">
+            </div>
+        </div>`;
+
+    // Append the new row after the last row
+    $('#qty_row_' + (rowCount - 1)).after(newRow);
+    
+    // Increment the row count
+    rowCount++;
+}
+
+ 
  function fnCalMedCost() {
     var costPrice = parseFloat($("#txtCostPrice").val()); // Convert input value to a float
 

@@ -109,7 +109,7 @@
 															<div class="input-group">
 																<div class="input-group-prepend">
 																	
-																</div><input class="form-control" name="txtSearch" placeholder="" type="text" value="<?php echo $_GET['txtSearch']?>">
+																</div><input class="form-control" name="txtSearch" placeholder="eg; Order Id, Name, Email, Phone" type="text" value="<?php echo $_GET['txtSearch']?>">
 															</div>
 														</div>
 													</div>
@@ -117,12 +117,20 @@
                                                  
                                                  
                            
-                           
+                           					<div class="col-md-12 col-lg-12 col-xl-3">
+												<div class="form-group">
+													<label class="form-label">DOB:</label>
+                                                    
+                                                  
+                                                    
+													<input class="form-control fc-datepicker" name="txtDOB" placeholder="" type="date" value="<?php echo $_GET['txtDOB']?>">
+												</div>
+											</div>
 											
 											
 											<div class="col-md-12 col-lg-12 col-xl-3">
 												<div class="form-group">
-													<label class="form-label">Follow up Date From:</label>
+													<label class="form-label">Follow-Up Review Due Date:</label>
                                                     
                                                   
                                                     
@@ -133,20 +141,47 @@
                                             
                                             <div class="col-md-12 col-lg-12 col-xl-3">
 												<div class="form-group">
-													<label class="form-label">Follow up Date To:</label>
+													<label class="form-label">Follow-Up Review Date To:</label>
                                                     
                                                   
                                                     
 													<input class="form-control fc-datepicker" name="txtTo" placeholder="" type="date" value="<?php echo $_GET['txtTo']?>">
 												</div>
 											</div>
+                                            <div class="col-md-12 col-lg-12 col-xl-3">
+												<div class="form-group">
+													<label class="form-label">Condition:</label>
+                                                    
+                                                  
+                                                    <select name="condition" class="form-control" >
+                                                	<option value="">All Conditions</option>
+                                                    <?php
+													$query = "SELECT condition_id,condition_title FROM tbl_conditions,tbl_follow_ups where follow_up_condition=condition_id and condition_status=1 order by condition_title";
+													$results = $database->get_results( $query );
+											
+													foreach ($results as $value)
+										 			{
+													 ?>
+                                                     
+                                                     <option value="<?php echo $value['condition_id']; ?>" <?php if ($_GET['condition']==$value['condition_id']) echo "selected"; ?>><?php echo $value['condition_title']; ?></option>
+													 <?php
+                                                    }
+                                                    ?>
+                                                     
+                                                     
+                                                </select>
+													
+												</div>
+											</div>
+                                            
                                             
 											<div class="col-md-12 col-lg-12 col-xl-1">
 												<div class="form-group mt-5">
+                                                <input type="hidden" name="ty" value="<?php echo $_GET['ty']?>" />
 													<button type="submit" class="btn btn-primary btn-block">Search</button>
                                                     
                                                      <?php $qS=$_SERVER['QUERY_STRING'];
-												   if (strstr($qS,"txtDateFrom"))
+												   if (strstr($qS,"txtSearch"))
 												   {
 												    ?>
                                                     <a href="?c=<?php echo $_GET['c']?>" style="font-size:11px; color:#03C">Reset filter</a>
@@ -160,15 +195,18 @@
 											<tr>
 												
 												
-                                                <th width="19%" class="border-bottom-0">Prescription Details</th>
-                                                <th width="13%" class="border-bottom-0">Follow up due on</th>
-                                                <th width="16%" class="border-bottom-0">Patient Name</th>
-                                                <th width="16%" class="border-bottom-0">Patient Email</th>
-                                                <th width="11%" class="border-bottom-0">Patient Phone</th>
+                                                <th width="20%" class="border-bottom-0">Prescription Details</th>
+                                                <th width="12%" class="border-bottom-0">Follow Up Review Due Date</th>
+                                                <th width="10%" class="border-bottom-0">Patient Name</th>
+                                                <th width="8%" class="border-bottom-0">DOB</th>
+                                                <th width="10%" class="border-bottom-0">Condition</th>
+                                                <th width="17%" class="border-bottom-0">Medication</th>
+                                               <!-- <th width="16%" class="border-bottom-0">Patient Email</th>
+                                                <th width="11%" class="border-bottom-0">Patient Phone</th>-->
                                                 
-                                                <th width="13%" class="border-bottom-0">Added by</th>                                                
+                                                <th width="10%" class="border-bottom-0">Requested By (Clinician Name) </th>                                                
                                                
-                                                <th width="12%" class="border-bottom-0 w-20">Status & Actions</th>
+                                                <th width="13%" class="border-bottom-0 w-20">Status & Actions</th>
 											</tr>
 										</thead>
                                         <tbody>
@@ -205,7 +243,7 @@
 									<div class="card-body pb-0 pt-3">
 										<div>
 											<label><?php echo $row['message_subject']; ?></label>
-											<p >Order ID: <a href="?c=pres-prescriptions&task=detail&id=<?php echo $row['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>,<br /> <?php echo getConditionName($row['pres_condition']); ?>, <br />Date: <?php echo  date("d/m/Y",strtotime($row['pres_date'])); ?></p>
+											<p >Order ID: <a href="?c=pres-prescriptions&task=detail&id=<?php echo $row['pres_id']; ?>" style="color:#06F; text-decoration:underline" target="_blank">PH-<?php echo $row['pres_id'] ?></a>, <br />Order Date: <?php echo  date("d/m/Y",strtotime($row['pres_date'])); ?></p>
 										</div>
 									</div>	
 												
@@ -219,7 +257,7 @@
 									
 									// Compare dates
 									if ($followUpDate < $currentDate) {
-										echo "<br><font style='color:#F00;font-size:13px'>Past due</font>";
+										echo "<br><font style='color:#F00;font-size:13px'>Overdue</font>";
 									} 
 
 									?>
@@ -229,11 +267,31 @@
                                      
                                      </td>
                                      
-                                    <td><?php echo $name=$row['patient_first_name']." ".$row['patient_last_name'];; ?></td>
+                                    <td><?php echo $name=$row['patient_first_name']." ".$row['patient_last_name']; ?></td>
+                                    <td><?php 
+									
+									
+									echo date("d/m/Y",strtotime($row['patient_dob'])); ?></td>
+                                    <td><?php echo getConditionName($row['follow_up_condition']); ?></td>
+                                    <td><?php 
+																$sqlMedicine="select * from tbl_prescription_medicine where pm_pres_id='".$database->filter($row['pres_id'])."'";
+																$resMedicine=$database->get_results($sqlMedicine);
+																for ($m=0;$m<count($resMedicine);$m++)
+																{
+																	$rowMedicine=$resMedicine[$m];
+																	
+																	echo $rowMedicine['pm_med']." - ".$rowMedicine['pm_med_qty'];
+																	echo "<br>";
+															
+                                                            
+                                                            
+                                                           }
+														   
+														   ?></td>
                                     
                                     
-                                    <td class="align-middle"><?php echo $row['patient_email']; ?></td>
-                                    <td class="align-middle"><?php echo $row['patient_phone']; ?></td>
+                                   <!-- <td class="align-middle"><?php echo $row['patient_email']; ?></td>
+                                    <td class="align-middle"><?php echo $row['patient_phone']; ?></td>-->
                                     
                                     
                                     

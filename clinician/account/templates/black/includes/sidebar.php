@@ -131,7 +131,7 @@ if ($_GET['c']!="")
 
             <?php
 
-			$sqlDirect="SELECT * FROM tbl_components,tbl_rights_groups where tbl_rights_groups.rights_menu_id = tbl_components.component_id and tbl_rights_groups.rights_group_id = '".$_SESSION['sess_prescriber_groupid']."' and component_parentid=0 and tbl_rights_groups.rights_menu_id != 1 order by tbl_components.component_ordering ASC";
+			$sqlDirect="SELECT * FROM tbl_components,tbl_rights_groups where tbl_rights_groups.rights_menu_id = tbl_components.component_id and tbl_rights_groups.rights_group_id = '".$_SESSION['sess_prescriber_groupid']."' and component_parentid=0 and tbl_rights_groups.rights_menu_id != 1 and component_id<>266 order by tbl_components.component_ordering ASC";
 		
 
 			$resultsDirect = $database->get_results($sqlDirect);
@@ -166,6 +166,7 @@ if ($_GET['c']!="")
 					}
 
 
+					
 
 					?>
 
@@ -294,7 +295,7 @@ if ($_GET['c']!="")
 			$class='';
 			?>	
 
-   <li  class="slide <?php echo $class; ?> "><a href="<?php echo URL?><?php echo PRESCRIBER_ADMIN?>?c=pres-edit-profile&mode=edit" class="side-menu__item">         
+   <li  class="slide <?php echo $class; ?> ">        
 	<i class="feather feather-lock sidemenu_icon"></i>
       <span class="side-menu__label">Change Password</span>
    </li>      

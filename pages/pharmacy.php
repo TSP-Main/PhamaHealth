@@ -100,7 +100,7 @@ or online pharmacies</h5>
 
 
 	<a href="<?php echo URL?>contact-us?contact=pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center " style="background-color:#0D6EFD; color:#FFF;font-size:15px;border-color:#0D6EFD">Register your interest with Pharma Health</a> <br>
-	<a href="<?php echo URL?>pharmacy/signup" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Register with Pharma Health</a>
+	
 			</div>
 			<div class="col-sm-6  wow fadeInRight">
 				<ul class="list_item">

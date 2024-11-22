@@ -410,16 +410,25 @@
 						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 2 weeks'));
 						break;
 					case '1 month':
-						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 1 month'));
+						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 28 days'));
+						break;
+					case '2 months':
+						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 56 days'));
 						break;
 					case '3 months':
-						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 3 months'));
+						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 84 days'));
 						break;
 					case '6 months':
 						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 6 months'));
 						break;
+					case '12 months':
+						$followupDate = date('Y-m-d', strtotime($currentDate . ' + 12 months'));
+						break;
 					case 'custom':
 						$followupDate =$_POST['txtFollowupDate'];
+						break;
+					case 'Follow up not required':
+						$followupDate ="";
 						break;
 				
 					
@@ -427,11 +436,14 @@
 				
 				if ($followupDate!="")
 				{
+					$curDate = date("Y-m-d");
 					$names = array(
 							'follow_up_pres_id' => $_POST['hdId'],
 							'follow_up_patient_id' => $rowMemberid['patient_id'], 
+							'follow_up_condition' => $rowPatientDet['pres_condition'],
 							'follow_up_date' => $followupDate, 
 							'follow_up_added_by' => $_SESSION['sess_prescriber_id'], 
+							'follow_up_added_on' => $curDate, 
 							'follow_up_active' => 1	
 				
 						);
@@ -504,6 +516,75 @@
 				
                 
                 SendMail($ToEmail, $FromEmail, $FromName, $SubjectSend, $BodySend);
+				
+				
+				//------------send sms to pharmacy informing patient assessment approval---
+				
+				if ($rowPharmacy['pharmacy_sms']==1)
+				{
+				
+				// Your ClickSend API credentials
+				$username = SMS_USERNAME;
+				$apiKey = SMS_APIKEY;
+
+				// Recipient phone number (make sure to include country code, e.g., +14155552671)
+				$pharmacyPhone=str_replace(" ","",$rowPharmacy['pharmacy_primary_phone']);
+				$pharmacyPhone = ltrim($pharmacyPhone, '0');
+				$recipient = '+44'.$pharmacyPhone;
+
+
+				$message = 'Dear '.$pharmacy_name.', The prescription for '.$receiverName.' '.$patient_condition.' has been approved and sent to your pharmacy portal. Please log in to access it.';
+
+				$data = [
+					'messages' => [
+						[
+							'source' => 'php',
+							'from' => 'PHHEALTHUK', // Optional: Sender ID (should be alphanumeric, up to 11 chars)
+							'body' => $message,
+							'to' => $recipient,
+							'schedule' => '', // Optional: Unix timestamp if you want to schedule the message
+						]
+					]
+				];
+				
+				// Convert data to JSON
+				$jsonData = json_encode($data);
+				
+				// Initialize cURL
+				$ch = curl_init();
+				
+				// Set the ClickSend API endpoint
+				curl_setopt($ch, CURLOPT_URL, 'https://rest.clicksend.com/v3/sms/send');
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, [
+					'Content-Type: application/json',
+					'Authorization: Basic ' . base64_encode("$username:$apiKey")
+				]);
+				
+				// Execute cURL request
+				$response = curl_exec($ch);
+				
+				
+				/*if (curl_errno($ch)) {
+					echo 'cURL error: ' . curl_error($ch);
+				} else {
+					
+					$responseData = json_decode($response, true);
+					print_r ($responseData);
+					if (isset($responseData['http_code']) && $responseData['http_code'] == 200) {
+						echo 'SMS sent successfully!';
+					} else {
+						echo 'Failed to send SMS: ' . $responseData['response_msg'];
+					}
+				}*/
+				
+				// Close cURL session
+				curl_close($ch);
+				}
+				
+				//-----------end sending sms--------
 			
 				
                }
