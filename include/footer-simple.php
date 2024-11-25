@@ -17,3 +17,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   </body>
 </html>
+
+<script language="javascript">
+function fnExitAssessment()
+{
+	var ans;
+	ans=confirm ("Are you sure you want to exit the medical assessment");
+	
+	if (ans==true)
+	{
+		window.location.replace('<?php echo URL?>patient/account/');
+	}
+	
+}
+</script>

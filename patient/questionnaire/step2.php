@@ -17,12 +17,18 @@ $_SESSION['questions'][6]="Do you often drink more than 21 units";
 
  ?>
   <body style="padding-top:0px;">  
-    <div class="header_2">
-       <a href="#"><img src="<?php echo URL?>images/logo.png"></a>
-   </div>
+    
+    <?php include PATH."include/header-questionnaire.php"; ?>
+
  <section class="medication-questionaire setup_option_2">
      <div class="container">
-         <h1>Medical Assessment</h1>
+     
+     
+     
+     	
+         	<h1>Medical Assessment</h1>
+           
+         </div>
         <?php include "include/step-navigation.php"; ?>
         
          </div>
@@ -282,6 +288,8 @@ $_SESSION['questions'][6]="Do you often drink more than 21 units";
      </div>
  </section>
 <?php include PATH."include/footer-simple.php"; ?>
+
+
 
 <script src="<?php echo URL?>js/form-validator/jquery.form-validator.js"></script>
 <script language="javascript">
