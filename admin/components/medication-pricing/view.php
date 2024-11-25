@@ -249,7 +249,9 @@
                                     <td><?php echo $row['mp_unit']; ?></td>
                                      <td><?php echo $row['mp_pack_size']. " ".$row['mp_pack_unit'] ?></td>
                                       <td><?php echo CURRENCY.$row['mp_cost_price'] ?></td>
-                                      <td><?php echo CURRENCY.$row['mp_medication_cost'] ?></td>
+                                      <td><?php echo CURRENCY.$row['mp_medication_cost'] ?>
+                                      
+                                      </td>
                                       
                                       
                                     <?php 
@@ -287,7 +289,13 @@
             
                 <div id="pricing-section-<?php echo $mp_id . '-' . $tier; ?>" >
                     <?php
-                    for ($m=1; $m<=8; $m++) { 
+					
+					$maxQuantity=$row['mp_condition1_max_qty'];
+					$maxQuantity=$row['mp_condition1_max_qty'];
+					$mpPackSize=$row['mp_pack_size'];
+					$quantityRun=round($maxQuantity/$mpPackSize);
+					
+                    for ($m=1; $m<=$quantityRun; $m++) { 
                         $quantity = $m;
 
                         // Set base price for each tier
@@ -317,7 +325,9 @@
                     }
                     ?>
                 </div>
+                <?php if ($quantityRun>3) { ?>
                  <a id="view-more-btn-<?php echo $mp_id . '-' . $tier; ?>" href="javascript:void(0);" onclick="showMoreRows('<?php echo $mp_id; ?>', <?php echo $tier; ?>)" style="text-decoration:underline; color:#06C; font-size:12px">View More</a>
+                 <?php } ?>
                 <?php } ?>
 
                 <!-- "View More" link for each column -->

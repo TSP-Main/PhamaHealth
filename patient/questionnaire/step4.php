@@ -12,9 +12,7 @@ include PATH."include/headerhtml.php"
  ?>
  <link type="text/css" href="<?php echo URL?>patient/orakuploader/orakuploader.css" rel="stylesheet"/>
   <body style="padding-top:0px;">  
-    <div class="header_2">
-       <a href="#"><img src="<?php echo URL?>images/logo.png"></a>
-   </div>
+    <?php include PATH."include/header-questionnaire.php"; ?>
  <section class="medication-questionaire setup_option_2 setup_option_3">
      <div class="container">
          <h1>Medical Assessment</h1>

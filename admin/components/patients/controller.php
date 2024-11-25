@@ -35,9 +35,11 @@ switch($task)
 		
 
 		case "edit":
-
 			createFormForPages($id);
-
+			break;
+		
+		case "verify":
+			createFormForVerify($id);
 			break;
 			
 		
@@ -51,6 +53,10 @@ switch($task)
 
 			saveFormValues();
 
+			break;
+		
+		case "savekyc":
+			saveKYCValues();
 			break;
 
 		
