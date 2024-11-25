@@ -238,9 +238,9 @@ $("#adminForm").validate({
                                                     
 													<select name="cmbCategory"  class="form-control custom-select select2" data-placeholder="All">
 														<option label="All"></option>
-                                                        <option value="0" <?php if ($_GET['cmbCategory']==1) echo "selected"; ?>>Pending</option>
-                                                        <option value="1" <?php if ($_GET['cmbCategory']==2) echo "selected"; ?>>Completed</option>
-                                                        <option value="2" <?php if ($_GET['cmbCategory']==3) echo "selected"; ?>>Rejected</option>
+                                                        <option value="0" <?php if ($_GET['cmbCategory']==0) echo "selected"; ?>>Pending</option>
+                                                        <option value="1" <?php if ($_GET['cmbCategory']==1) echo "selected"; ?>>Verified</option>
+                                                        <option value="2" <?php if ($_GET['cmbCategory']==2) echo "selected"; ?>>Rejected</option>
 														
 													</select>
 												</div>
@@ -375,6 +375,11 @@ $("#adminForm").validate({
                                                             <?php } else if ($row['patient_kyc']==2) { ?>
                                                            <a href="?c=<?php echo $component?>&task=verify&id=<?php echo $row['patient_id']; ?>"> <span class="badge badge-pink-light">Rejected</span></a>
                                                             <?php } ?>
+                                                            
+                                                          <?php if ($row['patient_kyc_manual']==1) { ?>
+                                                          <br />
+                                                          <font style="color:#F00; font-size:12px">Manually updated</font>
+                                                          <?php } ?> 
 											</div>
 										</div>
 									</td>
