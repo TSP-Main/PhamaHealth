@@ -93,7 +93,7 @@
 			'patient_ip' => $_SERVER['REMOTE_ADDR'],
 			'patient_verification_code' => $verificationCode,
 			'patient_email_verify' => 1,
-			'patient_kyc' => $_POST['rdoKYC'],
+			
 			'patient_status' => $_POST['rdoPublished']
 
 
@@ -128,6 +128,32 @@
 		
 
 	}
+	
+	
+	function saveKYCValues()
+	{
+		
+		global $database, $component;	
+		$update = array(
+			'patient_kyc' => $_POST['cmbKYC'],
+			'patient_kyc_manual' => 1
+
+		);
+	
+		
+		$where_clause = array(
+			'patient_id' => $_POST['pageId']
+		);
+		
+		
+		$updated = $database->update( 'tbl_patients', $update, $where_clause, 1 );	
+			
+		print "<script>window.location='index.php?c=".$component."'</script>";
+
+
+	
+
+	}
 
 	
 
@@ -146,6 +172,16 @@
 			
 
 				createFormForPagesHtml($results);
+
+			}
+	
+	function createFormForVerify($id)
+			{
+
+				global $database;
+				$sql = "SELECT patient_kyc,patient_id FROM tbl_patients where patient_id='".$database->filter($id)."'";
+				$results = $database->get_results( $sql );
+				createFormForVerifyHtml($results);
 
 			}
 	
@@ -194,8 +230,7 @@
 			'patient_address1' => $_POST['txtAddress1'],
 			'patient_address2' => $_POST['txtAddress2'],
 			'patient_postcode' => $_POST['txtPostCode'],
-			'patient_pharmacy' => $_POST['cmbPharmacy'],			
-			'patient_kyc' => $_POST['rdoKYC'],
+			'patient_pharmacy' => $_POST['cmbPharmacy'],				
 			'patient_status' => $_POST['rdoPublished']
 
 			);

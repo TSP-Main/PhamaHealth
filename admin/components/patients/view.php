@@ -1,8 +1,120 @@
-		
+	
+<?php function createFormForVerifyHtml(&$rows) {
 
-		<!------ Listing Function ------------------->
+	$row=array();
 
-		
+	global $component, $database;
+
+	$row = &$rows[0];
+
+	
+
+	 ?>
+	 
+<!--Page header-->
+<div class="page-header d-lg-flex d-block">
+	<div class="page-leftheader">
+	<h4 class="page-title">Manage Patient KYC Status</h4>
+	</div>
+	<div class="page-rightheader ml-md-auto">
+		<div class=" btn-list">
+		<a href="index.php?c=<?php echo $component?>&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back">
+																<i class="fa fa-close"></i>
+															</a>
+		</div>
+	</div>
+</div>
+<!--End Page header-->	 
+
+				
+<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="card">
+
+				<?php
+
+					
+
+						$task="savekyc";
+
+				?>
+   <form name="adminForm" id="adminForm" action="?c=<?php echo $component?>&task=<?php echo $task;?>" method="post" class="form-horizontal" />
+   <div class="card-body pb-2">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+					Current Status: 
+												<?php if ($row['patient_kyc']==0) { ?>
+															<span class="badge badge-danger-light">Pending</span>
+                                                            <?php } else if ($row['patient_kyc']==1) { ?>
+                                                            <span class="badge badge-danger-light">Verified</span>
+                                                            <?php } else if ($row['patient_kyc']==2) { ?>
+                                                           <span class="badge badge-danger-light">Rejected</span>
+                                                            <?php } ?>
+										
+					<div class="form-group">
+                    </div>
+                    
+                 </div>		
+                 </div>
+	
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+
+					<div class="form-group">
+								<label class="form-label">Change Status</label>
+								<select class="form-control" name="cmbKYC" id="cmbKYC" required >
+										<option label="Select Status"></option>
+                                        <option value="1">Approve Manually</option>
+                                        <option value="2">Reject</option>
+										
+
+									
+									</select>
+							</div>
+                     
+                     </div>
+                  </div>
+                            
+                        
+				
+						
+					<div class="row row-sm">
+					<div class="col-lg">
+					<button  class="btn btn-primary mt-4 mb-0">Submit</button>	
+					</div>
+					</div>	
+
+<input type="hidden" name="pageId" value="<?php echo $row['patient_id']?>" />	
+
+	</form>					
+								</div>
+ </div>
+</div>
+</div>                               
+                                
+        <script language="javascript">
+
+$("#adminForm").validate({
+			rules: {
+				cmbKYC: "required"
+				
+			},
+			messages: {
+				cmbKYC: "Please select the status you want to change",
+				
+				
+				}			
+		});
+
+</script>      
+                                
+
+
+             <?php } ?>
+       
+
+
+  
 
 		<?php function showRecordsListing(&$rows) { 
 
@@ -257,11 +369,11 @@
 										<div class="d-flex">
 											<div class="ml-3 mt-1">
 												<?php if ($row['patient_kyc']==0) { ?>
-															<span class="badge badge-danger-light">Pending</span>
+															<a href="?c=<?php echo $component?>&task=verify&id=<?php echo $row['patient_id']; ?>"><span class="badge badge-danger-light">Pending</span></a>
                                                             <?php } else if ($row['patient_kyc']==1) { ?>
-                                                            <span class="badge badge-danger-light">Verified</span>
+                                                            <span class="badge badge-success-light">Verified</span>
                                                             <?php } else if ($row['patient_kyc']==2) { ?>
-                                                            <span class="badge badge-danger-light">Rejected</span>
+                                                           <a href="?c=<?php echo $component?>&task=verify&id=<?php echo $row['patient_id']; ?>"> <span class="badge badge-pink-light">Rejected</span></a>
                                                             <?php } ?>
 											</div>
 										</div>
@@ -602,7 +714,7 @@ else
                             
                             
 
-						<div class="form-group ">
+						<!--<div class="form-group ">
 						<div class="form-label">KYC Status</div>
 						<div class="custom-controls-stacked">
 							<label class="custom-control custom-radio">
@@ -615,7 +727,7 @@ else
 							</label>
 					
 						</div>
-					</div>	
+					</div>-->	
 
 							
 			
@@ -674,7 +786,10 @@ $("#adminForm").validate({
 
 
              <?php } ?>
-
+             
+       
+       
+      
      <?php function createFormForPagesHtml_details(&$rows) {
 
 	$row=array();
@@ -1651,4 +1766,5 @@ else
 </div>
 
              <?php } ?>
-  
+      
+ 
