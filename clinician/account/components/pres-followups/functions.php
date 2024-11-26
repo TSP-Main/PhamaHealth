@@ -21,7 +21,7 @@
 		$searchKeyword=str_replace("PH-","",$_GET['txtSearch']);
 		
 		if (!empty($_GET['txtSearch'])) {
-    $searchKeywords = explode(' ', trim($_GET['txtSearch'])); // Split by space
+    $searchKeywords = explode(' ', trim($searchKeyword)); // Split by space
     $sql .= " AND (";
 
     $conditions = array();
@@ -41,7 +41,7 @@
 
 
 		if ($_GET['txtDOB']!="")
-		$sql.=" and patient_dob>='".$database->filter($_GET['txtDOB'])."'";
+		$sql.=" and patient_dob='".$database->filter($_GET['txtDOB'])."'";
 
 		if ($_GET['txtFrom']!="")
 		$sql.=" and follow_up_date>='".$database->filter($_GET['txtFrom'])."'";
