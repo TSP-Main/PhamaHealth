@@ -154,14 +154,14 @@ td {
         
         <table width="85%" >
         	<?php
-			$sqlSignature="select pres_signature from tbl_prescribers where pres_id='".$database->filter($_SESSION['sess_prescriber_id'])."'";
+			$sqlSignature="select pres_signature from tbl_prescribers where pres_id='".$database->filter($rowPres['pres_prescriber'])."'";
 			$resSignature=$database->get_results($sqlSignature);
 			$rowSignature=$resSignature[0];
 			$signature=$rowSignature['pres_signature']; 
 				if ($signature!="")
 					{
 			?>
-            <tr><td align="right"><img src="<?php echo URL?>signature/uploads/<?php echo $signature; ?>" style="max-width:350px" /></td></tr>
+            <tr><td align="right"><img src="<?php echo URL?>signature/uploads/<?php echo $signature; ?>" style="max-width:280px" /></td></tr>
             <?php } ?>
         	<tr><td align="right">_____________________</td></tr>
             <tr><td align="right">Signature of Prescriber</td></tr>
