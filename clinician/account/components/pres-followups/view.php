@@ -109,7 +109,7 @@
 															<div class="input-group">
 																<div class="input-group-prepend">
 																	
-																</div><input class="form-control" name="txtSearch" placeholder="eg; Order Id, Name, Email, Phone" type="text" value="<?php echo $_GET['txtSearch']?>">
+																</div><input class="form-control" name="txtSearch" placeholder="eg; Order ID, Name, Email, Phone" type="text" value="<?php echo $_GET['txtSearch']?>">
 															</div>
 														</div>
 													</div>

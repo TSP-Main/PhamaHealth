@@ -1,6 +1,11 @@
 RewriteEngine On
 Options +FollowSymLinks
 
+<IfModule mod_security.c>
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
 
 #RewriteCond %{HTTP_HOST} ^pharmahealth.co.uk [NC] 
 #RewriteRule ^(.*)$ https://www.pharmahealth.co.uk/$1 [L,R=301]
