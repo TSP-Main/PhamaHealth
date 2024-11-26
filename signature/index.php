@@ -41,7 +41,9 @@
      // initiate jq-signature
      $('.js-signature').jqSignature({
          autoFit: true, // allow responsive
-         height: 182, // set height
+          width: 300,
+	      height: 100,
+	      autoFit: false,
          border: '1px solid #a0a0a0', // set widget border
      });
      

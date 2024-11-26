@@ -105,11 +105,11 @@
                            
                            					<div class="col-md-12 col-lg-12 col-xl-3">
 														<div class="form-group">
-															<label class="form-label">Search with Keyword:</label>
+															<label class="form-label">Follow Up keyword search:</label>
 															<div class="input-group">
 																<div class="input-group-prepend">
 																	
-																</div><input class="form-control" name="txtSearch" placeholder="eg; Order Id, Name, Email, Phone" type="text" value="<?php echo $_GET['txtSearch']?>">
+																</div><input class="form-control" name="txtSearch" placeholder="eg; Order ID, Name, Email, Phone" type="text" value="<?php echo $_GET['txtSearch']?>">
 															</div>
 														</div>
 													</div>
@@ -156,7 +156,7 @@
                                                     <select name="condition" class="form-control" >
                                                 	<option value="">All Conditions</option>
                                                     <?php
-													$query = "SELECT condition_id,condition_title FROM tbl_conditions,tbl_follow_ups where follow_up_condition=condition_id and condition_status=1 order by condition_title";
+													$query = "SELECT condition_id,condition_title FROM tbl_conditions where condition_followup=1 order by condition_title";
 													$results = $database->get_results( $query );
 											
 													foreach ($results as $value)
