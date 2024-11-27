@@ -265,7 +265,7 @@ foreach ($items as $item) {
 						 ?>
                     
 						<div class="col-md-2">
-							<div class="commonly_item" style="min-height:290px"  >
+							<div class="commonly_item" style="min-height:290px;border:1px solid #d0e0e0"  >
                             <div style="min-height:150px">
                            <a href="javascript:;" class="openModalBtn" id="openCommon" data-modal-id="myModalCommon" data-id="<?php echo $rowCom['med_c_id']; ?>"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/medication/common/<?php echo $rowCom['med_c_image']; ?>&w=340&h=331&zc=2" style="max-height:220px;min-height:100px"></a>
                            </div>
