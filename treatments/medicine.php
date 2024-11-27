@@ -184,7 +184,15 @@ foreach ($items as $item) {
              </div>
           </div>
           
-          <div class="row">    
+          
+          
+        
+        
+	</div>
+   
+   
+   <div class="container"> 
+    <div class="row">    
              
                 <div class="col-md-12">
                 <?php 
@@ -242,7 +250,7 @@ foreach ($items as $item) {
 				 ?>
                 
 				<div class="commonly_section" style="width:100%">
-					<h5>Commonly bought with...(select at checkout)</h5>
+					<h4 style="padding-bottom:12px">Commonly bought with...(select at checkout)</h4>
                     <div class="clearfix"></div>
 					<div class="commonly_product col-md-12" >
                     
@@ -257,11 +265,13 @@ foreach ($items as $item) {
 						 ?>
                     
 						<div class="col-md-2">
-							<div class="commonly_item" style="min-height:230px"  >
-                           <a href="javascript:;" class="openModalBtn" id="openCommon" data-modal-id="myModalCommon" data-id="<?php echo $rowCom['med_c_id']; ?>"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/medication/common/<?php echo $rowCom['med_c_image']; ?>&w=340&h=331&zc=2" style="max-height:120px"></a>
-							<p style="padding-top:12px;font-size:14px"><?php echo $rowCom['med_c_title']?></p>
+							<div class="commonly_item" style="min-height:290px;border:1px solid #d0e0e0"  >
+                            <div style="min-height:150px">
+                           <a href="javascript:;" class="openModalBtn" id="openCommon" data-modal-id="myModalCommon" data-id="<?php echo $rowCom['med_c_id']; ?>"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/medication/common/<?php echo $rowCom['med_c_image']; ?>&w=340&h=331&zc=2" style="max-height:220px;min-height:100px"></a>
+                           </div>
+							<p style="padding-top:12px;font-size:15px; font-weight:600; color:#333"><?php echo $rowCom['med_c_title']?></p>
                             
-                           <p style="font-size:14px">Only <b><?php echo CURRENCY.$rowCom['med_c_price']?></b> !</p>
+                           <p style="font-size:16px; color:#1C9CA0">Only <b><?php echo CURRENCY.$rowCom['med_c_price']?></b></p>
                             <div id="cartInner_<?php echo $rowCom['med_c_id']?>" style="color:#F00; font-size:14px">
                              <?php if (!in_array($rowCom['med_c_id'], array_column($_SESSION['sessCart_common'], 'med_id'))) 
 							{ ?>
@@ -286,10 +296,7 @@ foreach ($items as $item) {
                 
 			</div>
 		</div>
-          
-        
-        
-	</div>
+     </div>
 </div>
 </div>
 <div class="quick_easy_section">
