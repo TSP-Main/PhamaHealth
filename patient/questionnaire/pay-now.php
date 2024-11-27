@@ -208,6 +208,9 @@ if(isset($_POST['stripeToken']))
 	}
 	}
 
+if (!empty($_SESSION['arrCondition']) && is_array($_SESSION['arrCondition']))
+ {
+  
 	if (count($_SESSION['arrCondition'])>0)
 	{
 	foreach ($_SESSION['arrCondition'] as $value)
@@ -225,7 +228,11 @@ if(isset($_POST['stripeToken']))
 	
 	}
 	}
+	}
 
+	
+	if (!empty($_SESSION['arrMedication']) && is_array($_SESSION['arrMedication']))
+ 	{
 	if (count($_SESSION['arrMedication'])>0)
 	{
 	foreach ($_SESSION['arrMedication'] as $value)
@@ -241,6 +248,7 @@ if(isset($_POST['stripeToken']))
 		
 				$add_query = $database->insert( 'tbl_patient_medical_background', $names );		
 	
+	}
 	}
 	}
 		  
@@ -366,7 +374,7 @@ if(isset($_POST['stripeToken']))
 		
 				//----------end creating log
 	
-	
+
 	//-------- send email----
 	
 	

@@ -668,6 +668,7 @@ function saveMessage()
 				$names = array(
 				'pres_patient_id' => $_SESSION['sess_patient_id'],
 				'pres_condition' => $rowPres['pres_condition'],
+				'pres_pharmacy_id' => $rowPres['pres_pharmacy_id'],
 				'pres_stage' => 0,
 				'pres_about_you' => fnUpdateHTML($rowPres['pres_about_you']),
 				'pres_disclaimer_file' => $rowPres['pres_disclaimer_file'],
