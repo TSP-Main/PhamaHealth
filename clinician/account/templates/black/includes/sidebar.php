@@ -288,17 +288,38 @@ if ($_GET['c']!="")
 
 			<?php } ?>	
             
-            <?php
-			if ($valueDirect['component_option']=="pres-edit-profile" && $_GET['mode']=="edit")
-			$class = 'is-expanded';
-			else
-			$class='';
-			?>	
+          
 
-   <li  class="slide <?php echo $class; ?> ">        
-	<i class="feather feather-lock sidemenu_icon"></i>
-      <span class="side-menu__label">Change Password</span>
-   </li>      
+  <li  class="slide  "><a href="?c=pres-edit-profile&mode=edit" class="side-menu__item">
+
+					
+<!--<i class="feather feather-clipboard sidemenu_icon"></i>-->
+                    <i class="fe fe-edit sidemenu_icon"></i>
+
+					<span class="side-menu__label">
+
+					Change Password                   
+                                         
+                    
+                   
+                    
+                                         
+                   
+                    
+                    
+                    					
+                    
+                    
+                    
+                    
+
+                    </span>
+
+					</a>
+
+				
+
+				</li>     
 
             
 
