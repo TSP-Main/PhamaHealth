@@ -135,7 +135,10 @@
 														<h3 class="mb-0 mt-1 text-warning  fs-25">
                                                         
                                                          <?php
-													$statsSql = "SELECT count(pres_id) as ctr from tbl_prescriptions,tbl_payments where payment_pres_id=pres_id and pres_pharmacy_stage=4 and payment_pharmacy_id='".$_SESSION['sess_pharmacy_id']."'";
+													$statsSql = "SELECT count(pres_id) as ctr from tbl_prescriptions,tbl_patients where pres_patient_id=patient_id  and pres_pharmacy_stage=4 and pres_pharmacy_id='".$_SESSION['sess_pharmacy_id']."'";
+													
+													
+													
 													$stats = $database->get_results( $statsSql );
 													echo $statsCount=$stats[0]['ctr'];
 									
