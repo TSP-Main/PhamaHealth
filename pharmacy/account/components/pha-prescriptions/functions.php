@@ -957,8 +957,7 @@ function changepresStatus()
 				
 				//------------send sms to patient informing to collect order---
 				
-				if ($rowMemberid['patient_marketing_emails']==1)
-				{
+				
 				
 				// Your ClickSend API credentials
 				$username = SMS_USERNAME;
@@ -1024,7 +1023,7 @@ function changepresStatus()
 				//-----------end sending sms--------
 				
 				
-				}
+				
 				
 				
 				//--------------end Sending email to patient for ready for collection--
