@@ -1305,8 +1305,26 @@ $employeeCode = generateEmployeeCode();
 												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Postcode" value="<?php echo $row['pres_e_postcode'] ?>">
 											</div>											
 										</div>
+                                       <?php if ($row['pres_signature']!="") { ?> 
+                                        <div class="row row-sm">
+											<div class="col-lg-8">
+                                            	<label class="form-label">Signature</label>
+												<img src="<?php echo URL?>signature/uploads/<?php echo $row['pres_signature']?>" style="max-width:300px" /> 
+											</div>											
+										</div>
                                         
-                                       
+                                        <div class="form-group ">
+                                            <div class="form-label">Do you want to reset the signature?</div>
+                                            <div class="custom-controls-stacked">
+                                               <div class="custom-controls-stacked">
+                                            <label class="custom-control custom-radio">
+                                                <input type="checkbox"  class="" name="ckResetSign" id="ckResetSign" value="1" >
+                                                &nbsp;
+                                                Select to remove signature</label></div>
+                                                </div>
+                                 		 </div>
+                                        
+                                       <?php } ?>
 					</div>
                                        
 		</div>
@@ -1920,7 +1938,11 @@ $employeeCode = generateEmployeeCode();
 															<span class="w-50">Signature</span>
 														</td>
 														<td>:</td>
-														<td><?php if ($row['pres_signature']!="") { ?><img src="<?php echo URL?>signature/uploads/<?php echo $row['pres_signature']?>" style="max-width:300px" /> <?php } ?> </td>
+														<td><?php if ($row['pres_signature']!="") { ?><img src="<?php echo URL?>signature/uploads/<?php echo $row['pres_signature']?>" style="max-width:300px" /> <?php } ?> 
+                                                        
+                                                       
+                                                        
+                                                        </td>
 													</tr>
                                                     
                                                     
