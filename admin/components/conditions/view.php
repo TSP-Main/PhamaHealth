@@ -134,6 +134,8 @@
 												</th>
 												<th class="border-bottom-0 w-60">Title</th>
                                                 <th class="border-bottom-0 w-60">Category</th>
+                                                <th class="border-bottom-0 w-60">Introductry Offer</th>
+                                                <th class="border-bottom-0 w-60">Follow up</th>
 												
 												<th class="border-bottom-0 w-20">Actions</th>
 												<th class="border-bottom-0 w-20">Status</th>
@@ -173,6 +175,17 @@
 										</div>
 									</td>
                                      <td><?php echo getCategoryName_multi($row['condition_category']); ?></td>
+                                     
+                                     <td><?php
+									 if ($row['condition_discount']==1) echo "<span class='tag tag-pink'>Yes</span>"; else echo "-";
+									 ?></td>
+                                    <td>
+                                    	
+                                        	<?php
+									 if ($row['condition_followup']==1) echo "<span class='tag tag-pink'>Yes</span>"; else echo "-";
+									 ?>
+                                    </td>
+                                     
 									<td class="align-middle">
 										<div class="btn-group align-top">
 											<button class="btn btn-sm btn-white"  ><a href="?c=<?php echo $component?>&task=edit&Cid=<?php echo $menuid['component_headingid']; ?>&id=<?php echo $row['condition_id']; ?>">Edit</a></button>
@@ -185,6 +198,8 @@
 											
 										</div>
 									</td>
+                                    
+                                    
                                    
 
 									<td class="align-middle">
@@ -469,6 +484,53 @@ else
 					
 						</div>
 					</div>
+                    
+                    
+                    <div class="form-group ">
+						<div class="form-label">Discount</div>
+						<div class="custom-controls-stacked">
+							
+                            
+                           							<label class="custom-switch">
+														<input type="checkbox" name="ckDiscount" id="ckDiscount" value="1" class="custom-switch-input" onchange="fnDiscount()" <?php if ($row['condition_discount']==1) echo "checked"; ?>>
+														<span class="custom-switch-indicator"></span>
+														<span class="custom-switch-description">Select to enable discount</span>
+													</label>
+					
+						</div>
+					</div>
+                   
+                   
+                   <div id="discountType" style="border:1px solid #CCC; padding:15px; <?php if ($row['condition_discount']==0) { ?> display:none <?php } ?>"> 
+                    <div class="row">
+						<div class="col-md-6 mb-3">
+                    <h4>Please select discount options </h4>
+                    <div class="form-group">
+						<label class="form-label">Discount Type</label>
+						<select name="cmbDiscountType" class="form-control" onchange="fnShowDiscType(this.value)" >
+                        	<option value="" style="display:none">Select</option>
+                        	<option value="1" <?php if ($row['condition_discount_type']==1) echo "selected"; ?>>Percentage</option>
+                            <option value="2" <?php if ($row['condition_discount_type']==2) echo "selected"; ?>>Fixed</option>
+                        
+                        </select>
+					</div>
+                   </div>
+                  </div>
+                  
+                  
+                  <div class="row">
+						<div class="col-md-6 mb-3">
+                    
+                    <div class="form-group">
+						<label class="form-label">Discount <span id="discTypeDisp"></span></label>
+						<input class="form-control mb-4" type="text" name="txtDiscount" value="<?php echo formatToTens($row['condition_discount_value']); ?>" >
+					</div>
+                   </div>
+                  </div>
+                  
+                 </div>
+                 
+                 <div style="height:20px"></div>
 
 
 							<div class="form-group ">
@@ -485,6 +547,7 @@ else
 					
 						</div>
 					</div>
+                  </div>
 				
 						
 					<div class="row row-sm">
@@ -598,9 +661,32 @@ $(document).ready(function(){
 	
 	
 });
+function fnDiscount()
+{
+	if ($('#ckDiscount').is(':checked')) {
+  	 $("#discountType").show();
+	} else {
+	 $("#discountType").hide();
+	}
+	
+}
+function fnShowDiscType(val)
+{
+	
+	if (val==1)
+	$("#discTypeDisp").html("%");
+	else if (val==2)
+	$("#discTypeDisp").html("in value");
+	
+}
+
+<?php if ($row['condition_discount_type']!="") { ?>	
+fnShowDiscType(<?php echo $row['condition_discount_type']?>);
+<?php } ?>
+
+
+
 </script>	
- 		
 
-
-             <?php } ?>
+<?php } ?>
 

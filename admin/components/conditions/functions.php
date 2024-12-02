@@ -160,20 +160,17 @@
 			if (count($_POST['ckCategory'])>0)			
 			$strCategory=implode(",",$_POST['ckCategory']);
 			
+			
 
 			$update = array(
-
 			'condition_title' => $_POST['txtTitle'], 
 			'condition_sub_title' => $_POST['txtSubTitle'], 
 			'condition_category' => $strCategory, 
-			'condition_short_desc' => $_POST['txtShortDesc'],
-			
+			'condition_short_desc' => $_POST['txtShortDesc'],			
 			'condition_overview' => $_POST['txtOverview'],
-			'condition_home_icon' => $_POST['images4ex'][0],
-			
+			'condition_home_icon' => $_POST['images4ex'][0],			
 			'condition_listing_icon' => $_POST['imgListing'][0],
-			'condition_detail_banner' => $_POST['imgDetail'][0],
-						
+			'condition_detail_banner' => $_POST['imgDetail'][0],						
 			'condition_symptoms' => $_POST['txtSymptoms'],
 			'condition_causes' => $_POST['txtCauses'],
 			'condition_treatments' => $_POST['txtTreatments'],
@@ -192,6 +189,25 @@
 			'condition_id' => $pageId
 
 		);
+		
+			if ($_POST['ckDiscount']==1)
+			{
+				$update = array(
+				'condition_discount' => $_POST['ckDiscount'],
+				'condition_discount_type' => $_POST['cmbDiscountType'],
+				'condition_discount_value' => $_POST['txtDiscount'],
+				
+				
+				);
+				$where_clause = array(
+				'condition_id' => $pageId
+				);	
+				
+				$updated = $database->update( 'tbl_conditions', $update, $where_clause, 1 );		
+				
+			}
+			
+			
 		
 		
 		
