@@ -697,8 +697,24 @@
 
 		);
 		$updated = $database->update( 'tbl_prescribers', $update, $where_clause, 1 );
-
-		$lastInsertedId=$pageId;
+		$lastInsertedId=$pageId;		
+			
+				
+				if ($_POST['ckResetSign']==1)
+				{
+					$updateApp = array(
+					'pres_signature' => ''
+					 					
+					);
+				
+					$where_clause = array(
+					'pres_id' => $lastInsertedId
+					);
+					
+					$database->update( 'tbl_prescribers', $updateApp, $where_clause, 1 );
+				}
+				
+			
 		
 		if($_FILES['flPhotoId']['name'] != "")
 			{					
@@ -862,8 +878,6 @@
 				$database->update( 'tbl_prescribers', $updateApp, $where_clause, 1 );
 				
 				
-				
-					
 					
 					
 					//---------sending welcome email to clinician----

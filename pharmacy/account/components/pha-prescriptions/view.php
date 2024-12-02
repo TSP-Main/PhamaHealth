@@ -564,7 +564,7 @@ else
 										<!-- Tabs -->
 										<ul class="nav panel-tabs">
                                         <li><a href="#tab6" data-toggle="tab"  <?php if ($_GET['tab']=="") { ?> class="active" <?php } ?>>Order Details</a></li>
-											<!--<li ><a href="#tab5" data-toggle="tab">Order Details</a></li>-->
+										<li ><a href="#tab5" data-toggle="tab">Completed Medical Assessment </a></li>
 											
 											<li><a href="#tab7"  data-toggle="tab" <?php if ($_GET['tab']=="message") { ?> class="active" <?php } ?>>Messages</a></li>
 											
@@ -573,43 +573,849 @@ else
 								</div>
 								<div class="panel-body tabs-menu-body hremp-tabs1 p-0">
 									<div class="tab-content">
-										<!--<div class="tab-pane" id="tab5">
+										<div class="tab-pane" id="tab5">
+											<div class="row">
+							
+							<div class="col-xl-12 col-md-12 col-lg-12">
+								
+								<div class="panel-body tabs-menu-body hremp-tabs1 p-0">
+                                
+									<div class="tab-content">
+                                    
+                                 
+										<div class="tab-pane active" id="tab5">
 											<div class="card-body">
-												<div class="table-responsive">
-										<table class="table card-table table-vcenter text-nowrap mb-0">
-											<thead >
-												<tr>
+                                            
+                                            <div class="row" style="margin-bottom:30px">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f5f5f5; color:#444; border:1px solid #d8d8d8">
+														<table class="table row table-borderless w-100 m-0 text-nowrap">
+															<tbody class="col-lg-12 col-xl-6 p-0">
+																<tr>
+														<td><span class="font-weight-semibold">Date :</span> <?php echo  date("d/m/Y",strtotime($rowPres['pres_date'])); ?></td>
+<td><span class="font-weight-semibold">Overall Risk Stratification :</span> 
+<?php $overallRisk=$rowPres['pres_overall_risk'];
+if ($overallRisk==1) { $btnClr="green"; $btnText="Low"; }
+else if ($overallRisk==2) { $btnClr="orange"; $btnText="Moderate"; }
+else if ($overallRisk==3) { $btnClr="red"; $btnText="High"; }
+
+ ?>
+ 
+ <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+ <style>
+
+.ui-menu .ui-menu-item {
+	font-size:15px;
+	color:#666;
+}
+
+</style>
+ 
+ 
+<span style="background-color:<?php echo $btnClr; ?>; color:#FFF; padding:10px; font-weight:bold"><?php echo $btnText; ?></span>
+
+
+</td>
+<td><span class="font-weight-semibold">Condition :</span> <span class="btn btn-primary" style="cursor:text"><?php echo  getConditionName($rowPres['pres_condition']) ?></span></td>																																														                                                   </tr>
+                                                                    </tbody>
+                                                               </table>     
+														</div>
+													</div>
+                                </div>
+                                
+                                
+                                 
+                                
+                                
+                                <?php
+								 $sqlMedicine_ck="select pres_id from tbl_prescriptions where pres_id='".$database->filter($rowPres['pres_id'])."' and (pres_medicine_change_status=1 || pres_medicine_change_status=2)";
+								$resMedicine_ck=$database->get_results($sqlMedicine_ck);
+								
+								$sqlMedicine="select * from tbl_prescription_medicine where pm_pres_id='".$database->filter($rowPres['pres_id'])."' order by pm_med_common asc";
+								$resMedicine=$database->get_results($sqlMedicine);
+								?>
+                                
+                               			 <div class="row" >
+                                				<div class="col-sm-12 col-md-12">
+                                                
+                                                <div>
+                                                
+                                                <?php
+											//---------Finding reorder previous and showing the difference-----
+											
+											if ($rowPres['pres_reorder_of']>0)
+											{
+												
+											for ($m=0;$m<count($resMedicine);$m++)
+												{
+													$rowMedicine=$resMedicine[$m];
+													$medicineName_current=$rowMedicine['pm_med'];
+													$strength_current=$rowMedicine['pm_med_strength'];
+													$quantity_current=$rowMedicine['pm_med_qty'];
+													$packsize_current=$rowMedicine['pm_med_packsize'];
 													
-													<th>Medicine Name</th>
-													<th>Quantity</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-                                            
-                                            
-                                            <?php
-																$sqlMedicine="select * from tbl_prescription_medicine where pm_pres_id='".$database->filter($rowPres['pres_id'])."'";
-																$resMedicine=$database->get_results($sqlMedicine);
-																for ($m=0;$m<count($resMedicine);$m++)
-																{
-																	$rowMedicine=$resMedicine[$m];
+													if ($rowMedicine['pm_med_common']==0)
+													{
+														$sqlReorderPrev="select * from tbl_prescription_medicine where pm_pres_id='".$rowPres['pres_reorder_of']."' and pm_med='".$medicineName_current."'";
+														$resReorderPrev=$database->get_results($sqlReorderPrev);
+														$rowReorderPrev=$resReorderPrev[0];
+														
+														$strChange='';
+														
+														if ($rowReorderPrev['pm_med_strength']!=$strength_current)
+														$strChange.="-&nbsp;Strength of medicine ".$medicineName_current." was ".$rowReorderPrev['pm_med_strength']."<br>"; 
+														
+														if ($rowReorderPrev['pm_med_qty']!=$quantity_current)
+														$strChange.="-&nbsp;Quantity of medicine ".$medicineName_current." was ".$rowReorderPrev['pm_med_qty']."<br>"; 
+														
+														if ($rowReorderPrev['pm_med_packsize']!=$packsize_current)
+														$strChange.="-&nbsp;Packsize of medicine ".$medicineName_current." was ".$rowReorderPrev['pm_med_packsize']."<br>"; 
+														
+													}
+													
+													
+												}
+												
+												if ($strChange=="")
+												$messageDisplay='<div class="alert alert-success" role="alert"><i class="fa fa-check-circle-o mr-2" aria-hidden="true"></i> Patient has re-ordered medication with no changes to medical circumstances</div>';
+												else
+												$messageDisplay='<div class="alert alert-warning" role="alert"><i class="fa fa-exclamation mr-2" aria-hidden="true"></i>Compare to previous order ID '.$rowPres['pres_reorder_of'].' following changes made by patient: <br>'.$strChange.'</div>';
+											} 
+											//--------end finding reorder previous and showing the difference
+											
 											?>
                                             
-												<tr>
-													<td><?php echo $rowMedicine['pm_med']; ?></td>
-													<td><?php echo $rowMedicine['pm_med_qty']; ?></td>
-													<td><?php echo CURRENCY?><?php echo $rowMedicine['pm_med_price']; ?></td>
-												</tr>
-                                             
-                                             <?php } ?>
-												
-												
-											</tbody>
-										</table>
-									</div>
+                                           
+                                                
+                                                </div>
+                                                
+													
+													</div>
+                                </div>
+                                
+                               
+								
+                                
+                                <div class="row" style="margin-bottom:30px;<?php if ($rowPres['pres_medicine_change_status']==0 || $rowPres['pres_medicine_change_status']==3) { ?> display:none <?php } ?>"  id="full_medication_alter_box">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f9f9f9; color:#444; border:1px solid #d8d8d8">
+                                                    
+                                                    	<h4 style="background:#bf39d3; color:#fff; padding:15px">Medical Alteration Suggested by Clinician</h4>
+                                                   
+														<div class="table-responsive" >
+                                                        
+                                         
+                                            
+                                            <div id="medChange" style="display:none">     
+                                       <form action="" method="post" id="frmChange" >
+										<div class="card">
+											<div class="card-header  border-0">
+												<h4 class="card-title">Add New Medicine</h4>
 											</div>
-										</div>-->
+                                             
+											<div class="card-body">
+												<div class="form-group">
+                                                <div id="success-container" style="color:#090"></div>
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Medication</label>
+														</div>
+														<div class="col-md-9">
+															<!--<input type="text" id="txtMedicine" onkeydown="clearInput()" name="txtMedicine" data-validation="required" data-validation-error-msg="Enter Medicine name" class="form-control" placeholder="Type and Select Medicine Name" value="">-->
+                                                            
+                                                            <?php 
+															$condition=$rowPres['pres_condition'];
+															$sqlMed="SELECT * FROM tbl_medication WHERE med_status = 1 AND FIND_IN_SET('".$database->filter($condition)."', med_conditions)";
+															$resMed=$database->get_results($sqlMed);
+  ?>
+                                                                <select name="txtMedicine" id="txtMedicine" class="form-control" onchange="getDosage();getStrength();getPack();getQuantity();">
+                                                                    <option value="" >Select Medicine</option>
+                                                                    <?php if (count($resMed)>0) { 
+																	for ($m=0;$m<count($resMed);$m++)
+																	{
+																		$rowMed=$resMed[$m];
+																	?>
+                                                                    <option value="<?php echo $rowMed['med_id']?>"><?php echo $rowMed['med_title']?></option>
+                                                                    <?php 
+																	}
+																	}?>
+                                                                </select>
+                                                            
+                                                             <ul class="list-group" style="position: absolute; min-width:320px;" >
+                                                             
+                                                             
+                                                             </ul>
+             
+             												
+														</div>
+													</div>
+												</div>
+                                                <div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Strength</label>
+														</div>
+														<div class="col-md-9">
+															<select id="txtStrength" name="txtStrength"  class="form-control"  data-validation-error-msg="Select Stength" onchange="getPack();getDosage();">
+                                                            <option value="">Select</option>	
+                                                               
+                                                            </select>
+														</div>
+													</div>
+												</div>
+                                                
+                                                <div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Pack Size</label>
+														</div>
+														<div class="col-md-9">
+															<select id="txtPack" name="txtPack"  class="form-control"  data-validation-error-msg="Select Pack size" onchange="getQuantity()">
+                                                            	<option value=""></option>
+                                                               
+                                                            </select>
+														</div>
+													</div>
+												</div>
+                                                
+												
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Quantity</label>
+														</div>
+														<div class="col-md-9">
+															
+                                                            
+                                                            <select id="txtQty" name="txtQty"  class="form-control"  data-validation-error-msg="Select Quantity">
+                                                            	<option value=""></option>
+                                                               
+                                                            </select>
+														</div>
+													</div>
+												</div>
+												
+                                                
+                                                <div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Dosage Instructions
+                                                            <?php $sqlTier="select pharmacy_tier from tbl_pharmacies where pharmacy_id='".$database->filter($rowPres['patient_pharmacy'])."'";
+															$resTier=$database->get_results($sqlTier);
+															$rowTier=$resTier[0];
+															
+															 ?>
+                                                            </label>
+														</div>
+														<div class="col-md-9">
+                                                        	<select name="txtDosage" id="txtDosage" class="form-control" onchange="openDosage(this.value)">
+                                                            <option value=""></option>
+                                                            
+                                                            
+                                                            
+                                                            </select>
+															<textarea name="txtDosage_freetext" id="txtDosage_freetext" style="display:none;margin-top:20px"  class="form-control" placeholder="Please enter dosage instructions"></textarea>
+														</div>
+													</div>
+												</div>
+                                                
+											</div>
+											<div class="card-footer">
+                                            
+                                            <div id="errorMessage" style="color:#F00; padding-bottom:20px"></div>
+                                            <input type="hidden" name="pId" id="pId" value="<?php echo $_GET['id']?>" />
+                                            <input type="hidden" name="hdTier" id="hdTier" value="<?php echo $rowTier['pharmacy_tier']?>" />
+                                            <input type="hidden" name="medId" id="medId" value="" />
+                                            <button type="submit" id="submitBtn" name="submitBtn" class="btn btn-primary">
+                                            
+												Save Changes
+                                             </button>
+                                             &nbsp; <button type="button" id="cancelBtn" name="cancelBtn" class="btn btn-secondary" onclick="addMedicine()">
+                                            
+												Cancel
+                                             </button>
+												
+											</div>
+										</div>
+                                        
+                                      </form>
+                                      
+                                      </div>
+                                      
+                                          
+                                             <div id="medicine_list"></div> 
+                                             
+                                             <?php if ($rowPres['pres_medicine_change_status']==0 || $rowPres['pres_medicine_change_status']==1 || $rowPres['pres_medicine_change_status']==4) { ?>                              
+
+                                            <div style="width:100%; margin:auto; margin-bottom:20px;text-align:center"><a href="javascript:void()" id="linkbtn" class="btn btn-primary" style="margin-top:0px" onclick="addMedicine()">Add Medicine</a></div>
+                                            <?php } ?>
+                                            <div style="width:100%;margin-bottom:20px;text-align:center"><a href="javascript:void()" id="btnPatientSub" <?php if ($rowPres['pres_medicine_change_status']!=1) { ?>style="display:none" <?php } ?> class="btn btn-danger" onclick="showPatientReason()">Notify Patient for Approval</a></div>
+                                            
+                                            <div style="width:100%;margin-bottom:20px;text-align:center;display:none" id="id_patient_notify" >
+                                          
+                                            
+                                            <form action="" method="post" id="frmNotifyPatient" onsubmit="return submitForm()" >
+										<div class="card">
+											
+                                             
+											<div class="card-body">
+												
+												
+												
+												
+                                                
+                                                <div class="form-group">
+													<div class="row">
+														<div class="col-md-3">
+															<label class="form-label mb-0 mt-2">Reason for Changes in Medication</label>
+														</div>
+														<div class="col-md-9">
+                                                        		<select name="cmbReason" id="cmbReason" class="form-control" onchange="openFreeText(this.value)" required>
+                                                                	<option value="">Select Reason</option>
+                                                                    <option value="Medication is out of stock">Medication is out of stock</option>
+                                                                    <option value="Requested medication not clinically suitable">Requested medication not clinically suitable</option>
+                                                                    <option value="3">Other (Free Type)</option>
+                                                            	</select>
+                                                                <div id="txtFreeText" style="display:none;padding-top:20px">
+                                                                
+																	<textarea name="txtReason" id="txtReason"  class="form-control" placeholder="Please enter reason for change"></textarea>
+                                                                </div>
+                                                            <input type="hidden" name="hdPid"   value="<?php echo $_GET['id']?>" />
+														</div>
+													</div>
+												</div>
+                                                
+											</div>
+											<div class="card-footer">
+                                            
+                                           
+                                            
+                                            <button  id="submitBtn2" name="submitBtn2" class="btn btn-success">
+                                            
+												Submit for Approval
+                                             </button>
+                                            
+												
+											</div>
+										</div>
+                                        
+                                      </form>
+                                      </div>
+                                            <div style="width:100%;margin-bottom:20px;text-align:center <?php if ($rowPres['pres_medicine_change_status']!=2) { ?>;display:none <?php } ?>" id="id_request_sent" ><font style="color:#F00">Request sent to patient for approval</font>
+                                            
+                                            
+                                            		<div>Reason: <strong><?php echo $rowPres['pres_med_change_reason']; ?></strong>
+													<?php if ($rowPres['pres_medicine_change_status']==3) { ?>
+                                                    <div style="width:100%;margin-bottom:20px;text-align:center"  ><font style="color:#090">Accepted by Patient</font></div> 
+                                                    <?php } ?>
+                                            
+                                            </div> 
+                                            
+                                            
+                                             <?php if ($rowPres['pres_medicine_change_status']==4) { ?>
+                                            <div style="width:100%;margin-bottom:20px;text-align:center"  ><font style="color:#F60">Rejected by Patient</font></div> 
+                                            
+                                            
+                                            
+                                            <?php } ?>
+                                            
+                                      
+                                      
+                                                                          
+                                            
+                                            
+                                            </div>
+                                           
+                                            		
+                                            
+                                         
+										</div>   
+														</div>
+													</div>
+                                </div>
+                                
+                                
+                                
+                                 <form action="?c=<?php echo $component?>&task=savepres" method="POST" onsubmit="return submitPres()" enctype="multipart/form-data">
+                               				 <div class="row"  style="margin-bottom:0px">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f9f9f9; color:#444; border:1px solid #d8d8d8">
+                                                    
+                                                     <h4 style="background:#648bff; color:#fff; padding:15px">About You</h4>
+                                                     
+                                                 <?php 
+											 $aboutYou=unserialize(fnUpdateHTML($rowPres['pres_about_you']));									 
+											
+											  ?>
+								
+                               
+                                <div class="panel-body p-0">
+                                
+                                 
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab5">
+											<div class="card-body" style="padding-top:0px">
+												
+												<div class="form-group">
+                                                
+                                                
+                                                  <?php foreach($aboutYou as $que => $val) { ?>
+													<div class="row alternate-item">
+														<div class="col-md-5">
+															<label class="form-label mb-0 mt-2" style="color:#777"><?php echo base64_decode($que) ?></label>
+														</div>
+														<div class="col-md-7 mt-2">
+															<h5 style="vertical-align:middle"> <?php echo base64_decode($val) ?></h5>
+														</div>
+													</div>
+                                                   <?php } ?>
+                                                    
+                                                    
+                                                        
+                                                       
+                                                    
+                                                     
+												</div>
+												
+												
+												
+												
+											
+										</div>
+                                        </div>
+										
+									</div>
+								</div> 
+														</div>
+													</div>
+                                			</div>
+                                            
+												 <div class="row"  style="margin-bottom:30px">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f9f9f9; color:#444; border:1px solid #d8d8d8">
+                                                    
+                                                     <h4 style="background:#648bff; color:#fff; padding:15px">Symptoms</h4>
+												<div class="panel-body p-0">
+                                     
+                                     <?php  $symptoms=unserialize(fnUpdateHTML($rowPres['pres_symptoms'])); ?>           
+                                                
+                                                
+									<div class="tab-content">
+										<div class="card" style="background-color:transparent">
+									
+									<div class="card-body pb-0 pt-3">
+                                    
+                                     <?php 
+												if (is_array($symptoms))
+												for($a=0;$a<count($symptoms);$a++) { ?>
+										<div class="alternate-item">
+											<label class="form-label mb-0" style="color:#039"><?php echo base64_decode($symptoms[$a]['question']);  ?> :</label>
+											<p style="margin-top:10px">
+											
+                                            <table width="100%">
+                                            <tr><td width="3%" >
+											
+											<?php
+											$answer=base64_decode($symptoms[$a]['answer']);
+											
+											$riskVal="";
+											$riskVal=base64_decode($symptoms[$a]['risk']);
+											
+											$imageType=base64_decode($symptoms[$a]['image']);
+											
+											$position=strpos($answer, "~~~");
+											if ($position=="" )
+											{
+												if ($imageType==0)
+												{
+													if ($riskVal==1)
+													echo '<div class="circle-green"></div>';
+													else if ($riskVal==2)
+													echo '<div class="circle-orange"></div>';
+													else if ($riskVal==3)
+													echo '<div class="circle-red"></div>';
+												}
+											 
+											?>
+                                            </td><td style="font-size:14px">
+											
+											 <?php if ($imageType==1)
+												{
+														
+															if ($answer!="")
+															{
+																$arrImage=array();
+																$arrImage=explode(",",$answer);
+																$strImages="<div class='row'>";
+																for ($j=0;$j<count($arrImage);$j++)
+																{
+																$imageRep=$arrImage[$j];																
+																$strImages.="<div class='col-md-6'><img src='".URL."patient/questionnaire/images/replies/".$imageRep."' style='max-height:200px'>";
+																$strImages.="</div>";
+																}
+																$strImages.="</div>";
+																print $strImages;
+															}
+														}
+												else
+												echo $answer; ?>
+                                             
+                                              
+                                             
+                                           </td>
+                                           <?php }
+										   else
+											{
+												echo '<table width="100%" border="0px" style="border-color:#CCC">
+                                                            	<tr>';
+															$arrAnswer=explode("|",$answer);
+															
+															for ($k=0;$k<count($arrAnswer);$k++)
+															{
+																$arrAnsB=explode("~~~",$arrAnswer[$k]);
+																
+																$riskVal=$arrAnsB[1];
+																
+																
+																
+																	if ($riskVal==1)
+																	echo '<td width="3%"><div class="circle-green"></div></td>';
+																	else if ($riskVal==2)
+																	echo '<td width="3%"><div class="circle-orange"></div></td>';
+																	else if ($riskVal==3)
+																	echo '<td width="3%"><div class="circle-red"></div></td>';
+																
+																echo "<td style='font-size:14px'>".$arrAnsB[0]."</td>";
+																echo "</tr>";
+																
+															}
+															
+															echo "</tr></table>";
+											}
+											
+											
+										   
+										    ?>
+                                            
+                                           
+                                                        
+                                                        
+                                           
+                                           </tr>
+                                           </table>
+                                           
+                                           <?php
+														if ($symptoms[$a]['more']!="")
+														 echo " <br /><br /><font style='color:#000; font-size:15px'>Additional information:</font> ".base64_decode($symptoms[$a]['more']) ?>
+                                            
+                                            
+                                            </p>
+										</div>
+									
+                                    <?php } ?>	
+										
+										
+										
+									</div>
+									
+								</div>
+										
+									</div>
+								</div> 
+														</div>
+													</div>
+                                			</div>
+												
+                                                
+                                                 <div class="row"  style="margin-bottom:30px">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f9f9f9; color:#444; border:1px solid #d8d8d8">
+                                                    
+                                                     <h4 style="background:#648bff; color:#fff; padding:15px">Your Medical History</h4>
+												<div class="panel-body p-0">
+                                     
+                                     <?php   $medicalHistory=unserialize(fnUpdateHTML($rowPres['pres_medical_history'])); ?>           
+                                                
+                                                
+									<div class="tab-content">
+										<div class="card" style="background-color:transparent">
+									
+									<div class="card-body pb-0 pt-3">
+                                    
+                                     <?php 
+												if (is_array($medicalHistory))
+												for($a=0;$a<count($medicalHistory);$a++) { ?>
+										<div class="alternate-item">
+											<label class="form-label mb-0" style="color:#039"><?php echo base64_decode($medicalHistory[$a]['question']);  ?> :</label>
+											<p style="margin-top:10px">
+											
+                                            <table width="100%">
+                                            <tr><td width="3%" >
+											
+											<?php
+											$answer=base64_decode($medicalHistory[$a]['answer']);
+											
+											$riskVal="";
+											$riskVal=base64_decode($medicalHistory[$a]['risk']);
+											
+											$imageType=base64_decode($medicalHistory[$a]['image']);
+											
+											$position=strpos($answer, "~~~");
+											if ($position=="")
+											{
+												if ($imageType==0)
+												{
+													if ($riskVal==1)
+													echo '<div class="circle-green"></div>';
+													else if ($riskVal==2)
+													echo '<div class="circle-orange"></div>';
+													else if ($riskVal==3)
+													echo '<div class="circle-red"></div>';
+												}
+											 
+											?>
+                                            </td><td style="font-size:14px">
+											
+											 <?php if ($imageType==1)
+												{
+														
+															if ($answer!="")
+															{
+																$arrImage=array();
+																$arrImage=explode(",",$answer);
+																$strImages="<div class='row'>";
+																for ($j=0;$j<count($arrImage);$j++)
+																{
+																$imageRep=$arrImage[$j];																
+																$strImages.="<div class='col-md-6'><img src='".URL."patient/questionnaire/images/replies/".$imageRep."' style='max-height:200px'>";
+																$strImages.="</div>";
+																}
+																$strImages.="</div>";
+																print $strImages;
+															}
+														}
+												else
+												echo $answer; ?>
+                                           </td>
+                                           <?php }
+										   else
+											{
+												echo '<table width="100%" border="0px" style="border-color:#CCC">
+                                                            	<tr>';
+															$arrAnswer=explode("|",$answer);
+															
+															for ($k=0;$k<count($arrAnswer);$k++)
+															{
+																$arrAnsB=explode("~~~",$arrAnswer[$k]);
+																
+																$riskVal=$arrAnsB[1];
+																
+																	if ($riskVal==1)
+																	echo '<td width="3%"><div class="circle-green"></div></td>';
+																	else if ($riskVal==2)
+																	echo '<td width="3%"><div class="circle-orange"></div></td>';
+																	else if ($riskVal==3)
+																	echo '<td width="3%"><div class="circle-red"></div></td>';
+																
+																echo "<td style='font-size:14px'>".$arrAnsB[0]."</td>";
+																echo "</tr>";
+																
+															}
+															
+															echo "</tr></table>";
+											}
+										   
+										    ?>
+                                            
+                                            
+                                           
+                                           </tr>
+                                           </table>
+                                             <?php
+														if ($medicalHistory[$a]['more']!="")
+														 echo "<br><br><font style='color:#000; font-size:15px'>Additional information: ".base64_decode($medicalHistory[$a]['more']) ?></font>
+                                            
+                                            </p>
+										</div>
+									
+                                    <?php } ?>	
+										
+										
+										
+									</div>
+									
+								</div>
+										
+									</div>
+								</div> 
+														</div>
+													</div>
+                                			</div>
+                                            
+                                             <div class="row"  style="margin-bottom:30px">
+                                				<div class="col-sm-12 col-md-12">
+													<div style="background:#f9f9f9; color:#444; border:1px solid #d8d8d8">
+                                                    
+                                                     <h4 style="background:#648bff; color:#fff; padding:15px">Your Medication History</h4>
+												<div class="panel-body p-0">
+                                     
+                                     <?php   $medication=unserialize(fnUpdateHTML($rowPres['pres_medication'])); ?>           
+                                                
+                                                
+									<div class="tab-content">
+										<div class="card" style="background-color:transparent">
+									
+									<div class="card-body pb-0 pt-3">
+                                    
+                                     <?php 
+												if (is_array($medication))
+												for($a=0;$a<count($medication);$a++) { ?>
+										<div class="alternate-item">
+											<label class="form-label mb-0" style="color:#039"><?php echo base64_decode($medication[$a]['question']);  ?> :</label>
+											<p style="margin-top:10px">
+											
+                                            <table width="100%">
+                                            <tr><td width="3%" >
+											
+											<?php
+											$answer=base64_decode($medication[$a]['answer']);
+											
+											$riskVal="";
+											$riskVal=base64_decode($medication[$a]['risk']);
+											
+											$imageType=base64_decode($medication[$a]['image']);
+											
+											$position=strpos($answer, "~~~");
+											
+											
+												if ($position=="")
+												{
+													
+													if ($imageType==0)
+													{
+													if ($riskVal==1 || $riskVal=="")
+													echo '<div class="circle-green"></div>';
+													else if ($riskVal==2)
+													echo '<div class="circle-orange"></div>';
+													else if ($riskVal==3)
+													echo '<div class="circle-red"></div>';
+													}
+												
+											 
+											?>
+                                            </td><td style="font-size:14px">
+											
+											 <?php if ($imageType==1)
+												{
+														
+															if ($answer!="")
+															{
+																$arrImage=array();
+																$arrImage=explode(",",$answer);
+																$strImages="<div class='row'>";
+																for ($j=0;$j<count($arrImage);$j++)
+																{
+																$imageRep=$arrImage[$j];																
+																$strImages.="<div class='col-md-6'><img src='".URL."patient/questionnaire/images/replies/".$imageRep."' style='max-height:200px'>";
+																$strImages.="</div>";
+																}
+																$strImages.="</div>";
+																print $strImages;
+															}
+														}
+												else
+												echo $answer; ?>
+                                           </td>
+                                           <?php }
+										   else
+											{
+												echo '<table width="100%" border="0px" style="border-color:#CCC">
+                                                            	<tr>';
+															$arrAnswer=explode("|",$answer);
+															
+															for ($k=0;$k<count($arrAnswer);$k++)
+															{
+																$arrAnsB=explode("~~~",$arrAnswer[$k]);
+																
+																$riskVal=$arrAnsB[1];
+																
+																	if ($riskVal==1)
+																	echo '<td width="3%"><div class="circle-green"></div></td>';
+																	else if ($riskVal==2)
+																	echo '<td width="3%"><div class="circle-orange"></div></td>';
+																	else if ($riskVal==3)
+																	echo '<td width="3%"><div class="circle-red"></div></td>';
+																
+																echo "<td style='font-size:14px'>".$arrAnsB[0]."</td>";
+																echo "</tr>";
+																
+															}
+															
+															echo "</tr></table>";
+											}
+										   
+										    ?>
+                                            
+                                             
+                                           
+                                           </tr>
+                                           </table>
+                                           
+                                           <?php
+														if ($medication[$a]['more']!="")
+														 echo "<br><br><font style='color:#000; font-size:15px'>Additional information: ".base64_decode($medication[$a]['more']) ?></font>
+                                            
+                                            
+                                            </p>
+										</div>
+									
+                                    <?php } ?>	
+										
+										
+										
+									</div>
+									
+								</div>
+										
+									</div>
+								</div> 
+														</div>
+													</div>
+                                			</div>
+                                            
+                                            
+                                            
+                                            
+                                             
+                                                    
+                                                    
+                                                    
+                                                
+                                                 
+                                                    
+                                                  
+                                             
+                                              
+                                                 
+                                                 
+                                              		
+                                                    
+                               				 </div>
+                                
+                               				 
+                                            
+                                            
+											</div>
+                                           
+                                            </form>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+										</div>
 										<div class="tab-pane <?php if ($_GET['tab']=="") { ?> active <?php } ?>" id="tab6">
 											<div class="row">
 							

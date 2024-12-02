@@ -82,24 +82,10 @@
 			<div class="page-rightheader ml-md-auto">
 				<div class=" btn-list">
 
-								<?php if($permission['rights_add'] == 1) { ?>
-
-<!--<a href="index.php?c=<?php echo $component?>&task=add&Cid=<?php echo $menuid['component_headingid']; ?>" title="Add" class="btn btn-light"><i class="feather feather-plus"></i></a>-->
-
-
-
-<?php } ?>							
 								
-					
-                                
-                  
-                  
-                                
-				
-	
-	
-
-	
+												<div align="right"><button type="button" onclick="printData()" class="btn btn-primary">Print Price List</button></div>
+											
+               
 	
 									<!-- <button  class="btn btn-light" data-toggle="tooltip" data-placement="top" title="E-mail"> <i class="feather feather-mail"></i> </button>
 									<button  class="btn btn-light" data-placement="top" data-toggle="tooltip" title="Contact"> <i class="feather feather-phone-call"></i> </button>
@@ -166,6 +152,10 @@
                                                    <?php } ?>
 												</div>
 											</div>
+                                            
+                                            
+                                            
+                                            
 										</div>
                                             
                                             
@@ -359,6 +349,50 @@ else
 				<input type="hidden" name="hidCheckedBoxes" value="0" />
 
 			</form>
+            
+            <script language="javascript">
+			
+			function printData()
+{
+	
+	
+	  var url = '<?php echo URL?>pharmacy/account/components/pha-medication-pricing/pricing-print.php';
+
+    // Define the properties of the popup window
+    var width = 900;
+    var height = 1400;
+    var left = (window.innerWidth - width) / 2;
+    var top = (window.innerHeight - height) / 2;
+
+    // Open the popup window
+    var popup = window.open(url, 'PopupWindow', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+
+    // Focus the popup window (optional)
+    popup.focus();
+	   
+	   /*
+            var tableToPrint = $("#tableToPrint").clone();
+
+           
+            var newWindow = window.open('', '_blank');
+            newWindow.document.open();
+
+            
+            newWindow.document.write('<html><head><title>Print Table</title></head><body>');
+            newWindow.document.write('<style>@media print{table{width:100%;border-collapse:collapse;}}table, th, td{border:1px solid black; padding:10px; font-family:"sans-serif;font-size:13px;}</style>');
+            
+			
+			newWindow.document.write('<div style="padding:20px"><img src="<?php echo URL?>images/logo.png"></div>');
+			newWindow.document.write(tableToPrint.html());
+            newWindow.document.write('</body></html>');
+            newWindow.document.close();
+
+            
+            newWindow.print();
+            newWindow.close();
+			*/
+}
+</script>
 
 
              <?php } ?>
