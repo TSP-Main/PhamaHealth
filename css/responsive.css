@@ -134,7 +134,7 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 
 #navbarSupportedContent .navbar-nav{
 
-	transform: translateX(105%);
+	transform: translateX(-105%);
 
 	position: absolute;
 
@@ -146,7 +146,7 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 
 	max-width: 320px;
 
-	right: 0;
+	left: 0;
 
 	top: 65px;
 
@@ -529,6 +529,27 @@ ul.setup_nav {
 	background-color: #d4d7de;
 
 } 
+
+.navbar-nav.bottom .nav-item.hide-menu {
+	display: none;
+} 
+
+.navbar-light .navbar-nav .nav-item.submenu-active .nav-link::after {
+	left: -9px;
+	right: auto;
+	transform: rotate(180deg);
+}
+.navbar-light .navbar-nav .nav-item.submenu-active .nav-link {
+	padding-left: 17px;
+}
+.navbar-light .navbar-nav .nav-item .back-btn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+} 
+.custom_header .navbar-nav.bottom li a{width: 100%;}
 
 }
 
@@ -1241,6 +1262,9 @@ ul.setup_nav li {
 @media ( min-width: 576px ) {
 
 	.faqs .title_h2 br{display: none;}
+	.treatments_mobile.treatments_toggle {
+	pointer-events: none;
+}
 
 }
 
@@ -1520,7 +1544,10 @@ ul.setup_nav li {
 .treatments_box{min-height: 65px;margin-bottom: 20px;}
 .treatments_box .icon_img{width: 35px;}
 .treatments_box {
-  border-radius: 18px;background-color: #e9f1f8;}
+  border-radius: 18px;
+  /*background-color: #e9f1f8;*/
+  background-color: #FFF;
+}
 /*  .treatments_box.active {
 	min-height: 188px;
 }*/ 

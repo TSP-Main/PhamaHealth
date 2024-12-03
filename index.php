@@ -412,7 +412,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 					<img class="icon_img" src="<?php echo URL?>images/mens_health_icon.png">
 
 					<h3>Men’s Health</h3>
@@ -443,7 +443,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 					<img class="icon_img" src="<?php echo URL?>images/womenshealth-icon.png">
 
 					<h3>Women’s Health</h3>
@@ -502,7 +502,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 
 					<img class="icon_img" src="<?php echo URL?>images/ChildrensHealth.png">
 
@@ -535,7 +535,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 
 					<img class="icon_img" src="<?php echo URL?>images/SkinHealth.png">
 
@@ -595,7 +595,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 
 					<img class="icon_img" src="<?php echo URL?>images/ChronicHealth.png">
 
@@ -628,7 +628,7 @@ Independent Pharmacy</p>
 			<div class="col-sm-4">
 
 				<div class="treatments_box">
-					<div class="treatments_mobile">
+					<div class="treatments_mobile treatments_toggle">
 
 					<img class="icon_img" src="<?php echo URL?>images/TravelHealth.png">
 

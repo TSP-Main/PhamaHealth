@@ -94,13 +94,16 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 	
 	
 	
-	$profitPharma=CONSULTATION_ACTUAL_PAY+($priceTocharge-$medicationCost-CONSULTATION_COST)*0.3;
-	$pharmacyProfit=($priceTocharge-$medicationCost-CONSULTATION_COST)*0.7;
+	//$profitPharma=CONSULTATION_ACTUAL_PAY+($priceTocharge-$medicationCost-CONSULTATION_COST)*0.3;
+	//$pharmacyProfit=($priceTocharge-$medicationCost-CONSULTATION_COST)*0.7;
 	
 	
 	
 }
 $pharmacyGrossProfit=$pharmacyProfit+$totalCostPrice;
+
+
+
 echo $prefix.CURRENCY.$priceTocharge."~".$strTreatment;
 
 unset ($_SESSION['sessPricing']);
@@ -112,17 +115,18 @@ $_SESSION['sessPricing']['packsize']=$_POST['pid'];
 $_SESSION['sessPricing']['quantity']=$_POST['quantity'];
 
 $_SESSION['sessPricing']['priceTocharge']=round($priceTocharge,2);
-$_SESSION['sessPricing']['profitPharma']=round($profitPharma,2);
-$_SESSION['sessPricing']['pharmacyNetProfit']=round($pharmacyProfit,2);
+//$_SESSION['sessPricing']['profitPharma']=round($profitPharma,2);
+//$_SESSION['sessPricing']['pharmacyNetProfit']=round($pharmacyProfit,2);
 
 $_SESSION['sessPricing']['medication_actual_cost']=$medicationCost;
 
-$_SESSION['sessPricing']['medicationCost']=round($totalCostPrice,2);
-$_SESSION['sessPricing']['pharmaProfit']=$profitPharma;
-$_SESSION['sessPricing']['pharmacyProfit']=$pharmacyProfit;
+$_SESSION['sessPricing']['medicationCost']=$medicationCost*$quantity;
+//$_SESSION['sessPricing']['pharmaProfit']=$profitPharma;
+//$_SESSION['sessPricing']['pharmacyProfit']=$pharmacyProfit;
 
 $_SESSION['sessPricing']['medicineId']=$_POST['mid'];
 
+//print_r ($_SESSION['sessPricing']);
 
  ?>
  <!--<table width="50%">
