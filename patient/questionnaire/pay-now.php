@@ -149,8 +149,17 @@ if(isset($_POST['stripeToken']))
 		$medicationCost=$_SESSION['sessCart'][$j]['medicationCost'];
 		$priceTocharge=$_SESSION['sessMedicationCost'];
 		
-		$pharmaProfit=CONSULTATION_ACTUAL_PAY+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST)*0.3;
-	    $pharmacyProfit=($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST)*0.7;
+		if ($_SESSION['sessSameDayCost']==10)
+		{
+			$pharmaSameDayProfit=6;
+			$pharmacySameDayProfit=4;
+			$sameDayVal=10;
+		}
+		else
+		$sameDayVal=0;
+		
+		$pharmaProfit=CONSULTATION_ACTUAL_PAY+$pharmaSameDayProfit+($priceTocharge-$medicationCost-CONSULTATION_COST-$sameDayVal)*0.3;
+	    $pharmacyProfit=$pharmacySameDayProfit+($priceTocharge-$medicationCost-CONSULTATION_COST-$sameDayVal)*0.7;
 		
 		
 		//$pharmaProfit=$pharmaProfit+$_SESSION['sessCart'][$j]['pharma_profit'];
@@ -158,8 +167,8 @@ if(isset($_POST['stripeToken']))
 		
 		if ($_SESSION['sessDiscountAmt']!="")
 		{
-			$pharmaProfit=CONSULTATION_ACTUAL_PAY+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt'])*0.3;
-	    	$pharmacyProfit=($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt'])*0.7;
+			$pharmaProfit=$pharmaSameDayProfit+CONSULTATION_ACTUAL_PAY+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt']-$sameDayVal)*0.3;
+	    	$pharmacyProfit=$pharmacySameDayProfit+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt']-$sameDayVal)*0.7;
 		}
 		
 		
