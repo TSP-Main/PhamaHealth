@@ -134,7 +134,7 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 
 #navbarSupportedContent .navbar-nav{
 
-	transform: translateX(105%);
+	transform: translateX(-105%);
 
 	position: absolute;
 
@@ -146,7 +146,7 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 
 	max-width: 320px;
 
-	right: 0;
+	left: 0;
 
 	top: 65px;
 
@@ -529,6 +529,53 @@ ul.setup_nav {
 	background-color: #d4d7de;
 
 } 
+
+.navbar-nav.bottom .nav-item.hide-menu {
+	display: none;
+} 
+
+.navbar-light .navbar-nav .nav-item.submenu-active .nav-link::after {
+	left: -9px;
+	right: auto;
+	transform: rotate(180deg);
+}
+.navbar-light .navbar-nav .nav-item.submenu-active .nav-link {
+	padding-left: 17px;
+}
+.navbar-light .navbar-nav .nav-item .back-btn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+} 
+.custom_header .navbar-nav.bottom li a{width: 100%;}
+
+.user_drop {
+	display: block !important;
+	position: relative;
+}
+.header_mobile .user_icon {
+	display: inline-block !important;
+	font-size: 15px;
+	color: #0e82c3;
+	min-width: 56px;
+	text-align: right;
+}
+.drop_option {
+	position: absolute;
+	right: -5px;
+	background-color: #FFF;
+	box-shadow: 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 8px;
+	min-width: 144px;
+	text-align: left;
+	display: none;
+}
+.drop_option .nav-link {
+	font-size: 11px;
+}
+.drop_option.active{display: block;}
 
 }
 
@@ -1234,6 +1281,8 @@ ul.setup_nav li {
 
 
 
+
+
 }
 
 
@@ -1241,6 +1290,9 @@ ul.setup_nav li {
 @media ( min-width: 576px ) {
 
 	.faqs .title_h2 br{display: none;}
+	.treatments_mobile.treatments_toggle {
+	pointer-events: none;
+}
 
 }
 
@@ -1520,7 +1572,10 @@ ul.setup_nav li {
 .treatments_box{min-height: 65px;margin-bottom: 20px;}
 .treatments_box .icon_img{width: 35px;}
 .treatments_box {
-  border-radius: 18px;background-color: #e9f1f8;}
+  border-radius: 18px;
+  /*background-color: #e9f1f8;*/
+  background-color: #FFF;
+}
 /*  .treatments_box.active {
 	min-height: 188px;
 }*/ 
@@ -1530,5 +1585,17 @@ ul.setup_nav li {
 	transform: rotate(180deg);
 }
 .our_treatments .title_h2{margin-bottom: 25px;}
-
+.custom_tab .nav-tabs .nav-item .nav-link{font-size: 12px;}
+.banner .left p{margin-bottom: 3px;}
+.banner .custom_tab{margin-top: 15px;}
+.serch_box .form-control{font-size: 11px;}
+.banner .left{width: 100%;}
+.treatment .treatment_box h4 {
+	 
+	font-size: 17px;
+	line-height: normal;
+	color: #000;
+} 
+ul.list_item_1 li a{font-size: 15px;
+  font-weight: 500;}
 }

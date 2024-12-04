@@ -1249,8 +1249,17 @@ function showMessage()
 												  ?>
                                              <tr><td></td><td>Same-day Service</td><td><?php echo CURRENCY.$rowPayment['payment_sameday']?></td><td></td></tr>
                                             
-                                             <?php } ?>
-                                             <?php $totalAmount=$rowPayment['payment_amount']; ?>
+                                             <?php }
+                                             
+                                             if ($rowPayment['payment_discount']>0) {
+												 
+												$discountAmout=$rowPayment['payment_discount'];
+												  ?>
+                                             <tr><td></td><td>Discount</td><td>- <?php echo CURRENCY.$discountAmout?></td></tr>
+                                            
+                                             <?php }
+                                             
+                                              $totalAmount=$rowPayment['payment_amount']; ?>
                                               <tr><td></td><td>Total Amount</td><td><?php echo CURRENCY.$totalAmount?></td><td></td></tr>
                                             
 											</tbody>
@@ -1314,6 +1323,14 @@ function showMessage()
 												$totalPriceNew=$totalPriceNew+$rowPayment['payment_sameday'];
 												  ?>
                                              <tr><td></td><td>Same day service</td><td><?php echo CURRENCY.$rowPayment['payment_sameday']?></td></tr>
+                                            
+                                             <?php }
+											 
+											  if ($rowPayment['payment_discount']>0) {
+												 
+												$discountAmout=$rowPayment['payment_discount'];
+												  ?>
+                                             <tr><td></td><td>Discount</td><td>- <?php echo CURRENCY.$discountAmout?></td></tr>
                                             
                                              <?php }
 											 

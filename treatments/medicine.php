@@ -1,6 +1,15 @@
 <?php include "../private/settings.php";
 
-unset ($_SESSION['sessCart_common']);
+if (isset($_SESSION['sessCart_common'])) {
+    unset($_SESSION['sessCart_common']);
+}
+if (isset($_SESSION['sessDiscountType'])) {
+    unset($_SESSION['sessDiscountType']);
+}
+if (isset($_SESSION['sessDiscountValue'])) {
+    unset($_SESSION['sessDiscountValue']);
+}
+
 
 $sqlMedicine="select * from tbl_medication where med_id='".$database->filter($_GET['m'])."' and med_status=1";
 $resMedicine=$database->get_results($sqlMedicine);
@@ -157,6 +166,30 @@ foreach ($items as $item) {
 					 }
 					 
 					  ?>
+                      <?php $sqlCondition="select * from tbl_conditions where condition_id='".$database->filter($conditionId)."'";
+					  $resCondition=$database->get_results($sqlCondition);
+					  $rowCondtion=$resCondition[0];
+					  
+					  if ($rowCondtion['condition_discount']==1)
+					  {
+						 $sqlCheckPresCond="select pres_id from tbl_prescriptions where pres_condition='".$conditionId."' and pres_patient_id='".$_SESSION['sess_patient_id']."' and pres_incomplete_active=0";
+						 $resCheckPresCond=$database->get_results($sqlCheckPresCond);
+						 if (count($resCheckPresCond)==0)
+						 {
+							 
+							 $_SESSION['sessDiscountType']=$rowCondtion['condition_discount_type'];
+							 $_SESSION['sessDiscountValue']=$rowCondtion['condition_discount_value'];
+							 
+							 if ($rowCondtion['condition_discount_type']==1)
+							 $disDisplay=formatToTens($rowCondtion['condition_discount_value'])."%";
+							 else  if ($rowCondtion['condition_discount_type']==2)
+							 $disDisplay="&pound;".formatToTens($rowCondtion['condition_discount_value']);
+					   ?>
+                      <div style="clear:both"></div>
+                      <div style="color:#090;width:100%; font-size:14px"><i class="fa-regular fa-check" ></i>&nbsp;&nbsp;Inauguration Offer: Get a <?php echo $disDisplay; ?> discount on your first order for this medical condition, applied at checkout.! </div>
+                      <br>
+                      <?php }
+					  }?>
                     
                     <div style="clear:both; font-size:14px; background:#fff; border:1px solid #3A99CC;  padding:12px 20px">
 						<h6 style="color:#3A99CC;font-family: Arial, sans-serif; font-weight: bold;">  <i class="fa-regular fa-check" style="color:#f63aa9; font-weight:bold"></i> Same-day Service Available</h6>
@@ -266,12 +299,12 @@ foreach ($items as $item) {
                     
 						<div class="col-md-2">
 							<div class="commonly_item" style="min-height:290px;border:1px solid #1C9CA0"  >
-                            <div style="min-height:150px">
+                            <div style="min-height:176px">
                            <a href="javascript:;" class="openModalBtn" id="openCommon" data-modal-id="myModalCommon" data-id="<?php echo $rowCom['med_c_id']; ?>"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/medication/common/<?php echo $rowCom['med_c_image']; ?>&w=340&h=331&zc=2" style="max-height:220px;min-height:100px"></a>
                            </div>
-							<p style="padding-top:12px;font-size:15px; font-weight:600; color:#333"><?php echo $rowCom['med_c_title']?></p>
+							<p style="padding-top:12px;font-size:15px; font-weight:600; color:#333; text-align:center"><?php echo $rowCom['med_c_title']?></p>
                             
-                           <p style="font-size:16px; color:#1C9CA0">Only <b><?php echo CURRENCY.$rowCom['med_c_price']?></b></p>
+                           <p style="font-size:16px; color:#1C9CA0;text-align:center">Only <b><?php echo CURRENCY.$rowCom['med_c_price']?></b></p>
                             <div id="cartInner_<?php echo $rowCom['med_c_id']?>" style="color:#F00; font-size:14px">
                              <?php if (!in_array($rowCom['med_c_id'], array_column($_SESSION['sessCart_common'], 'med_id'))) 
 							{ ?>

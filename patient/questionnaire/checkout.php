@@ -2,6 +2,10 @@
 
 include PATH."patient/checksession.php";
 include PATH."include/headerhtml.php";
+
+if (isset($_SESSION['sessDiscountAmt'])) {
+    unset($_SESSION['sessDiscountAmt']);
+}
 //print_r ($_SESSION['sessCart']);
 
 if (!isset($_SESSION['sessCart'])) {
@@ -177,7 +181,7 @@ if (count($_SESSION['sessCart'])==0)
 						}
 						
 						
-					   $_SESSION['sessTotal']=$totalPrice;
+					  
 					   
 					   ?>
                        
@@ -186,8 +190,12 @@ if (count($_SESSION['sessCart'])==0)
                        
                        
                            <li class="mt-4">Total Medication Cost <span><?php echo CURRENCY?><?php echo formatToTens($totalPrice);?></span></li>
+                           
+                           
+                           
+                           
                        
-                       </ul>
+                     </ul>
                        
                     
                        	<?php 
@@ -409,6 +417,9 @@ If your prescription request is rejected by our clinical team, the authorization
                        <div class="gray_box">
                            <h4 class="title_4">Order Summary</h4>
                            <ul class="card_list mb-5 mt-4">
+                           		<?php $medicationCost=$totalPrice;
+								$_SESSION['sessMedicationCost']=$medicationCost;
+								 ?>
                                <li>Total Medication Cost:  <span><?php echo CURRENCY?><?php echo formatToTens($totalPrice); ?></span></li>
                                
                                 <?php if ($_SESSION['sessSameDay']==1) { ?>
@@ -419,7 +430,24 @@ If your prescription request is rejected by our clinical team, the authorization
                              	 <?php 
 								 $totalPrice=$totalPrice+10;
 								 } ?>
-                              
+                                 
+                              <?php if ($_SESSION['sessDiscountValue']!="" && $_SESSION['sessDiscountType']==2) { 
+							  $discountAmt=$_SESSION['sessDiscountValue'];
+							  ?>   
+                               <li class="mt-4" style="color:#066">Discount <span style="color:#066; font-weight:bold"> - <?php  echo CURRENCY; ?><?php echo formatToTens($discountAmt);?> </span></li>
+                              <?php } else if ($_SESSION['sessDiscountValue']!="" && $_SESSION['sessDiscountType']==1) {
+								  $discountAmt=$medicationCost*$_SESSION['sessDiscountValue']/100;
+								   ?>   
+                               <li class="mt-4" style="color:#066">Discount (<?php echo formatToTens($_SESSION['sessDiscountValue'])?>%) <span style="color:#066; font-weight:bold"> - <?php  echo CURRENCY; ?><?php echo formatToTens($discountAmt);?> </span></li>
+                              <?php }
+							  
+							  if ($discountAmt!="")
+							  {
+							  	$totalPrice=$totalPrice-$discountAmt;
+								$_SESSION['sessDiscountAmt']=$discountAmt;
+							  }
+							   $_SESSION['sessTotal']=$totalPrice;
+							   ?>
                                <li class="pt-4">Total: <span id="showNetTotal"> <?php echo CURRENCY?><?php echo formatToTens($totalPrice); ?></span></li>
                                
                               

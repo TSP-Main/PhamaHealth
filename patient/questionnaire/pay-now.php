@@ -6,6 +6,7 @@ else
 unset($_SESSION['sessSameDayCost']);
 
 
+
 include PATH."patient/checksession.php";
 include PATH."include/headerhtml.php";
 
@@ -145,11 +146,33 @@ if(isset($_POST['stripeToken']))
 		);
 		$add_query = $database->insert('tbl_prescription_medicine', $names );
 		
+		$medicationCost=$_SESSION['sessCart'][$j]['medicationCost'];
+		$priceTocharge=$_SESSION['sessMedicationCost'];
 		
-		$pharmaProfit=$pharmaProfit+$_SESSION['sessCart'][$j]['pharma_profit'];
-		$pharmacyProfit=$pharmacyProfit+$_SESSION['sessCart'][$j]['pharmacyNetProfit'];
+		if ($_SESSION['sessSameDayCost']==10)
+		{
+			$pharmaSameDayProfit=6;
+			$pharmacySameDayProfit=4;
+			$sameDayVal=10;
+		}
+		else
+		$sameDayVal=0;
 		
-		$medicationCost=$_SESSION['sessCart'][$j]['medication_actual_cost'];
+		$pharmaProfit=CONSULTATION_ACTUAL_PAY+$pharmaSameDayProfit+($priceTocharge-$medicationCost-CONSULTATION_COST-$sameDayVal)*0.3;
+	    $pharmacyProfit=$pharmacySameDayProfit+($priceTocharge-$medicationCost-CONSULTATION_COST-$sameDayVal)*0.7;
+		
+		
+		//$pharmaProfit=$pharmaProfit+$_SESSION['sessCart'][$j]['pharma_profit'];
+		//$pharmacyProfit=$pharmacyProfit+$_SESSION['sessCart'][$j]['pharmacyNetProfit'];
+		
+		if ($_SESSION['sessDiscountAmt']!="")
+		{
+			$pharmaProfit=$pharmaSameDayProfit+CONSULTATION_ACTUAL_PAY+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt']-$sameDayVal)*0.3;
+	    	$pharmacyProfit=$pharmacySameDayProfit+($_SESSION['sessSameDayCost']+$priceTocharge-$medicationCost-CONSULTATION_COST-$_SESSION['sessDiscountAmt']-$sameDayVal)*0.7;
+		}
+		
+		
+		//$medicationCost=$_SESSION['sessCart'][$j]['medication_actual_cost'];
 		$medicineId=$_SESSION['sessCart'][$j]['medicineId'];
 		
 		array_push($arrMedicineName,$mName);
@@ -270,7 +293,8 @@ if (!empty($_SESSION['arrCondition']) && is_array($_SESSION['arrCondition']))
 					'payment_pharmacy_profit' => $pharmacyProfit,
 					'payment_pharmacy_id'=> $rowPatient['patient_pharmacy'],
 					'payment_medication_cost' => $medicationCost,
-					'payment_consultation_cost' => CONSULTATION_COST,					
+					'payment_consultation_cost' => CONSULTATION_COST,	
+					'payment_discount' => $_SESSION['sessDiscountAmt'],				
 					'payment_medicine_id' => $medicineId,					
 					'payment_stripe_token' => $token,
 					'payment_stripe_customer_id' => $customer_id,	
@@ -550,12 +574,17 @@ if (!empty($_SESSION['arrCondition']) && is_array($_SESSION['arrCondition']))
                        <div class="gray_box">
                            <h4 class="title_4">Order Summary</h4>
                            <ul class="card_list mb-5 mt-4">
-                               <li>Total Medication Cost:  <span><?php echo CURRENCY?><?php echo formatToTens($_SESSION['sessTotal']); ?></span></li>
+                               <li>Total Medication Cost:  <span><?php echo CURRENCY?><?php echo formatToTens($_SESSION['sessMedicationCost']); ?></span></li>
+                               
+                                 <?php if (isset($_SESSION['sessDiscountAmt'])) { ?>
+                               <li style="color:#066">Discount: <span style="color:#066; font-weight:bold">- <?php echo CURRENCY?><?php echo formatToTens($_SESSION['sessDiscountAmt']); ?></span></li>
+                               <?php } ?>
+                              
                                
                                <?php if (isset($_SESSION['sessSameDayCost'])) { ?>
                                <li>Same-day Service: <span><?php echo CURRENCY?><?php echo $_SESSION['sessSameDayCost']; ?></span></li>
                                <?php } ?>
-                               <li>Total Medication Cost:  <span><?php echo CURRENCY?><?php $_SESSION['sessNetTotal']=$_SESSION['sessTotal']+$_SESSION['sessSameDayCost']; echo formatToTens($_SESSION['sessNetTotal']); ?></span></li>
+                               <li>Total Medication Cost:  <span><?php echo CURRENCY?><?php $_SESSION['sessNetTotal']=formatToTens($_SESSION['sessMedicationCost']+$_SESSION['sessSameDayCost']-$_SESSION['sessDiscountAmt']); echo formatToTens($_SESSION['sessNetTotal']); ?></span></li>
                               
                               
                            </ul>
