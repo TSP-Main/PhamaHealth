@@ -50,6 +50,101 @@
 		}
 
 	}
+	
+	
+	function saveFormBulkValues()
+	{
+		global $database, $component;		
+
+		$curDate=date("Y-m-d");	
+		
+		if (isset($_FILES['flCSV']) && $_FILES['flCSV']['error'] == UPLOAD_ERR_OK) {
+        $builderId = $_POST['cmbBuilder'];
+       $csvFile = $_FILES['flCSV']['tmp_name'];
+	   
+	   if (($handle = fopen($csvFile, 'r')) !== FALSE) {
+            // Skip the first row if it contains headers
+            $header = fgetcsv($handle);
+			 while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+				 
+				  $name = $data[1];
+				  $address=$data[4];
+				  
+				  if ($data[5]!="")
+				  $address.=", ".$data[5];
+				  
+				  if ($data[6]!="")
+				  $address.=", ".$data[6];
+				  
+				  if ($data[7]!="")
+				  $address.=", ".$data[7];
+				  
+				  if ($data[8]!="")
+				  $address.=", ".$data[8];
+				  
+				  if ($data[9]!="")
+				  $address.=", ".$data[9];
+				  
+				  $status=$data[12];
+				  $phone=$data[17];
+				  
+				  if ($status=="A")
+				  $statusVal=1;
+				  else
+				  $statusVal=0;	
+				  
+				 
+				 $sqlGP="select * from tbl_gps where gp_name='".$database->filter($name)."'";
+				 $resGP=$database->get_results($sqlGP);
+				 
+				 if (count($resGP)==0)
+				 {			 		  
+				  
+					  $names = array(
+						'gp_name' => $name,
+						'gp_address' => $address,
+						'gp_phone' => $phone,
+						'gp_added_type' => 'admin', 
+						'gp_added_id' => $_SESSION['user_id'], 
+						'gp_added_date' => $curDate,
+						'gp_status' => $statusVal
+						);
+						
+						$add_query = $database->insert( 'tbl_gps', $names );
+				 }
+				 else
+				 {
+					 $rowGP=$resGP[0];
+					 
+						$update = array(
+						'gp_name' => $name,
+						'gp_address' => $address,
+						'gp_phone' => $phone,
+						'gp_added_type' => 'admin', 
+						'gp_added_id' => $_SESSION['user_id'], 
+						'gp_added_date' => $curDate,
+						'gp_status' => $statusVal		
+			
+						);
+
+						$where_clause = array(
+						'gp_id' => $rowGP['gp_id']
+						);
+	
+						$updated = $database->update( 'tbl_gps', $update, $where_clause, 1 );
+					 
+				 }
+				  
+				 print "<script>window.location='index.php?c=".$component."'</script>";
+				  
+			 }
+		}
+	}
+
+		
+
+	}
+
 
 	
 
@@ -60,6 +155,13 @@
 				$sql = "SELECT * FROM tbl_gps where gp_id ='".$database->filter($id)."'";
 				$results = $database->get_results( $sql );
 				createFormForPagesHtml($results);
+
+			}
+	
+	function createFormForBulk($id)
+			{
+				global $database;				
+				createFormForPagesBulkHtml($results);
 
 			}
 

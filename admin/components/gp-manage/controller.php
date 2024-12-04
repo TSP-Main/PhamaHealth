@@ -21,6 +21,11 @@ switch($task)
 			createFormForPages(0);
 
 			break;
+			
+		
+		case "add-bulk":
+			createFormForBulk(0);
+			break;
 
 		
 
@@ -37,6 +42,14 @@ switch($task)
 			saveFormValues();
 
 			break;
+		
+		case "savebulk":
+
+			saveFormBulkValues();
+
+			break;
+			
+			
 
 		
 

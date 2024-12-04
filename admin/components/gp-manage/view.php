@@ -56,6 +56,8 @@
 
 <a href="index.php?c=<?php echo $component?>&task=add&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#addawardmodal">Add New</a>
 
+<a href="index.php?c=<?php echo $component?>&task=add-bulk&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-primary me-3" >Add Bulk</a>
+
 <?php } ?>							
 								
 					<!--<a href="" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" role="button" title="Actions" aria-haspopup="true" aria-expanded="false">
@@ -122,7 +124,7 @@
 						</div>			
 								</div>
 								<div class="table-responsive table-lg mt-3">
-									<table class="table table-bordered border-top text-nowrap" id="example1" width="100%">
+									<table class="table table-bordered border-top " id="example1" width="100%">
 										<thead>
 											<tr>
 												<th width="4%" class="border-bottom-0 wd-5">
@@ -365,6 +367,74 @@ $pagingObject->displayLinks_Front();
 					</div>	
 
 <input type="hidden" name="id" value="<?php echo $row['gp_id']?>" />	
+
+	</form>	
+    
+    </div>				
+								</div>
+
+
+             <?php } ?>
+             
+             
+  <?php function createFormForPagesBulkHtml(&$rows) {
+	$row=array();
+	global $component, $database;
+	$row = &$rows[0];
+	 ?>
+	 
+<!--Page header-->
+<div class="page-header d-lg-flex d-block">
+	<div class="page-leftheader">
+	<h4 class="page-title">GP Details : <?php if (@count($row)>0) echo 'Edit'; else echo 'Add'; ?></h4>
+	</div>
+	<div class="page-rightheader ml-md-auto">
+		<div class=" btn-list">
+		<a href="index.php?c=<?php echo $component?>&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back">
+																<i class="fa fa-close"></i>
+															</a>
+		</div>
+	</div>
+</div>
+<!--End Page header-->	 
+
+				
+<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="card">
+
+				<?php
+
+						
+
+						$task="savebulk";
+
+				?>
+                
+  <div class="col-lg-8 col-md-8">
+   <form name="pages" id="pages" action="?c=<?php echo $component?>&task=<?php echo $task;?>" method="post" class="form-horizontal" enctype="multipart/form-data" />
+   						<div class="card-body pb-2">					
+
+							<div class="form-group">
+								<label class="form-label">Upload CSV *</label>
+								<input type="file" class="form-control" name="flCSV" required="required" />
+							</div>
+                            
+                           
+                            
+                            
+				
+
+							
+				
+						
+					<div class="row row-sm">
+					<div class="col-lg">
+					<button  class="btn btn-primary mt-4 mb-0">Submit</button>	
+					</div>
+					</div>	
+
+
 
 	</form>	
     

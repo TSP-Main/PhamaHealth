@@ -13,6 +13,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo URL?>css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo URL?>css/animate.css">
 
-    <title>Pharma Health</title>
+    <title>Pharmacinta - Delivering Healthcare in Partnership with your Local Independent Pharmacy</title>
 
   </head>
