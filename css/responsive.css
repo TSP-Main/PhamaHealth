@@ -551,6 +551,32 @@ ul.setup_nav {
 } 
 .custom_header .navbar-nav.bottom li a{width: 100%;}
 
+.user_drop {
+	display: block !important;
+	position: relative;
+}
+.header_mobile .user_icon {
+	display: inline-block !important;
+	font-size: 15px;
+	color: #0e82c3;
+	min-width: 56px;
+	text-align: right;
+}
+.drop_option {
+	position: absolute;
+	right: -5px;
+	background-color: #FFF;
+	box-shadow: 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 8px;
+	min-width: 144px;
+	text-align: left;
+	display: none;
+}
+.drop_option .nav-link {
+	font-size: 11px;
+}
+.drop_option.active{display: block;}
+
 }
 
 
@@ -1255,6 +1281,8 @@ ul.setup_nav li {
 
 
 
+
+
 }
 
 
@@ -1557,5 +1585,17 @@ ul.setup_nav li {
 	transform: rotate(180deg);
 }
 .our_treatments .title_h2{margin-bottom: 25px;}
-
+.custom_tab .nav-tabs .nav-item .nav-link{font-size: 12px;}
+.banner .left p{margin-bottom: 3px;}
+.banner .custom_tab{margin-top: 15px;}
+.serch_box .form-control{font-size: 11px;}
+.banner .left{width: 100%;}
+.treatment .treatment_box h4 {
+	 
+	font-size: 17px;
+	line-height: normal;
+	color: #000;
+} 
+ul.list_item_1 li a{font-size: 15px;
+  font-weight: 500;}
 }

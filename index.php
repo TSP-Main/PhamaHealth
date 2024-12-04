@@ -163,7 +163,7 @@ $bannerExists=1;
 					</p>
 					<div class="right wow fadeInRight d-inline-block d-sm-none d-lg-none">
 
-					<img src="<?php echo URL?>images/banner_img.png">
+					<img src="<?php echo URL?>images/mobile_banner.png">
 
 				</div>
 
