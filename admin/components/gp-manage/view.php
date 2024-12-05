@@ -109,20 +109,47 @@
 						<div class="card-body">
 							<div class="e-table">
 
-							<div class="form-group w-200">
-									
-
-									<div class="ml-auto">
-							<div class="input-group">
-								<input type="text" class="form-control" name="txtSearchByTitle" placeholder="Search by keyword" value="<?php echo $_GET['txtSearchByTitle'];?>">
-								<span class="input-group-btn">
-									<button class="btn btn-light br-tl-0 br-bl-0" >
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</div>			
-								</div>
+							<div class="row">
+                            
+                            
+           
+                           
+                           					<div class="col-md-12 col-lg-12 col-xl-4">
+                                            
+                                            
+														<div class="form-group">
+															<label class="form-label">Search</label>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	
+																</div><input class="form-control" name="txtSearchByTitle" type="text" value="<?php echo $_GET['txtSearchByTitle']?>" placeholder="Search by GP Name, Postocde, Email, Address or Phone">
+															</div>
+														</div>
+													</div>
+                                                 
+                                                 
+                                                 
+                           
+                           
+											
+											
+											
+											<div class="col-md-12 col-lg-12 col-xl-1">
+												<div class="form-group mt-5">
+													<button type="submit" class="btn btn-primary btn-block">Search</button>
+                                                    
+                                                     <?php $qS=$_SERVER['QUERY_STRING'];
+												   if (strstr($qS,"txtSearchByTitle"))
+												   {
+													   
+												    ?>
+                                                    <a href="?c=<?php echo $_GET['c']?>" style="font-size:11px; color:#03C">Reset filter</a>
+                                                   <?php }
+												   
+												    ?>
+												</div>
+											</div>
+										</div>
 								<div class="table-responsive table-lg mt-3">
 									<table class="table table-bordered border-top " id="example1" width="100%">
 										<thead>
@@ -137,6 +164,7 @@
                                                 <th width="12%" class="border-bottom-0 w-20">GP Address</th>
                                                 <th width="12%" class="border-bottom-0 w-20">GP Email</th>
                                                 <th width="13%" class="border-bottom-0 w-20">GP Phone</th>
+                                                <th width="13%" class="border-bottom-0 w-20">GP Postcode</th>
                                                 <th width="13%" class="border-bottom-0 w-20">Added by</th>											
 												<th width="22%" class="border-bottom-0 w-15">Last updated on</th>
 												<th width="28%" class="border-bottom-0 w-5">Status</th>
@@ -176,6 +204,7 @@
                                     <td><?php echo $row['gp_address']; ?></td>
                                     <td><?php echo $row['gp_email']; ?></td>
                                     <td><?php echo $row['gp_phone']; ?></td>
+                                    <td><?php echo $row['gp_postcode']; ?></td>
                                     <td><?php 
 									
 										if ($row['gp_added_type']=="pharmacy")
@@ -341,6 +370,11 @@ $pagingObject->displayLinks_Front();
                             <div class="form-group">
 								<label class="form-label">GP Address</label>
 								<input class="form-control mb-4" type="text" name="txtGPAddress" id="txtGPAddress" value="<?php echo $row['gp_name']?>">
+							</div>
+                            
+                            <div class="form-group">
+								<label class="form-label">GP Postcode</label>
+								<input class="form-control mb-4" type="text" name="txtPostcode" id="txtPostcode" value="<?php echo $row['gp_postcode']?>">
 							</div>
                             
                             <div class="form-group">

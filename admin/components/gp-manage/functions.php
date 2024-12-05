@@ -7,7 +7,7 @@
 			$sql = "SELECT * FROM tbl_gps where 1";
 			if($_GET['txtSearchByTitle'] != "")
 			{
-			$sql .= " and (gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_address like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
+			$sql .= " and (gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%'  || gp_postcode like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_address like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
 			}
 
 			$sql .= " order by gp_name asc";	
@@ -34,6 +34,7 @@
 
 			'gp_name' => $_POST['txtGPName'],
 			'gp_address' => $_POST['txtGPAddress'],
+			'gp_postcode' => $_POST['txtPostcode'],
 			'gp_email' => $_POST['txtGPEmail'],
 			'gp_phone' => $_POST['txtGPPhone'],
 			'gp_added_type' => 'admin', 
@@ -83,7 +84,7 @@
 				  $address.=", ".ucwords(strtolower($data[8]));
 				  
 				  if ($data[9]!="")
-				  $address.=", ".ucwords(strtolower($data[9]));
+				  $postcode=$data[9];
 				  
 				  $status=$data[12];
 				  $phone=$data[17];
@@ -103,6 +104,7 @@
 					  $names = array(
 						'gp_name' => $name,
 						'gp_address' => $address,
+						'gp_postcode' => $postcode,
 						'gp_phone' => $phone,
 						'gp_added_type' => 'admin', 
 						'gp_added_id' => $_SESSION['user_id'], 
@@ -119,6 +121,7 @@
 						$update = array(
 						'gp_name' => $name,
 						'gp_address' => $address,
+						'gp_postcode' => $postcode,
 						'gp_phone' => $phone,
 						'gp_added_type' => 'admin', 
 						'gp_added_id' => $_SESSION['user_id'], 
@@ -178,6 +181,7 @@
 			$update = array(
 			'gp_name' => $_POST['txtGPName'],
 			'gp_address' => $_POST['txtGPAddress'],
+			'gp_postcode' => $_POST['txtPostcode'],
 			'gp_email' => $_POST['txtGPEmail'],
 			'gp_phone' => $_POST['txtGPPhone'],			
 			'gp_added_date' => $curDate

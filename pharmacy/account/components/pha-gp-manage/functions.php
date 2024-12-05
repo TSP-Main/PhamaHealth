@@ -4,13 +4,26 @@
 
 	global $database, $page, $pagingObject;
 		
-			$sql = "SELECT * FROM tbl_gps where gp_added_type='pharmacy' and gp_last_updated_by='".$database->filter($_SESSION['sess_pharmacy_id'])."'";
-			if($_GET['txtSearchByTitle'] != "")
-			{
-			$sql .= " and (gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_address like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
-			}
+			 $sql = "SELECT * FROM tbl_gps ";
+			 
+			 if ($_GET['txtSearchByTitle'])
+				 {
+					 $sql.=" where 1";
+			 
+					if($_GET['txtSearchByTitle'] != "")
+					{
+						
+						$sql .= "  and (gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_postcode like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_address like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
+					}
+					
+				
+				 }
+			
+			
+			else
+			$sql.=" where 0";
 
-			$sql .= " order by gp_name asc";	
+			 $sql .= " order by gp_name asc";	
 
 		$pagingObject->setMaxRecords(PAGELIMIT); 
 
@@ -31,7 +44,7 @@
 		$curDate=date("Y-m-d");		
 
 
-		$sqlCheck="select * from tbl_gps where gp_name='".$database->filter($_POST['txtGPName'])."'";
+		 $sqlCheck="select * from tbl_gps where gp_name='".$database->filter($_POST['txtGPName'])."'";
 		$resCheck=$database->get_results($sqlCheck);
 		
 		if (count($resCheck)==0)
@@ -43,12 +56,12 @@
 	
 				'gp_name' => $_POST['txtGPName'],
 				'gp_address' => $_POST['txtGPAddress'],
+				'gp_postcode' => $_POST['txtPostcode'],
 				'gp_email' => $_POST['txtGPEmail'],
 				'gp_phone' => $_POST['txtGPPhone'],
 				'gp_added_type' => 'pharmacy', 
 				'gp_added_id' => $_SESSION['sess_pharmacy_id'], 
-				'gp_last_updated_by' => $_SESSION['sess_pharmacy_id'],			
-				'gp_last_updated_date' => $curDate,
+				'gp_last_updated_by' => $_SESSION['sess_pharmacy_id'],				
 				'gp_added_date' => $curDate,
 				'gp_status' => 1
 			);
@@ -60,17 +73,15 @@
 			$rowCheck=$resCheck[0];
 			
 			$update = array(
-			'gp_name' => $_POST['txtGPName'],
-			'gp_address' => $_POST['txtGPAddress'],
-			'gp_email' => $_POST['txtGPEmail'],
-			'gp_phone' => $_POST['txtGPPhone'],
+			'gp_name' => $_POST['txtGPName'],			
+			'gp_email' => $_POST['txtGPEmail'],			
 			'gp_last_updated_by' => $_SESSION['sess_pharmacy_id'],			
-			'gp_last_updated_date' => $curDate
+			'gp_added_date' => $curDate,
 			
 
 			);
 
-
+		
 
 		$where_clause = array(
 
@@ -117,6 +128,7 @@
 			$update = array(
 			'gp_name' => $_POST['txtGPName'],
 			'gp_address' => $_POST['txtGPAddress'],
+			'gp_postcode' => $_POST['txtPostcode'],
 			'gp_email' => $_POST['txtGPEmail'],
 			'gp_phone' => $_POST['txtGPPhone'],			
 			'gp_added_date' => $curDate
