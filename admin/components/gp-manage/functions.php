@@ -67,23 +67,23 @@
             $header = fgetcsv($handle);
 			 while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
 				 
-				  $name = $data[1];
+				  $name = ucwords(strtolower($data[1]));
 				  $address=$data[4];
 				  
 				  if ($data[5]!="")
-				  $address.=", ".$data[5];
+				  $address.=", ".ucwords(strtolower($data[5]));
 				  
 				  if ($data[6]!="")
-				  $address.=", ".$data[6];
+				  $address.=", ".ucwords(strtolower($data[6]));
 				  
 				  if ($data[7]!="")
-				  $address.=", ".$data[7];
+				  $address.=", ".ucwords(strtolower($data[7]));
 				  
 				  if ($data[8]!="")
-				  $address.=", ".$data[8];
+				  $address.=", ".ucwords(strtolower($data[8]));
 				  
 				  if ($data[9]!="")
-				  $address.=", ".$data[9];
+				  $address.=", ".ucwords(strtolower($data[9]));
 				  
 				  $status=$data[12];
 				  $phone=$data[17];

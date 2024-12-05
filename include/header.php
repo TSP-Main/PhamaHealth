@@ -20,7 +20,13 @@ $patientMode=1;
 
     </button>
     <a class="navbar-brand" href="<?php echo URL?>"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg"></a>
-    <a href="#" class="user_icon" style="display: none;"><i class="fa-light fa-user"></i></a>
+    <div class="user_drop" style="display: none;">
+    <a href="#" class="user_icon" ><i class="fa-light fa-user"></i></a>
+    <div class="drop_option">
+    	<a class="nav-link" href="<?php echo URL?>pharmacy/account/"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Pharmacy Account</a>
+    	<a class="nav-link" href="<?php echo URL?>pharmacy/account/"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Pharmacy Login</a>
+    </div>
+	</div>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -111,7 +117,8 @@ $patientMode=1;
 
              <li class="nav-item dropdown how_it_dropdown">
 
-                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" >
+                	<!-- role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" -->
 
                     <?php echo $rowTreatCat['condition_categories_name']?>
 
@@ -580,7 +587,15 @@ $patientMode=1;
 
             </li>
 
-      
+            
+
+            <li class="nav-item dropdown how_it_dropdown" style="padding:0px 0px">
+
+               <a class="dropdown-item" href="<?php echo URL?>pharmacy/account">Pharmacy Login</a>
+
+            </li>
+
+            
 
             <li class="nav-item dropdown how_it_dropdown" style="padding:0px 0px">
 

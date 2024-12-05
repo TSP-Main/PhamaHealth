@@ -14,7 +14,7 @@ include PATH."include/headerhtml.php"
 <section class="register_screen">
     <div class="container">
         <div class="logo_box">
-        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg"></a>
+        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:300px"></a>
         </div>
         <div class="register_box">
         <form id="frmApp" name="frmApp" method="POST" class="grid spacer-24">
@@ -257,7 +257,7 @@ include PATH."include/headerhtml.php"
                  </div>
                     <label class="custom_checkbox">
                         <input type="checkbox" name="CkMarketing" value="1" class="form-check-input">I would like to receive marketing messages & updates from Pharma Health.</label>
-<div><input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6Lc38CkUAAAAAGSzBr9awm5tAfiMLHitD5f21vI4"></div>
+<div><input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6Lez8ZIqAAAAAK6J6wjH1voD_x2oBTNHW7D3h42I"></div>
                       
                          <div class="button_box">
                          <div id="error-container" align="left" style="padding-top:20px; padding-bottom:20px; color:#F00"></div>
