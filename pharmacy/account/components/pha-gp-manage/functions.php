@@ -4,7 +4,7 @@
 
 	global $database, $page, $pagingObject;
 		
-			$sql = "SELECT * FROM tbl_gps where gp_added_type='pharmacy' and gp_added_id='".$database->filter($_SESSION['sess_pharmacy_id'])."'";
+			$sql = "SELECT * FROM tbl_gps where gp_added_type='pharmacy' and gp_last_updated_by='".$database->filter($_SESSION['sess_pharmacy_id'])."'";
 			if($_GET['txtSearchByTitle'] != "")
 			{
 			$sql .= " and (gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_name like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_address like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_email like '%".$database->filter($_GET['txtSearchByTitle'])."%' || gp_phone like '%".$database->filter($_GET['txtSearchByTitle'])."%') ";
@@ -30,19 +30,60 @@
 
 		$curDate=date("Y-m-d");		
 
-		$names = array(
 
+		$sqlCheck="select * from tbl_gps where gp_name='".$database->filter($_POST['txtGPName'])."'";
+		$resCheck=$database->get_results($sqlCheck);
+		
+		if (count($resCheck)==0)
+		{
+			
+			
+
+			$names = array(
+	
+				'gp_name' => $_POST['txtGPName'],
+				'gp_address' => $_POST['txtGPAddress'],
+				'gp_email' => $_POST['txtGPEmail'],
+				'gp_phone' => $_POST['txtGPPhone'],
+				'gp_added_type' => 'pharmacy', 
+				'gp_added_id' => $_SESSION['sess_pharmacy_id'], 
+				'gp_last_updated_by' => $_SESSION['sess_pharmacy_id'],			
+				'gp_last_updated_date' => $curDate,
+				'gp_added_date' => $curDate,
+				'gp_status' => 1
+			);
+	
+			$add_query = $database->insert( 'tbl_gps', $names );
+		}
+		else
+		{
+			$rowCheck=$resCheck[0];
+			
+			$update = array(
 			'gp_name' => $_POST['txtGPName'],
 			'gp_address' => $_POST['txtGPAddress'],
 			'gp_email' => $_POST['txtGPEmail'],
 			'gp_phone' => $_POST['txtGPPhone'],
-			'gp_added_type' => 'pharmacy', 
-			'gp_added_id' => $_SESSION['sess_pharmacy_id'], 
-			'gp_added_date' => $curDate,
-			'gp_status' => 1
-		);
+			'gp_last_updated_by' => $_SESSION['sess_pharmacy_id'],			
+			'gp_last_updated_date' => $curDate
+			
 
-		$add_query = $database->insert( 'tbl_gps', $names );
+			);
+
+
+
+		$where_clause = array(
+
+			'gp_id' => $rowCheck['gp_id']
+
+		);
+	
+		$updated = $database->update( 'tbl_gps', $update, $where_clause, 1 );
+			
+			
+		}
+		
+		
 		if( $add_query )
 		{
 			print "<script>window.location='index.php?c=".$component."'</script>";
