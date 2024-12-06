@@ -130,24 +130,6 @@
 
 
 
-
-.dropdown-menu {
-    position: absolute;
-    z-index: 1000;
-    display: none;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    list-style: none;
-    background-color: #f2f2f2 !important;
-    background-clip: padding-box;
-    border-radius: .25rem;
-	}
-
-
 .med-selected {
 
 	background-color:#F63AA9 !important;
@@ -3574,7 +3556,7 @@ ul.list_items li::after {
 
 }
 
-.custom_header .navbar-nav.bottom li a{color: #7c7c7c;line-height: normal;min-height: auto;}
+.custom_header .navbar-nav.bottom li a{line-height: normal;min-height: auto;}
 
 .custom_header .navbar-nav.bottom li.button a {
 

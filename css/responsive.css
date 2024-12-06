@@ -112,6 +112,24 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 	align-items: center;
 }
 
+
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #028085;
+    text-align: left;
+    list-style: none;
+    background-color: #f7f8f8 !important;
+    background-clip: padding-box;
+    border-radius: .25rem;
+	}
+
 /*	#navbarSupportedContent {
 
 	min-height: 100vh;
