@@ -84,7 +84,7 @@ include PATH."include/headerhtml.php";
 
  	<div class="row">
 
-    	<div class="col-sm-7" style="margin-top:20px; margin-left:20px">
+    	<div class="col-sm-6 col-md-7">
 
         	<h3>In Partnership With</h3>
 

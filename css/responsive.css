@@ -176,7 +176,7 @@ ul.setup_nav li{flex: 0 0 16.66666%;max-width: 16.66666%;width: 16.66666%;}
 
 body {
 
-  padding-top: 65px;
+  padding-top: 35px;
 
 } 
 
@@ -640,6 +640,7 @@ ul.setup_nav {
   padding-top: 60px!important;
 
   padding-bottom: 58px;}
+  
 
   .simply_collect {
 
@@ -748,8 +749,8 @@ ul.setup_nav {
 .treatment .treatment_box h4 br{display: none;}
 
 .treatment .treatment_box h4 span {
-
-	display: none;
+	font-size:20px;
+	margin: 0px 4px 0 0;
 
 }
 
@@ -1309,6 +1310,9 @@ ul.setup_nav li {
 	margin-top: 20px;
 
 } 
+ .article-list .at-thumbnail .blog-tag { 
+ display:none;
+ }
 
 .our_treatments .row div[class*="col-"], .our_team .row div[class*="col-"] {
 
@@ -1362,17 +1366,7 @@ ul.setup_nav li {
 
 .footer_copy_right ul li {
 
-	display: inline-block;
-
-	position: relative;
-
 	margin: 2px;
-
-	width: calc(50% - 4px);
-
-	float: left;
-
-	background-color: rgba(13, 33, 31,0.1);
 
 }
 
@@ -1575,6 +1569,7 @@ ul.setup_nav li {
   border-radius: 18px;
   /*background-color: #e9f1f8;*/
   background-color: #FFF;
+  padding-top:12px;
 }
 /*  .treatments_box.active {
 	min-height: 188px;
