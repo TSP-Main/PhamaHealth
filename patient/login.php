@@ -6,7 +6,7 @@ require_once 'vendor/autoload.php';
 // init configuration
 $clientID = '946734008564-mm50u0q0sb04ol8hlrj13a42j0jc7vpd.apps.googleusercontent.com';
 $clientSecret = 'ovcyS8FuhB3PyMJ19HMzIUAq';
-$redirectUri = 'https://pharmacinta.com/patient/login.php';
+$redirectUri = 'https://pharmacinta.co.uk/patient/login.php';
   
 // create Client Request to access Google API
 $client = new Google_Client();
