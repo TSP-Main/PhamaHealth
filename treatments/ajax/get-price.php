@@ -30,42 +30,42 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 	if ($rowCategory['mp_override_active']==0)
 	{	
 	
-	if ($tier==1)
-	$baseprice = 20; 
-	else if ($tier==2)
-	$baseprice = 24; 
-	if ($tier==3)
-	$baseprice = 28; 
+		if ($tier==1)
+		$baseprice = 20; 
+		else if ($tier==2)
+		$baseprice = 24; 
+		if ($tier==3)
+		$baseprice = 28; 
 	
 	
 	
-	$quantity=$_POST['quantity'];
-	$medicationCost=$rowCategory['mp_medication_cost'];
-	$tier=$_POST['t'];
-	$costPrice=$rowCategory['mp_cost_price'];
-	$totalCostPrice=$costPrice*$quantity;
+		$quantity=$_POST['quantity'];
+		$medicationCost=$rowCategory['mp_medication_cost'];
+		$tier=$_POST['t'];
+		$costPrice=$rowCategory['mp_cost_price'];
+		$totalCostPrice=$costPrice*$quantity;
 	
-	$treatment_length=$rowCategory['mp_length_treatment'];
-	$arrTreatment=array();
-	$arrTreatment=explode("\n",$treatment_length);
-	$arrIndex=$quantity-1;
-	$strTreatment=$arrTreatment[$arrIndex];
+		$treatment_length=$rowCategory['mp_length_treatment'];
+		$arrTreatment=array();
+		$arrTreatment=explode("\n",$treatment_length);
+		$arrIndex=$quantity-1;
+		$strTreatment=$arrTreatment[$arrIndex];
 	
-	if ($strTreatment!="")
-	$strTreatment='<i class="fa-regular fa-clock" style="color:#f63aa9; font-weight:bold"></i> '.$strTreatment;
+		if ($strTreatment!="")
+		$strTreatment='<i class="fa-regular fa-clock" style="color:#f63aa9; font-weight:bold"></i> '.$strTreatment;
 	
 	
-	if ($totalCostPrice>=6.5)
-	{
-		$medicationCost=$totalCostPrice;
-		
-		//if ($medicationCost>=6.5 && $medicationCost<10)
-		//$medicationCost=8;
-		
-		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
-	}
-	else
-	$priceTocharge=calculatePrice($baseprice, $quantity);
+			if ($totalCostPrice>=6.5)
+			{
+				$medicationCost=$totalCostPrice;
+				
+				//if ($medicationCost>=6.5 && $medicationCost<10)
+				//$medicationCost=8;
+				
+				$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
+			}
+			else
+			$priceTocharge=calculatePrice($baseprice, $quantity);
 	}
 	else
 	{
