@@ -186,10 +186,11 @@ foreach ($items as $item) {
 							 $disDisplay="&pound;".formatToTens($rowCondtion['condition_discount_value']);
 					   ?>
                       <div style="clear:both"></div>
-                      <div style="color: #000000; background-color:#93edb8; width: 100%; font-size: 16px; font-weight: 500; padding: 15px; border-radius: 5px; border: 2px solid #169951; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-    <i class="fa-regular fa-check" style="font-size: 20px; margin-right: 10px;"></i>
+                      <div style="color: #000000; background-color:#93edb8; width: 100%; font-size: 16px; font-weight: 500; padding: 15px; border-radius: 5px; border: 2px solid #169951; display: flex; align-items: flex-start; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <i class="fa-regular fa-check" style="font-size: 20px; margin-right: 10px; margin-top: 2px;"></i>
     Inauguration Offer: Get a <?php echo $disDisplay; ?> discount on your first order for this medical condition, applied at checkout!
 </div>
+
 
 
                       <br>
