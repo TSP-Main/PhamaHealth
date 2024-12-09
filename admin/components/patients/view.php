@@ -981,12 +981,17 @@ $("#adminForm").validate({
 														<td>
                                                         
                                                         	<?php if ($row['patient_kyc']==0) { ?>
-															<span class="badge badge-danger-light">Pending</span>
+															<a href="?c=<?php echo $component?>&task=verify&id=<?php echo $row['patient_id']; ?>"><span class="badge badge-danger-light">Pending</span></a>
+                                                            <?php } else if ($row['patient_kyc']==1) { ?>
+                                                            <span class="badge badge-success-light">Verified</span>
                                                             <?php } else if ($row['patient_kyc']==2) { ?>
-                                                            <span class="badge badge-danger-light">Verified</span>
-                                                            <?php } else if ($row['patient_kyc']==3) { ?>
-                                                            <span class="badge badge-danger-light">Rejected</span>
+                                                           <a href="?c=<?php echo $component?>&task=verify&id=<?php echo $row['patient_id']; ?>"> <span class="badge badge-pink-light">Rejected</span></a>
                                                             <?php } ?>
+                                                            
+                                                          <?php if ($row['patient_kyc_manual']==1) { ?>
+                                                          <br />
+                                                          <font style="color:#F00; font-size:12px">Manually updated</font>
+                                                          <?php } ?> 
                                                             
 														</td>
 													</tr>

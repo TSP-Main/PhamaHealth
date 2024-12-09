@@ -153,7 +153,7 @@ foreach ($items as $item) {
                     <?php if ($_SESSION['sess_patient_id']=="" && $_COOKIE['ckPharmacy']=="") { ?>
                       <div style="clear:both; padding-top:10px;margin-bottom:10px" >
                       
-                        <a href="javascript:;"  class="openModalBtn" data-modal-id="myModal2" style="text-decoration:none;font-size:14px">Confirm your local pharmacy for accurate pricing</a>
+                        <a href="javascript:;"  class="openModalBtn med-text1" data-modal-id="myModal2">Confirm your local pharmacy for accurate pricing</a>
                        </div>
                      <?php 
 					 $getAccuracy=1;
@@ -186,13 +186,19 @@ foreach ($items as $item) {
 							 $disDisplay="&pound;".formatToTens($rowCondtion['condition_discount_value']);
 					   ?>
                       <div style="clear:both"></div>
-                      <div style="color:#090;width:100%; font-size:14px"><i class="fa-regular fa-check" ></i>&nbsp;&nbsp;Inauguration Offer: Get a <?php echo $disDisplay; ?> discount on your first order for this medical condition, applied at checkout.! </div>
+                      <div style="color: #000000; background-color:#93edb8; width: 100%; font-size: 16px; font-weight: 500; padding: 15px; border-radius: 5px; border: 2px solid #169951; display: flex; align-items: flex-start; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <i class="fa-regular fa-check" style="font-size: 20px; margin-right: 10px; margin-top: 2px;"></i>
+    Introductory offer: Get a <?php echo $disDisplay; ?> discount on your first order for this medical condition, applied at checkout!
+</div>
+
+
+
                       <br>
                       <?php }
 					  }?>
                     
-                    <div style="clear:both; font-size:14px; background:#fff; border:1px solid #3A99CC;  padding:12px 20px">
-						<h6 style="color:#3A99CC;font-family: Arial, sans-serif; font-weight: bold;">  <i class="fa-regular fa-check" style="color:#f63aa9; font-weight:bold"></i> Same-day Service Available</h6>
+                    <div style="clear:both; font-size:14px; background:#fff; border:1px solid #3A99CC;  padding:12px 20px" class="med-text1">
+						<h6 style="color:#3A99CC;font-family: Arial, sans-serif; font-weight: bold;" class="med-text1">  <i class="fa-regular fa-check" style="color:#f63aa9; font-weight:bold"></i> Same-day Service Available</h6>
                    		<p style="padding-left:20px;margin-top:0px;margin-bottom:0px">Same-day service available for additional £10,  <a href="javascript:;"  class="openModalBtn" data-modal-id="myModal1" style="text-decoration:underline"> conditions apply.</a></p>
              
                    	</div>
@@ -298,7 +304,7 @@ foreach ($items as $item) {
 						 ?>
                     
 						<div class="col-md-2">
-							<div class="commonly_item" style="min-height:290px;border:1px solid #1C9CA0"  >
+							<div class="commonly_item" style="min-height:320px;border:2px solid #1C9CA0"  >
                             <div style="min-height:176px">
                            <a href="javascript:;" class="openModalBtn" id="openCommon" data-modal-id="myModalCommon" data-id="<?php echo $rowCom['med_c_id']; ?>"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/medication/common/<?php echo $rowCom['med_c_image']; ?>&w=340&h=331&zc=2" style="max-height:220px;min-height:100px"></a>
                            </div>

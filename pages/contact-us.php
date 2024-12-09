@@ -24,14 +24,14 @@ or via email. We are always happy to help, whether you actually want to buy from
 	<div class="col-sm-4">
 		<div class="call_info_box">
 			<i class="fa-regular fa-envelope"></i>
-			<h5>help@pharmahealth.co.uk</h5>			
+			<h5>help@pharmacinta.co.uk</h5>			
 			<p>Inquiry type</p>
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="call_info_box">
 			<i class="fa-regular fa-solid fa-location-dot"></i>
-			<h5>Pharma Health</h5>			
+			<h5>Pharmacinta</h5>			
 			<p>87a Worship Street, EC2A 2BE <br>London, United Kingdom</p>
 		</div>
 	</div>

@@ -18,6 +18,9 @@ if ($_POST['txtLoginEmail']!="" && $_POST['txtLoginPassword']!="")
 		
 		if ($rowMemberid['patient_email_verify']==0)
 		echo "3";
+		if ($rowMemberid['patient_kyc']==0)
+		echo "4";
+		
 		else
 		{
 		

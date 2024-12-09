@@ -2328,7 +2328,7 @@ function calculatePrice_plus($quantity, $medicationCost, $tier,$costPrice) {
 	return $totalCost." <font style='color:red;font-size:17px'>Save ".CURRENCY.$saving."</font>";
 }
 
-function calculatePriceOveride($basePrice, $targetTier) {
+function calculatePriceOveride($basePrice, $targetTier, $saving=0) {
     
 	if ($targetTier==2)
 	$currentPrice=$basePrice+4;
@@ -2337,7 +2337,12 @@ function calculatePriceOveride($basePrice, $targetTier) {
 
 
     // Return the calculated price, rounded to 2 decimal places
+   if ($saving==0)
     return formatToTens($currentPrice, 2);
+	else
+	return formatToTens($currentPrice, 2). "<font style='color:red;font-size:17px'>Save ".CURRENCY.$saving."</font>";
+   
+   
 }
 
 function getMedicationStringWithInfo($presid)

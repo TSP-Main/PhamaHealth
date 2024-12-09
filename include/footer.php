@@ -542,6 +542,10 @@ function handleMenu() {
 // });
 
 
+$(".user_drop .user_icon").click(function(){
+  $(".drop_option").toggleClass("active");
+});
+
 
   </script>
 

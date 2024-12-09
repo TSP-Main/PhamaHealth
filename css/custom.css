@@ -12,7 +12,10 @@
 
 .top-navbar .navbar-nav li.login_btn2 a:hover, .top-navbar .navbar-nav li.login_btn a:focus{background-color:#F6C;color: #FFF;}
 
-
+.med-text1 {
+	font-size:14px;
+	text-decoration:none;
+}
 
 
 
@@ -127,10 +130,6 @@
     display: block;
 
 }
-
-
-
-
 
 
 
@@ -526,7 +525,7 @@ section{float: left;width: 100%;}
 
 	border-radius: 8px;
 
-	padding: 14px 18px 15px 85px;
+	padding: 20px 18px 15px 85px;
 
 	float: left;
 
@@ -542,7 +541,7 @@ section{float: left;width: 100%;}
 
 	flex-direction: column;
 
-	height: calc(100% - 29px);
+	height: calc(100% - 15px);
 
 	min-height: 177px;
 
@@ -614,9 +613,9 @@ ul.list_item_1 li span::after {
 
 .our_team_box img{max-width: 100%;}
 
-.our_team_box h3{font-size: 18px;font-weight: 500;text-transform: uppercase;color: #204066;margin: 27px 0 0 0;}
+.our_team_box h3{font-size: 17px;font-weight: 500;text-transform: uppercase;color: #204066;margin: 27px 0 0 0;}
 
-.our_team_box h6{color: #0db5b3;font-weight: normal;margin-top: 15px;}
+.our_team_box h6{ font-size:15px;color: #5c5b5b;font-weight: normal;margin-top: 15px;}
 
 
 
@@ -938,7 +937,7 @@ ul.social_media{margin: 0px;padding: 0px;list-style: none;}
 
 ul.social_media li{float: left;}
 
-ul.social_media li a{float: left;margin-right: 10px;}
+ul.social_media li a{float: left;margin-right: 7px;}
 
 
 
@@ -3560,7 +3559,7 @@ ul.list_items li::after {
 
 }
 
-.custom_header .navbar-nav.bottom li a{color: #7c7c7c;line-height: normal;min-height: auto;}
+.custom_header .navbar-nav.bottom li a{line-height: normal;min-height: auto;}
 
 .custom_header .navbar-nav.bottom li.button a {
 

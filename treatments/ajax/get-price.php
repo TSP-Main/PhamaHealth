@@ -30,42 +30,42 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 	if ($rowCategory['mp_override_active']==0)
 	{	
 	
-	if ($tier==1)
-	$baseprice = 20; 
-	else if ($tier==2)
-	$baseprice = 24; 
-	if ($tier==3)
-	$baseprice = 28; 
+		if ($tier==1)
+		$baseprice = 20; 
+		else if ($tier==2)
+		$baseprice = 24; 
+		if ($tier==3)
+		$baseprice = 28; 
 	
 	
 	
-	$quantity=$_POST['quantity'];
-	$medicationCost=$rowCategory['mp_medication_cost'];
-	$tier=$_POST['t'];
-	$costPrice=$rowCategory['mp_cost_price'];
-	$totalCostPrice=$costPrice*$quantity;
+		$quantity=$_POST['quantity'];
+		$medicationCost=$rowCategory['mp_medication_cost'];
+		$tier=$_POST['t'];
+		$costPrice=$rowCategory['mp_cost_price'];
+		$totalCostPrice=$costPrice*$quantity;
 	
-	$treatment_length=$rowCategory['mp_length_treatment'];
-	$arrTreatment=array();
-	$arrTreatment=explode("\n",$treatment_length);
-	$arrIndex=$quantity-1;
-	$strTreatment=$arrTreatment[$arrIndex];
+		$treatment_length=$rowCategory['mp_length_treatment'];
+		$arrTreatment=array();
+		$arrTreatment=explode("\n",$treatment_length);
+		$arrIndex=$quantity-1;
+		$strTreatment=$arrTreatment[$arrIndex];
 	
-	if ($strTreatment!="")
-	$strTreatment='<i class="fa-regular fa-clock" style="color:#f63aa9; font-weight:bold"></i> '.$strTreatment;
+		if ($strTreatment!="")
+		$strTreatment='<i class="fa-regular fa-clock" style="color:#f63aa9; font-weight:bold"></i> '.$strTreatment;
 	
 	
-	if ($totalCostPrice>=6.5)
-	{
-		$medicationCost=$totalCostPrice;
-		
-		//if ($medicationCost>=6.5 && $medicationCost<10)
-		//$medicationCost=8;
-		
-		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
-	}
-	else
-	$priceTocharge=calculatePrice($baseprice, $quantity);
+			if ($totalCostPrice>=6.5)
+			{
+				$medicationCost=$totalCostPrice;
+				
+				//if ($medicationCost>=6.5 && $medicationCost<10)
+				//$medicationCost=8;
+				
+				$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
+			}
+			else
+			$priceTocharge=calculatePrice($baseprice, $quantity);
 	}
 	else
 	{
@@ -80,9 +80,22 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 			$arrOR_price=unserialize(fnUpdateHTML($rowCategory['mp_override_price']));
 			
 			
+			
+			
 			$priceTocharge=$arrOR_price[$quantity-1];
 			if ($tier>1)
 			$priceTocharge=calculatePriceOveride($priceTocharge,$tier);
+			
+			//-----calculate savings-----
+			if ($quantity>1)
+			{
+				$priceOneQty=$arrOR_price[0];
+				 $priceOfNQty=$priceOneQty*$quantity;
+				$saving=$priceOfNQty-$priceTocharge;
+			}
+			
+			
+			
 			
 		}
 		else
@@ -104,7 +117,12 @@ $pharmacyGrossProfit=$pharmacyProfit+$totalCostPrice;
 
 
 
-echo $prefix.CURRENCY.$priceTocharge."~".$strTreatment;
+//echo $prefix.CURRENCY.$priceTocharge."~".$strTreatment;
+if ($saving>0)
+echo $prefix.CURRENCY.$priceTocharge. " <font style='color:red;font-size:17px'>Save ".CURRENCY.$saving."</font>";
+else
+echo $prefix.CURRENCY.$priceTocharge;
+
 
 unset ($_SESSION['sessPricing']);
 $_SESSION['sessPricing']=array();

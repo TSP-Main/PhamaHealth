@@ -56,6 +56,8 @@
 
 <a href="index.php?c=<?php echo $component?>&task=add&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#addawardmodal">Add New</a>
 
+<a href="index.php?c=<?php echo $component?>&task=add-bulk&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-primary me-3" >Add Bulk</a>
+
 <?php } ?>							
 								
 					<!--<a href="" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" role="button" title="Actions" aria-haspopup="true" aria-expanded="false">
@@ -107,22 +109,49 @@
 						<div class="card-body">
 							<div class="e-table">
 
-							<div class="form-group w-200">
-									
-
-									<div class="ml-auto">
-							<div class="input-group">
-								<input type="text" class="form-control" name="txtSearchByTitle" placeholder="Search by keyword" value="<?php echo $_GET['txtSearchByTitle'];?>">
-								<span class="input-group-btn">
-									<button class="btn btn-light br-tl-0 br-bl-0" >
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</div>			
-								</div>
+							<div class="row">
+                            
+                            
+           
+                           
+                           					<div class="col-md-12 col-lg-12 col-xl-4">
+                                            
+                                            
+														<div class="form-group">
+															<label class="form-label">Search</label>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	
+																</div><input class="form-control" name="txtSearchByTitle" type="text" value="<?php echo $_GET['txtSearchByTitle']?>" placeholder="Search by GP Name, Postocde, Email, Address or Phone">
+															</div>
+														</div>
+													</div>
+                                                 
+                                                 
+                                                 
+                           
+                           
+											
+											
+											
+											<div class="col-md-12 col-lg-12 col-xl-1">
+												<div class="form-group mt-5">
+													<button type="submit" class="btn btn-primary btn-block">Search</button>
+                                                    
+                                                     <?php $qS=$_SERVER['QUERY_STRING'];
+												   if (strstr($qS,"txtSearchByTitle"))
+												   {
+													   
+												    ?>
+                                                    <a href="?c=<?php echo $_GET['c']?>" style="font-size:11px; color:#03C">Reset filter</a>
+                                                   <?php }
+												   
+												    ?>
+												</div>
+											</div>
+										</div>
 								<div class="table-responsive table-lg mt-3">
-									<table class="table table-bordered border-top text-nowrap" id="example1" width="100%">
+									<table class="table table-bordered border-top " id="example1" width="100%">
 										<thead>
 											<tr>
 												<th width="4%" class="border-bottom-0 wd-5">
@@ -135,6 +164,7 @@
                                                 <th width="12%" class="border-bottom-0 w-20">GP Address</th>
                                                 <th width="12%" class="border-bottom-0 w-20">GP Email</th>
                                                 <th width="13%" class="border-bottom-0 w-20">GP Phone</th>
+                                                <th width="13%" class="border-bottom-0 w-20">GP Postcode</th>
                                                 <th width="13%" class="border-bottom-0 w-20">Added by</th>											
 												<th width="22%" class="border-bottom-0 w-15">Last updated on</th>
 												<th width="28%" class="border-bottom-0 w-5">Status</th>
@@ -174,6 +204,7 @@
                                     <td><?php echo $row['gp_address']; ?></td>
                                     <td><?php echo $row['gp_email']; ?></td>
                                     <td><?php echo $row['gp_phone']; ?></td>
+                                    <td><?php echo $row['gp_postcode']; ?></td>
                                     <td><?php 
 									
 										if ($row['gp_added_type']=="pharmacy")
@@ -342,6 +373,11 @@ $pagingObject->displayLinks_Front();
 							</div>
                             
                             <div class="form-group">
+								<label class="form-label">GP Postcode</label>
+								<input class="form-control mb-4" type="text" name="txtPostcode" id="txtPostcode" value="<?php echo $row['gp_postcode']?>">
+							</div>
+                            
+                            <div class="form-group">
 								<label class="form-label">GP Email *</label>
 								<input class="form-control mb-4" type="email" name="txtGPEmail" id="txtGPEmail" value="<?php echo $row['gp_email']?>" required>
 							</div>
@@ -365,6 +401,74 @@ $pagingObject->displayLinks_Front();
 					</div>	
 
 <input type="hidden" name="id" value="<?php echo $row['gp_id']?>" />	
+
+	</form>	
+    
+    </div>				
+								</div>
+
+
+             <?php } ?>
+             
+             
+  <?php function createFormForPagesBulkHtml(&$rows) {
+	$row=array();
+	global $component, $database;
+	$row = &$rows[0];
+	 ?>
+	 
+<!--Page header-->
+<div class="page-header d-lg-flex d-block">
+	<div class="page-leftheader">
+	<h4 class="page-title">GP Details : <?php if (@count($row)>0) echo 'Edit'; else echo 'Add'; ?></h4>
+	</div>
+	<div class="page-rightheader ml-md-auto">
+		<div class=" btn-list">
+		<a href="index.php?c=<?php echo $component?>&Cid=<?php echo $menuid['component_headingid']; ?>" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back">
+																<i class="fa fa-close"></i>
+															</a>
+		</div>
+	</div>
+</div>
+<!--End Page header-->	 
+
+				
+<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="card">
+
+				<?php
+
+						
+
+						$task="savebulk";
+
+				?>
+                
+  <div class="col-lg-8 col-md-8">
+   <form name="pages" id="pages" action="?c=<?php echo $component?>&task=<?php echo $task;?>" method="post" class="form-horizontal" enctype="multipart/form-data" />
+   						<div class="card-body pb-2">					
+
+							<div class="form-group">
+								<label class="form-label">Upload CSV *</label>
+								<input type="file" class="form-control" name="flCSV" required="required" />
+							</div>
+                            
+                           
+                            
+                            
+				
+
+							
+				
+						
+					<div class="row row-sm">
+					<div class="col-lg">
+					<button  class="btn btn-primary mt-4 mb-0">Submit</button>	
+					</div>
+					</div>	
+
+
 
 	</form>	
     

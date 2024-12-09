@@ -106,10 +106,10 @@ td {
 
 <div align="center" >
 
-<table width="800px" >
+<table width="100%" >
 
 <tr id="rowBtn"><td align="right" style="padding-top:10px"><button type="button" onclick="printPage()" id="printBtn" class="print-button">Print</button> &nbsp;&nbsp; <!--<a href="<?php echo URL?>pdf/create-prescription?id=<?php echo $_GET['id']?>" ><button type="button" id="pdfBtn" class="pdf-button">Download PDF</button></a>--></td></tr>
-	<tr><td><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:100%" /></td></tr>
+	<tr><td><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:220px" /></td></tr>
 </table>
     
     </td>

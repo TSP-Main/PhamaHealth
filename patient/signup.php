@@ -14,7 +14,7 @@ include PATH."include/headerhtml.php"
 <section class="register_screen">
     <div class="container">
         <div class="logo_box">
-        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg"></a>
+        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:300px"></a>
         </div>
         <div class="register_box">
         <form id="frmApp" name="frmApp" method="POST" class="grid spacer-24">

@@ -147,6 +147,26 @@
 		
 		
 		$updated = $database->update( 'tbl_patients', $update, $where_clause, 1 );	
+		
+		
+			//----------Creating log--------
+		
+					$name="Admin";
+					$uid=$_POST['pageId'];
+					$utype="patient";
+					
+					if ($_POST['cmbKYC']==1)
+					$updateStatus="approved";
+					else if ($_POST['cmbKYC']==2)
+					$updateStatus="rejected";
+					
+					
+					$action=$name." has reviewed your document and ".$updateStatus." your KYC";
+					
+					createLogs($uid,$utype,$action);
+		
+				//----------end creating log
+		
 			
 		print "<script>window.location='index.php?c=".$component."'</script>";
 

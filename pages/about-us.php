@@ -19,7 +19,7 @@ include PATH."include/headerhtml.php"
 				<img src="<?php echo URL?>images/heart.png">
 			</div>
 			<div class="col-sm-7">
-				<h5 class="title_h5">Welcome to Pharma Health</h5>
+				<h5 class="title_h5">Welcome to Pharmacinta</h5>
 				<h3 class="title_h3">Empowering community pharmacies to offer 
 a wide range of prescription medications without requiring GP appointments</h3>
 				<p>We are partnering with local independent pharamcies acoss the UK to provide fast & 

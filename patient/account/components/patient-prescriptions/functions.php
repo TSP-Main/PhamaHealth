@@ -609,33 +609,70 @@ function saveMessage()
 							{
 								$medStrength=$rowMed['pm_med_strength'];
 								$arrStrenth=explode(" ",$medStrength);
-								
+		
+		
+		if (isset($_SESSION['sessDiscountType'])) {
+   		 unset($_SESSION['sessDiscountType']);
+		}
+		if (isset($_SESSION['sessDiscountValue'])) {
+			unset($_SESSION['sessDiscountValue']);
+		}						
 								
 	//--------Calculation pricing of medication and share and saving into the session-------							
 	
 	$sqlCategory="select * from tbl_medication_pricing where mp_medicine='".$database->filter($medicineId)."' and mp_strength='".$database->filter($arrStrenth[0])."' and mp_pack_size='".$database->filter($rowMed['pm_med_packsize'])."' ";
 	$resCategory=$database->get_results($sqlCategory);
 	
-	$rowCategory=$resCategory[0];	
-	$tier=$_SESSION['sess_tier'];	
-	$tierField="mp_tier".$tier."_price";
+	$rowCategory=$resCategory[0];
 	
-	$baseprice=$rowCategory[$tierField];
-	$quantity=$rowMed['pm_med_qty'];
-	$medicationCost=$rowCategory['mp_medication_cost'];
-	$tier=$_SESSION['sess_tier'];
-	$costPrice=$rowCategory['mp_cost_price'];
-	$totalCostPrice=$costPrice*$quantity;
+		
+	
+	if ($rowCategory['mp_override_active']==0)
+	{	
 	
 	
-	if ($totalCostPrice>=6.5)
-	{
-	$medicationCost=$totalCostPrice;
-	$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
+		$tier=$_SESSION['sess_tier'];	
+		$tierField="mp_tier".$tier."_price";
+		
+		$baseprice=$rowCategory[$tierField];
+		$quantity=$rowMed['pm_med_qty'];
+		$medicationCost=$rowCategory['mp_medication_cost'];
+		$tier=$_SESSION['sess_tier'];
+		$costPrice=$rowCategory['mp_cost_price'];
+		$totalCostPrice=$costPrice*$quantity;
+	
+	
+		if ($totalCostPrice>=6.5)
+		{
+		$medicationCost=$totalCostPrice;
+		$priceTocharge=calculatePrice_plus($quantity,$medicationCost, $tier,$costPrice);
+		}
+		else
+		$priceTocharge=calculatePrice($baseprice, $quantity);
 	}
 	else
-	$priceTocharge=calculatePrice($baseprice, $quantity);
-	
+	{
+		
+		$medicationCost=$rowCategory['mp_medication_cost'];
+		$tier=$_SESSION['sess_tier'];
+		$costPrice=$rowCategory['mp_cost_price'];
+		$quantity=$rowMed['pm_med_qty'];
+		
+		if ($rowCategory['mp_override_price']!="")
+		{
+			
+			$arrOR_price=unserialize(fnUpdateHTML($rowCategory['mp_override_price']));
+			
+			
+			$priceTocharge=$arrOR_price[$quantity-1];
+			if ($tier>1)
+			$priceTocharge=calculatePriceOveride($priceTocharge,$tier);
+			
+		}
+		else
+		$priceTocharge=0;
+		
+	}
 	
 	
 	
