@@ -21,10 +21,24 @@ $patientMode=1;
     </button>
     <a class="navbar-brand" href="<?php echo URL?>"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg"></a>
     <div class="user_drop" style="display: none;">
-    <a href="#" class="user_icon" ><i class="fa-light fa-user"></i></a>
+    <a href="#" class="user_icon" ><i class="fa-light fa-user"></i></a>&nbsp;&nbsp;
     <div class="drop_option">
-    	<a class="nav-link" href="<?php echo URL?>pharmacy/account/"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Pharmacy Account</a>
-    	<a class="nav-link" href="<?php echo URL?>pharmacy/account/"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Pharmacy Login</a>
+    
+    <?php
+	if ($_SESSION['sess_patient_id']=="")
+	{
+		?>
+    	<a class="nav-link" href="<?php echo URL?>patient/signup" style="color:#666 !important"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Patient Signup</a>
+    	<a class="nav-link" href="<?php echo URL?>patient/login" style="color:#666 !important"><i class="fa-light fa-user"></i>&nbsp;&nbsp;Patient Login</a>
+    <?php } else { ?>
+    
+    <a class="nav-link" href="<?php echo URL?>patient/account/" style="color:#666 !important"><i class="fa-light fa-arrow-right"></i>&nbsp;&nbsp;Overview</a>
+    <a class="nav-link" href="<?php echo URL?>patient/account/index.php?c=patient-prescriptions" style="color:#666 !important"><i class="fa-light fa-arrow-right"></i>&nbsp;&nbsp;My Orders</a>
+    <a class="nav-link" href="<?php echo URL?>patient/account/index.php?c=patient-order-medicine" style="color:#666 !important"><i class="fa-light fa-arrow-right"></i>&nbsp;&nbsp;Order Medicine</a>
+    <a class="nav-link" href="<?php echo URL?>patient/account/index.php?c=patient-messages" style="color:#666 !important"><i class="fa-light fa-arrow-right"></i>&nbsp;&nbsp;Order Messages</a>
+    <a class="nav-link" href="<?php echo URL?>patient/account/logout.php" style="color:#666 !important"><i class="fa-light fa-arrow-right"></i>&nbsp;&nbsp;Logout</a>
+    
+    <?php } ?>
     </div>
 	</div>
     </div>
