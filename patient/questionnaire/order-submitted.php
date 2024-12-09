@@ -4,7 +4,7 @@ include PATH."include/headerhtml.php"
  ?>
   <body style="padding-top:0px;">  
     <div class="header_2">
-       <a href="#"><img src="<?php echo URL?>images/logo.png"></a>
+       <a href="#"><img src="<?php echo URL?>images/logo.png" style="max-width:220px"></a>
    </div>
  <section class="medication-questionaire">
      <div class="container">
