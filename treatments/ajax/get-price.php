@@ -80,9 +80,22 @@ if ($_POST['mid']!="" && $_POST['sid']!="" )
 			$arrOR_price=unserialize(fnUpdateHTML($rowCategory['mp_override_price']));
 			
 			
+			
+			
 			$priceTocharge=$arrOR_price[$quantity-1];
 			if ($tier>1)
 			$priceTocharge=calculatePriceOveride($priceTocharge,$tier);
+			
+			//-----calculate savings-----
+			if ($quantity>1)
+			{
+				$priceOneQty=$arrOR_price[0];
+				 $priceOfNQty=$priceOneQty*$quantity;
+				$saving=$priceOfNQty-$priceTocharge;
+			}
+			
+			
+			
 			
 		}
 		else
@@ -104,7 +117,12 @@ $pharmacyGrossProfit=$pharmacyProfit+$totalCostPrice;
 
 
 
-echo $prefix.CURRENCY.$priceTocharge."~".$strTreatment;
+//echo $prefix.CURRENCY.$priceTocharge."~".$strTreatment;
+if ($saving>0)
+echo $prefix.CURRENCY.$priceTocharge. " <font style='color:red;font-size:17px'>Save ".CURRENCY.$saving."</font>";
+else
+echo $prefix.CURRENCY.$priceTocharge;
+
 
 unset ($_SESSION['sessPricing']);
 $_SESSION['sessPricing']=array();
