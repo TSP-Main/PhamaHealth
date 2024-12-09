@@ -1,3 +1,11 @@
+@media ( max-width: 1400px ) {
+.med-text1 {
+	font-size:12px;
+	text-decoration:none;
+}
+
+}
+
 @media ( max-width: 1230px ) {
 
 	.top-navbar .navbar-brand > img {
@@ -15,6 +23,7 @@
 }
 
 .top-navbar{min-height: 87px;}
+
 
 }
 
@@ -1389,7 +1398,13 @@ ul.setup_nav li {
 
 }
 
-.footer_copy_right ul li::after{display: none;}
+.footer_copy_right ul li::after {
+
+	position: absolute;
+
+	right: -6px;
+
+}
 
 .footer_copy_right ul {
 
