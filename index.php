@@ -911,7 +911,7 @@ Independent Pharmacy</p>
 
 	<div class="container wow fadeInUp" data-wow-delay="0.5s">
 
-		<h2 class="title_h2 text-center">Check our latest blogs</h2>
+		<h2 class="title_h2 text-center">Health Blog</h2>
 
 		<div class="owl-carousel-3 owl-carousel">
 
