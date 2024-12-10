@@ -116,7 +116,7 @@ or online pharmacies</h5>
 					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Read More 
 						<i class="fa-regular fa-arrow-right"></i>
 					</a>
-					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Pharmacy FAQ</a>
+					<a href="#pharmacyfaq" class="d-inline-flex align-items-center btn btn-outline-primary">Pharmacy FAQ</a>
 				</div>
 			</div>
 		</div>
@@ -422,7 +422,7 @@ patients
 		</div>
 	</div>
 </section>
-<section class="faqs">
+<section class="faqs" id="pharmacyfaq">
 	<div class="container wow fadeInUp" data-wow-delay="0.5s">
 		<h2 class="title_h2 text-center">Frequently Asked <br> Questions <span>?</span></h2>
 		<div class="row">
