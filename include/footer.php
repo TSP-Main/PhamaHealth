@@ -48,13 +48,13 @@ E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
 
 					<ul>
 
-						<li><a href="#">All Services</a></li>
+						<li><a href="<?php echo URL?>all-services">All Services</a></li>
 
-						<li><a href="#">Blood Tests</a></li>
+						<li><a href="<?php echo URL?>blood-tests">Blood Tests</a></li>
 
-						<li><a href="#">GP Consultation</a></li>
+						<li><a href="<?php echo URL?>gp-consultation">GP Consultation</a></li>
 
-						<li><a href="#">Travel Vaccination PGDs	</a></li>
+						<li><a href="<?php echo URL?>travel-vaccination-pgds">Travel Vaccination PGDs	</a></li>
 
 						
 
@@ -103,8 +103,6 @@ E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
 					<h3>Customer Service </h3>
 
 					<ul>
-
-						<li><a href="<?php echo URL?>repeat-medication">Repeat Medication Service</a></li>
 
 						
 
