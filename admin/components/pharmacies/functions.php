@@ -131,6 +131,11 @@
 			'pharmacy_primary_email' => $_POST['txtPrimaryEmail'], 
 			'pharmacy_primary_mobile' => $_POST['txtPrimaryMobile'], 
 			
+			'pharmacy_account_name' => $_POST['txtAccountName'], 
+			'pharmacy_account_number' => $_POST['txtAccountNumber'], 
+			'pharmacy_account_sortno' => $_POST['txtAccountSortCode'],	
+			'pharmacy_account_bankname' => $_POST['txtBankName'],
+			
 			'pharmacy_about_us' => $_POST['txtAboutus'], 
 			'pharmacy_website' => $_POST['txtWebsite'], 
 			'pharmacy_map' => $_POST['txtMap'],	
@@ -332,6 +337,11 @@
 			'pharmacy_primary_name' => $_POST['txtPrimaryName'], 
 			'pharmacy_primary_email' => $_POST['txtPrimaryEmail'], 
 			'pharmacy_primary_mobile' => $_POST['txtPrimaryMobile'], 
+			
+			'pharmacy_account_name' => $_POST['txtAccountName'], 
+			'pharmacy_account_number' => $_POST['txtAccountNumber'], 
+			'pharmacy_account_sortno' => $_POST['txtAccountSortCode'],	
+			'pharmacy_account_bankname' => $_POST['txtBankName'],
 			
 			'pharmacy_notes' => $_POST['txtNotes'], 			
 			'pharmacy_logo' => $_POST['images4ex'][0],			

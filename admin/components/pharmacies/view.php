@@ -734,6 +734,30 @@ else
                                     
                                 </select>
 							</div>
+                     
+                      <div style="height:20px"></div>
+                            
+                            <h4 style="text-transform:uppercase"><u>Bank Account details</u></h4>
+                            
+                            <div class="form-group">
+								<label class="form-label">Account Name</label>
+								<input class="form-control mb-4" type="text" id="txtAccountName" name="txtAccountName" value="<?php echo $row['pharmacy_account_name']?>" >
+							</div>
+                            
+                             <div class="form-group">
+								<label class="form-label">Account Number:</label>
+								<input class="form-control mb-4" type="text" id="txtAccountNumber" name="txtAccountNumber" value="<?php echo $row['pharmacy_account_number']?>" >
+							</div>
+                            
+                             <div class="form-group">
+								<label class="form-label">Sort Code</label>
+								<input class="form-control mb-4" type="text" id="txtAccountSortCode" name="txtAccountSortCode" value="<?php echo $row['pharmacy_account_sortno']?>" >
+							</div>
+                            
+                            <div class="form-group">
+								<label class="form-label">Name of Bank</label>
+								<input class="form-control mb-4" type="text" id="txtBankName" name="txtBankName" value="<?php echo $row['pharmacy_account_bankname']?>" >
+							</div>
                     
                     <div class="card">
 									<div class="card-header border-bottom-0">
@@ -1192,6 +1216,46 @@ $("#adminForm").validate({
 															?>
                                                             
                                                              </span>
+														</td>
+													</tr>
+                                                    
+                                                    <tr>
+														<td>
+															<span class="w-50">Account Name</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_name']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                    <tr>
+														<td>
+															<span class="w-50">Bank Account Number</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_number']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                     <tr>
+														<td>
+															<span class="w-50">Bank Sort Code</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_sortno']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                     <tr>
+														<td>
+															<span class="w-50">Bank Name</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_bankname']; ?> </span>
 														</td>
 													</tr>
                                                     
