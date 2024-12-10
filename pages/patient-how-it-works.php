@@ -6,7 +6,7 @@ include PATH."include/headerhtml.php"
 <section class="breadcrumbs">
 	<div class="container">
 		<ul class="breadcrumbs_list">
-			<li><a href="#">Home</a></li>
+			<li><a href="<?php echo URL?>">Home</a></li>
 			<li><a href="#">How it works</a></li>
 			<li>Patient</li> 
 		</ul>
@@ -76,7 +76,7 @@ include PATH."include/headerhtml.php"
 			</div>
 		</div>
 		<div class="w100p text-center">
-			<button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</button>
+			<a href="<?php echo URL?>patient/signup"><button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</button></a>
 		</div>
 	</div>
 </section>
