@@ -12,6 +12,12 @@
 
 .top-navbar .navbar-nav li.login_btn2 a:hover, .top-navbar .navbar-nav li.login_btn a:focus{background-color:#F6C;color: #FFF;}
 
+.blog-heading {
+	color:#333;
+	font-size:30px
+	
+}
+
 .med-text1 {
 	font-size:14px;
 	text-decoration:none;
