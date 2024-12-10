@@ -711,7 +711,7 @@ else
                             
                             <div class="form-group">
 								<label class="form-label">About us</label>
-								<textarea name="txtAboutus" class="form-control"><?php echo $row['pharmacy_about_us']?></textarea>
+								<textarea name="txtAboutus" class="form-control" rows="8"><?php echo $row['pharmacy_about_us']?></textarea>
 							</div>
                             
                              <div class="form-group">

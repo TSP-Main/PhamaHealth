@@ -13,29 +13,35 @@ include PATH."include/headerhtml.php"
  
 <section class="list_item_box detail_page">
     <div class="container">
-        <div class="list_item_box_in">
+        <div class="list_item_box_in" style="padding-bottom:10px !important; padding-left:30px !important">
         <div class="top_heading">
             <h1><?php echo $rowPhar['pharmacy_name']?></h1>
            <!-- <h6>A Pharmadoctor partner clinic</h6>-->
         </div>
-        <div class="detail_page_box">
+       
         
-         <?php if ($rowPhar['pharmacy_logo']!="") { ?>
-				<div><img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $rowPhar['pharmacy_logo']; ?>&w=120&zc=2"></div>
-            <?php } ?>
-        
+         
+        </div>
+        <div style="background:#d7f1f2; padding:30px">
         <?php if ($rowPhar['pharmacy_about_us']!="") { ?>
-             <h3>About <?php echo $rowPhar['pharmacy_name']?></h3>
+             <h3 style="color:#333; font-size:20px">About <?php echo $rowPhar['pharmacy_name']?></h3>
              <?php } ?>
             <div class="row">
                 <div class="col-sm-8">
                    
-                    <p style="text-align:justify"><?php echo $rowPhar['pharmacy_about_us']?></p>
+                    <p style="text-align:justify; color:#333; line-height:24px"><?php echo str_replace("\n","<br>",$rowPhar['pharmacy_about_us'])?></p>
                 </div>
-                <div class="col-sm-4">
+                    <div class="col-sm-4">
+                    <?php if ($rowPhar['pharmacy_logo']!="") { ?>
+                    <div align="right"><img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $rowPhar['pharmacy_logo']; ?>&w=180&zc=2"></div>
+                    <div style="height:50px"></div>
+                <?php } ?>
+                
                     <a href="<?php echo URL?>patient/signup?p=<?php echo $rowPhar['pharmacy_id'] ?>" class="btn btn-danger btn-lg float-end d-inline-flex align-items-center justify-content-center">Register for Pharmacy Services</a>
                 </div>
             </div>
+          
+          <div class="detail_page_box">
             <div class="row bottom_data">
                 <div class="col-sm-7">
                     <h4>Address:</h4>
@@ -52,9 +58,9 @@ include PATH."include/headerhtml.php"
                     
                     </h6>
 
-<h6>
-    GPhC ID: <span><?php echo $rowPhar['pharmacy_p_gphc']; ?></span>
-    <br>
+	
+    <span style="color:#333"><strong>GPhC ID:</strong> <?php echo $rowPhar['pharmacy_p_gphc']; ?></span>
+   
     
      <ul class="contact_list">
                     
@@ -67,11 +73,11 @@ include PATH."include/headerhtml.php"
                         <?php if ($rowPhar['pharmacy_p_landline']!="") { ?>
                         <li>
                             <i class="fa-solid fa-phone-volume"></i>
-                            <?php echo $rowPhar['pharmacy_p_landline']; ?>
+                            <span style="color:#333"><?php echo $rowPhar['pharmacy_p_landline']; ?></span>
                         </li>
                         <?php } ?>
                     </ul>
-</h6>
+
 <div style="clear:both"></div>
 <div style="height:27px"></div>
   <h4 >Opening Timings: </h4>
@@ -118,7 +124,7 @@ include PATH."include/headerhtml.php"
                   </ul>
                   </ul>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <div class="embed-responsive embed-responsive-16by9">
                         <?php if ($rowPhar['pharmacy_map']!="") echo fnUpdateHTML($rowPhar['pharmacy_map']); ?>
                     </div>
