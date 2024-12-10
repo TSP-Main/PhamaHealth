@@ -102,18 +102,19 @@ $strPostcodes=$_GET['postcode'];
 
 					   ?>
         
-        <div class="list_item_grid">
+        <div class="list_item_grid" style="border:1px solid; #5B635E">
             <h3><?php echo $rowPhar['pharmacy_name'] ?></h3>
             
             
            
-            <?php if ($rowPhar['pharmacy_logo']!="") { ?>
-						<div><img style="padding-top:20px; padding-bottom:20px" src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $rowPhar['pharmacy_logo']; ?>&w=120&zc=2"></div>
-           			 <?php } ?>
+           
                      
-            <div class="row">
-                <div class="col-sm-5">                    
-                    <h5>
+            <div class="row" >
+                <div class="col-sm-5">   
+                 <?php if ($rowPhar['pharmacy_logo']!="") { ?>
+						<div><img style="padding-top:20px; padding-bottom:20px" src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $rowPhar['pharmacy_logo']; ?>&w=180&zc=2"></div>
+           			 <?php } ?>                 
+                    <h6>
                     <?php
 					$address=$rowPhar['pharmacy_address'];
 					if ($rowPhar['pharmacy_address2']!="")
@@ -124,7 +125,7 @@ $strPostcodes=$_GET['postcode'];
 					
 					?>
                     
-                    </h5>
+                    </h6>
                     <ul class="contact_list">
                     
                     <?php if ($rowPhar['pharmacy_website']!="") { ?>
@@ -152,8 +153,8 @@ $strPostcodes=$_GET['postcode'];
 				  $arrWeek=unserialize(fnUpdateHTML($rowPhar['pharmacy_p_opening']));
 				  ?>
 															
-                  <h4 >Opening Timings: </h4>
-                  <ul style="color:rgb(136, 135, 135)">
+                  <h4 style="font-weight:bold">Opening Timings: </h4>
+                  <ul style="color:#666;font-size:15px">
                      <?php
 															$arrWeek=array();
 															$arrTimings=array();
@@ -196,7 +197,7 @@ $strPostcodes=$_GET['postcode'];
                   <?php } ?>                    
                 </div>
                 <div class="col-sm-3">
-                    <a href="<?php echo URL?>pages/pharmacy-detail?pid=<?php echo $rowPhar['pharmacy_id'] ?>" class="btn btn-primary btn-lg float-end d-inline-flex align-items-center" style="font-size:17px !important">View Detail</a>
+                    <a href="<?php echo URL?>pages/pharmacy-detail?pid=<?php echo $rowPhar['pharmacy_id'] ?>" class="btn btn-primary btn-lg float-end d-inline-flex align-items-center" style="font-size:16px !important; min-height:43px !important">View Detail</a>
                 </div>
             </div>
         </div>
