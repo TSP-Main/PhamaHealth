@@ -110,7 +110,7 @@ or online pharmacies</h5>
 					<li>Electronic private prescriptions issued same or next day</li>
 				  <li>UK qualified pharmacist prescribers and doctors</li>
 				  <li>Regulated by the Care Quality Commission (CQC)</li>
-				  <li><a href="#">View full medication list</a></li>
+				  <li><a href="<?php echo URL?>treatments/a-z-treatments">View full medication list</a></li>
 				</ul>
 				<div class="btn_group">
 					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Read More 
