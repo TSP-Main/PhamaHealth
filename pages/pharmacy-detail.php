@@ -13,7 +13,7 @@ include PATH."include/headerhtml.php"
  
 <section class="list_item_box detail_page">
     <div class="container">
-        <div class="list_item_box_in" style="padding-bottom:10px !important; padding-left:30px !important">
+        <div class="" style="padding-bottom:10px; padding-top:50px; padding-left:30px !important">
         <div class="top_heading">
             <h1 style="font-size:28px"><?php echo $rowPhar['pharmacy_name']?></h1>
            <!-- <h6>A Pharmadoctor partner clinic</h6>-->
