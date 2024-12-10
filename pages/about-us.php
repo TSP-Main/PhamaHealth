@@ -68,7 +68,7 @@ additional services that is faster than any comparable online service</p>
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<a href="#" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5 mt-3">View All Partner Pharmacies</a>
+					<a href="<?php echo URL?>partner-pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5 mt-3">View All Partner Pharmacies</a>
 				</div>
 				<div class="col-sm-5">
 					<img class="w100p" src="<?php echo URL?>images/logos_img.jpg">
@@ -96,7 +96,7 @@ additional services that is faster than any comparable online service</p>
 					</div>
 					<h3><?php echo $rowCTeam['team_name']?></small></h3>
 					<h6><?php echo $rowCTeam['team_designation']?></h6>
-					<p><?php echo $rowCTeam['team_description']?></p>
+					<p><?php echo fnUpdateHTML($rowCTeam['team_description'])?></p>
 				</div>
 			</div>
 			
