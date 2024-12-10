@@ -535,7 +535,7 @@ else
                                                             
                                                            <div id="timings_<?php echo $val?>" <?php if (!in_array($val,$arrWeek)) echo 'style="display:none"'; ?>>
                                                             <div class="row" >
-                                                            	<div class="col-md-4">
+                                                            	<div class="col-md-8">
                                                                 
                                                                 <div class="row">
                                                                 	<div class="col-md-4" style="padding-top:6px">
@@ -586,7 +586,7 @@ else
                                                                </div>
                                                                
                                                                <div class="row">
-                                                            	<div class="col-md-4">
+                                                            	<div class="col-md-8">
                                                                 
                                                                 <div class="row">
                                                                 	<div class="col-md-4" style="padding-top:6px">
