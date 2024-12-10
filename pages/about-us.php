@@ -92,7 +92,7 @@ additional services that is faster than any comparable online service</p>
 			<div class="col-sm-12">
 				<div class="our-team-box">
 					<div class="img_box">
-						<img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/team/<?php echo $rowCTeam['team_image']?>&w=400&h=310&zc=1">
+						<img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/team/<?php echo $rowCTeam['team_image']?>&w=400&h=410&zc=1">
 					</div>
 					<h3><?php echo $rowCTeam['team_name']?></small></h3>
 					<h6><?php echo $rowCTeam['team_designation']?></h6>
