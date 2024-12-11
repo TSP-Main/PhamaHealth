@@ -45,7 +45,16 @@ include PATH."include/headerhtml.php"
 .banner_01 p{font-size: 18px;color: #757575;}
 .banner_01 .right{padding-top: 42px;padding-bottom: 35px;}
 
-
+@media ( max-width: 767px ) {
+ .banner_01 {
+ background-position: top;
+ background-size:80%;
+ } 
+.banner_01 p{font-size: 15px;color: #757575;}
+.banner_01 .right {
+	padding-top:200px;
+	}
+}
 
 
 </style>

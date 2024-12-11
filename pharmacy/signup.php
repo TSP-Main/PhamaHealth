@@ -1,508 +1,386 @@
 <?php include "../private/settings.php";
 include PATH."include/headerhtml.php"
  ?>
+  <link type="text/css" href="<?php echo URL?>patient/orakuploader/orakuploader.css" rel="stylesheet"/>
   <body style="padding-top:0px;">  
 <section class="register_screen">
     <div class="container">
         <div class="logo_box">
-        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/logo.png"></a>
+        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:220px"></a>
         </div>
         <div class="register_box">
         <form id="frmApp" name="frmApp" method="POST" class="grid spacer-24">
             <div class="top">
-            <h2 class="title_h2" style="text-align:center">Prescriber Sign up</h2>
-             <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label class="label-control" style="text-align:left">Employee Number:</label>
-                        <input class="form-control" type="text" id="txtEmpNum" name="txtEmpNum" value="" data-validation="required" data-validation-error-msg="Please enter employee number" maxlength="70">
-                    </div>
-                </div>
-            </div>    
+            <h2 class="title_h2" style="text-align:center">Pharmacy Sign up</h2>
+                 
             </div>
             <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
-            	<h6>Personal Details</h6>
+            	<h6>Pharmacy Details</h6>
             </div>
-           <div class="row">
-                            
-                            
-                            				<div class="col-sm-4 col-md-4">
-												<div class="form-group">
-													<label class="form-label">Title <span class="text-red">*</span></label>
-													<select class="form-control" name="cmbTitle" id="cmbTitle"  data-validation="required" data-validation-error-msg="Please select title">
-										<option label="Select Title"></option>
-										<?php
-				$query = "SELECT * FROM tbl_titles where title_status=1";
-				$results = $database->get_results( $query );
-							
-						foreach ($results as $value) {
-
-									?>
-
-								<option value="<?php echo $value['title_id']; ?>"  <?php if($row['pres_title'] == $value['title_id']) {	echo 'selected="selected"';}?>  ><?php echo $value['title_name']; ?></option>
-
-							<?php	
-
-							}
-
-							?> 
-
-									
-									</select>
-												</div>
-											</div>
-											<div class="col-sm-4 col-md-4">
-												<div class="form-group">
-													<label class="form-label">Forename/s <span class="text-red">*</span></label>
-													<input type="text" class="form-control" placeholder="First name" value="<?php echo $row['pres_forename'] ?>" name="txtForename" data-validation="required" data-validation-error-msg="Please enter your forename" maxlength="70">
-												</div>
-											</div>
-											<div class="col-sm-4 col-md-4">
-												<div class="form-group">
-													<label class="form-label">Sur Name <span class="text-red">*</span></label>
-													<input type="text" class="form-control" placeholder="Last name" value="<?php echo $row['pres_surname'] ?>" name="txtSurname" data-validation="required" data-validation-error-msg="Please enter your Surname">
-												</div>
-											</div>
-										
-										</div>
-                            
-                            <div class="row">
+            
+            <div class="row">
                             
                             
                             				
 											<div class="col-sm-12 col-md-12">
 												<div class="form-group">
-													<label class="form-label">Profession <span class="text-red">*</span></label>
-													<select class="form-control" name="cmbProf" id="cmbProf" data-validation="required" data-validation-error-msg="Please select profession" >
-										<option label="Select"></option>
-										<?php
-				$query = "SELECT * FROM tbl_professions where prof_status=1";
-				$results = $database->get_results( $query );
-							
-						foreach ($results as $value) {
-
-									?>
-
-								<option value="<?php echo $value['prof_id']; ?>"  <?php if($row['pres_profession'] == $value['prof_id']) {	echo 'selected="selected"';}?>  ><?php echo $value['prof_title']; ?></option>
-
-							<?php	
-
-							}
-
-							?> 
-
-									
-									</select>
+													<label class="form-label"> Name of Pharmacy<span class="text-red"> *</span></label>
+												  <input type="text" class="form-control"  value="" name="txtPharmacyName" data-validation="required" data-validation-error-msg="Please enter your pharmacy Name" maxlength="200">
 												</div>
 											</div>
-											<div class="col-sm-12 col-md-12">
-												<div class="form-group">
-													<label class="form-label">Address 2</label>
-													<input type="text" class="form-control" placeholder="" name="txtAddress2" value="<?php echo $row['pres_address2'] ?>">
-												</div>
-											</div>
-										
-										</div>
-                            <div class="row">
-                            
-                            
-                            				
-											<div class="col-sm-12 col-md-12">
+                                            <div class="col-sm-12 col-md-12">
 												<div class="form-group">
 													<label class="form-label">Address <span class="text-red">*</span></label>
-													<input type="text" class="form-control" placeholder="" value="<?php echo $row['pres_address1'] ?>" name="txtAddress" data-validation="required" data-validation-error-msg="Please enter your address">
+													<input type="text" class="form-control" placeholder="" value="" name="txtAddress" data-validation="required" data-validation-error-msg="Please enter your address">
 												</div>
 											</div>
 											<div class="col-sm-12 col-md-12">
 												<div class="form-group">
 													<label class="form-label">Address 2</label>
-													<input type="text" class="form-control" placeholder="" name="txtAddress2" value="<?php echo $row['pres_address2'] ?>">
+													<input type="text" class="form-control" placeholder="" name="txtAddress2" value="" >
 												</div>
 											</div>
 										
 										</div>
-                            
-                           
-                            <div class="row">
+                                        
+                                        <div class="row">
                             
                             
                             				
 											<div class="col-sm-6 col-md-6">
 												<div class="form-group">
 													<label class="form-label">City <span class="text-red">*</span></label>
-													<input type="text" class="form-control" placeholder="" name="txtCity" value="<?php echo $row['pres_city'] ?>" data-validation="required" data-validation-error-msg="Please enter city name">
+													<input type="text" class="form-control" placeholder="" name="txtCity" value="" data-validation="required" data-validation-error-msg="Please enter city name">
 												</div>
 											</div>
-											<div class="col-sm-6 col-md-6">
-												<div class="form-group">
-												  <label class="form-label">Country <span class="text-red">*</span></label>
-													<select class="form-control custom-select select2" name="cmbCountry" id="cmbCountry" required >
-														<option value="">Select Country</option>
-                                                        <option value="1" selected="selected">United Kingdom</option>
-                                                    </select>
-                                        
-												</div>
-											</div>
-										
-										</div>
-                                   
-                                   
-                                   <div class="row">
-                            
-                            
-                            				
-											<div class="col-sm-6 col-md-6">
+                                            
+                                            <div class="col-sm-6 col-md-6">
 												<div class="form-group">
 													<label class="form-label">Postcode <span class="text-red">*</span></label>
-													<input type="text" class="form-control" placeholder="" name="txtPostcode" value="<?php echo $row['pres_postcode'] ?>" maxlength="6" data-validation="required" data-validation-error-msg="Please enter postcode">
+													<input type="text" class="form-control" placeholder="" name="txtPostcode" value="" maxlength="6" data-validation="required" data-validation-error-msg="Please enter postcode">
 												</div>
 											</div>
 											
 										
 										</div>
-                                   
-                                   
+                                        
+                                        <div class="row">
                             
-                            <?php $dob=$row['pres_dob']; 
-							
-							$arrDob=explode("-",$dob);
-							
-							?>
                             
-                            <div class="form-group">
-								<label class="form-label">Date of Birth *</label>
+                            				
+											
+                                            
+                                            	
+											<div class="col-sm-6 col-md-6">
+												<div class="form-group">
+													<label class="form-label">GPhC Pharmacy Premise Number </label>
+													<input type="text" class="form-control" placeholder="" name="txtGHPC" value=""  >
+												</div>
+											</div>
+                                            
+                                            <div class="col-sm-6 col-md-6">
+												<div class="form-group">
+													<label class="form-label">Name of Superintendent Pharmacist</label>
+													<input type="text" class="form-control" placeholder="" name="textSupPharma" value=""  >
+												</div>
+											</div>
+											
+										
+										</div>
+                                        
+                                        
+                                        
+            
+           <div class="row">
+                            
+                            
+                            				
+											<div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Name of Owner<span class="text-red">*</span></label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtName" maxlength="70">
+												</div>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Email of Owner</label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtOEmail" >
+												</div>
+											</div>
+                                            
+                                            <div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Mobile of Owner </label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtMobile" >
+												</div>
+											</div>
+										
+										</div>
+                                         <div class="form-group">
+                                            <label class="form-label">Pharmacy Logo Image</label>
+                                            <div id="images4ex" orakuploader="on"></div>
+                                        </div>
+                                        
+                                        <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
+            							<h6>Primary Contact Details</h6>
+           								 </div>
+                            
+                                        <div class="row">
+                            
+                            
+                            				
+											<div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Name <span class="text-red">*</span></label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtPrimaryName" maxlength="70" data-validation="required" data-validation-error-msg="Please enter primary contact name">
+												</div>
+											</div>
+											<div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Email <span class="text-red">*</span></label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtPrimaryEmail" data-validation="required" data-validation-error-msg="Please enter primary contact email">
+												</div>
+											</div>
+                                            
+                                            <div class="col-sm-4 col-md-4">
+												<div class="form-group">
+													<label class="form-label">Mobile <span class="text-red">*</span></label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtPrimaryMobile" data-validation="required" data-validation-error-msg="Please enter primary contact mobile">
+												</div>
+											</div>
+										
+										</div>
+                                        
+                                         <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
+            							<h6>Contact Details for Patients</h6>
+           								 </div>                           
+                          
+                                        
+                                        <div class="row">                        
+                            
+                            				
+											<div class="col-sm-6 col-md-6">
+												<div class="form-group">
+													<label class="form-label">Landline <span class="text-red">*</span></label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtLandline_for_pat" maxlength="70" data-validation="required" data-validation-error-msg="Please enter landline number">
+												</div>
+											</div>
+											<div class="col-sm-6 col-md-6">
+												<div class="form-group">
+													<label class="form-label">Email </label>
+													<input type="text" class="form-control" placeholder="" value="" name="txtEmail_for_pat" >
+												</div>
+											</div>
+                                            
+                                            <div class="col-sm-12 col-md-12">
+												<div class="form-group">
+													<label class="form-label">Opening Timings </label>
+													<div class="custom-controls-stacked">
                                 
-                                <div class="row">
-									<div class="col-lg-2 col-md-2">
-									<select class="form-control custom-select select2" name="cmbDate" id="cmbDate" data-validation="required" data-validation-error-msg="Please select date">
-										<option value="">Select Date</option>
-                                       <?php for ($k=1;$k<=31;$k++) 
-									   {
-										   if ($k<10)
-										   $prefix="0";
-										   else
-										   $prefix="";
-										   ?>
-                                        <option value="<?php echo $prefix.$k; ?>" <?php if ($arrDob[2]==$prefix.$k) echo "selected"; ?>><?php echo $prefix.$k; ?></option>				
-                                       <?php } ?>
-									</select>
-                                    </div>
-                                    <div class="col-lg-2 col-md-2">
-									<select class="form-control custom-select select2" name="cmbMonth" id="cmbMonth" data-validation="required" data-validation-error-msg="Please select month" >
-										<option value="">Select Month</option>
-                                       
-										<?php for ($r = 1; $r <= 12; $r++){
-                                            $month_name = date('F', mktime(0, 0, 0, $r, 1, date("Y")));
-                                            ?> <option value="<?php echo $r ?>" <?php if ($arrDob[1]==$r) echo "selected"; ?>><?php echo $month_name ?></option> <?php 
-                                        }?>				
-									</select>
-                                    </div>
-                                    <div class="col-lg-2 col-md-2">
-									<select class="form-control custom-select select2" name="cmbYear" id="cmbYear"  data-validation="required" data-validation-error-msg="Please select year">
-										<option value="">Select Year</option>
-                                        <?php
-										$year=date("Y");
-										 for ($y=$year-18;$y>=$year-118;$y--) { ?>
-                                        <option value="<?php echo $y; ?>" <?php if ($arrDob[0]==$y) echo "selected"; ?>><?php echo $y; ?></option>				
-                                        <?php } ?>
-									</select>
-                                    </div>
-                                </div>
+                                			<?php
+											$arrWeek=array();
+											$arrTimings=array();
+											
+											if ($row['pharmacy_p_opening']!="")
+											$arrWeek=unserialize(fnUpdateHTML($row['pharmacy_p_opening']));
+											
+											if ($row['pharmacy_p_timings']!="")
+											$arrTimings=unserialize(fnUpdateHTML($row['pharmacy_p_timings']));
+											
+											if ($row['pharmacy_p_timings_closing']!="")
+											$arrTimings2=unserialize(fnUpdateHTML($row['pharmacy_p_timings_closing']));
+											//print_r ($arrTimings2);
+											
+											 $mydays = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday');
+											
+											$val=1;
+											
+											for ($j=0;$j<7;$j++)
+											{
+												
+												
+												
+											 ?>
+                                            
+                                            			<div class="row" >
+                                                        	<div class="col-md-12">
+														<label class="custom-control custom-checkbox" >
+															<input type="checkbox" class="custom-control-input" name="ckWeek[]" id="ck_<?php echo $val?>" onclick="openDiv(<?php echo $val?>)" value="<?php echo $val?>" <?php if (in_array($val,$arrWeek)) echo "checked"; ?> > 
+                                                         </label>      
+															<span class="custom-control-label"><?php echo $mydays[$j] ?></span>
+                                                          </div>
+                                                        </div>
+                                                           <div id="timings_<?php echo $val?>" <?php if (!in_array($val,$arrWeek)) echo 'style="display:none"'; ?>>
+                                                            <div class="row" >
+                                                            	<div class="col-md-12" style="background-color:#dcf5f7; border:1px solid #5CBBC0;padding-bottom:4px">
+                                                                
+                                                                <div class="row">
+                                                                	<div class="col-md-12" style="padding-top:6px">
+                                                                	
+																		<?php 
+																		$arrOt=array();
+																		if ($arrTimings[$val]!="")
+																		$arrOt=explode(":",$arrTimings[$val]);
+																		 ?>
+                                                                    </div>
+                                                                
+                                                            		<div class="col-md-3 col-6" >
+                                                                    <label class="form-label" style="font-size:13px">Opening Timings </label>
+                                                                	<select class="form-control" id="cmb_o_<?php echo $val?>" name="cmbOpening_h[]">
+                                                                    	<option value="">Hours</option>
+                                                                        <?php for ($h=1;$h<=24;$h++) 
+																		{
+																			if (strlen($h)==1)
+																			$prefix="0";
+																			else
+																			$prefix="";
+																			
+																			 ?>
+                                                                        <option value="<?php echo $prefix.$h?>" <?php if ($arrOt[0]==$prefix.$h) echo "selected"; ?>><?php echo $prefix.$h?></option>
+                                                                        <?php } ?>
+																		
+                                                                    </select></div>
+                                                                    <div class="col-md-3 col-6">
+                                                                    <label class="form-label">&nbsp;</label>
+                                                                    <select class="form-control mb-4" id="cmb_o_<?php echo $val?>" name="cmbOpening_m[]">
+                                                                    	<option value="">Minutes</option>
+                                                                        
+                                                                         <?php for ($m=0;$m<=55;$m=$m+5) 
+																		{
+																			if (strlen($m)==1)
+																			$prefix="0";
+																			else
+																			$prefix="";
+																			
+																			 ?>
+                                                                        <option value="<?php echo $prefix.$m?>" <?php if ($arrOt[1]==$prefix.$m) echo "selected"; ?>><?php echo $prefix.$m?></option>
+                                                                        <?php } ?>
+                                                                        
+                                                                    </select>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-md-3 col-6">
+                                                                   <label class="form-label" style="font-size:13px">Closing Time</label>
+                                                                    
+                                                                    <?php 
+																		$arrOt2=array();
+																		if ($arrTimings2[$val]!="")
+																		$arrOt2=explode(":",$arrTimings2[$val]);
+																		 ?>
+                                                                    
+                                                                    
+                                                                	<select class="form-control" id="cmb_c_<?php echo $val?>" name="cmbClosing_h[]">
+                                                                    	<option value="">Hours</option>
+                                                                        
+                                                                         <?php for ($h=1;$h<=24;$h++) 
+																		{
+																			if (strlen($h)==1)
+																			$prefix="0";
+																			else
+																			$prefix="";
+																			
+																			 ?>
+                                                                        <option value="<?php echo $prefix.$h?>" <?php if ($arrOt2[0]==$prefix.$h) echo "selected"; ?>><?php echo $prefix.$h?></option>
+                                                                        <?php } ?>
+                                                                        
+                                                                    </select></div>
+                                                                    
+                                                                    <div class="col-md-3 col-6">
+                                                                    <label class="form-label">&nbsp;</label>
+                                                                    <select class="form-control" id="cmb_c_<?php echo $val?>" name="cmbClosing_m[]">
+                                                                    	<option value="">Minutes</option>
+                                                                        
+                                                                          <?php for ($m=0;$m<=55;$m=$m+5) 
+																		{
+																			if (strlen($m)==1)
+																			$prefix="0";
+																			else
+																			$prefix="";
+																			
+																			 ?>
+                                                                        <option value="<?php echo $prefix.$m?>" <?php if ($arrOt2[1]==$prefix.$m) echo "selected"; ?>><?php echo $prefix.$m?></option>
+                                                                        <?php } ?>
+                                                                        
+                                                                        
+                                                                    </select>
+                                                                    </div>
+                                                                 </div>
+                                                                    
+                                                                    
+                                                                  </div>
+                                                               </div>
+                                                               
+                                                               
+                                                              
+                                                              </div> 
+                                                                <div class="col-md-2">
+                                                            </div>
+                                                            
+														</label>
+                                                        
+                                                  <?php 
+												  $val=$val+1;
+												  } ?>      
+                                                        
+														
+														
+													</div>
+												</div>
+											</div>
+                                            
+                                            
+										
+										</div>
+            
+          					 <div class="form-group">
+								<label class="form-label">Bank Holiday Opening Description</label>
+								<textarea name="txtBankTimings" class="form-control"><?php echo $row['pharmacy_bank_opening']?></textarea> 
 							</div>
                             
-                            
-                              <div class="form-group">
-								<label class="form-label">National Insurance Number *</label>
-								<input class="form-control mb-4" type="text" id="txtNIN" name="txtNIN" value="<?php echo $row['pres_insurance_number']?>" data-validation="required" data-validation-error-msg="Please enter national insurance number">
-							</div>
-                            
-                            <div class="form-group ">
-						<div class="form-label">Eligibility to work in the UK</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoWorkUk" id="rdoWorkUk" value="1" <?php if($row['pres_work_permit']==1 && $row['pres_id']!='') echo 'checked="checked"'; ?> >
-								<span class="custom-control-label">Yes</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoWorkUk" id="rdoWorkUk" value="0" <?php if($row['pres_work_permit']==0 && $row['pres_id']!='') echo 'checked="checked"'; ?>  >
-								<span class="custom-control-label">No</span>
-							</label>
-					
-						</div>
-					</div>
-                    
-                    
-                     <div class="form-group">
-								<label class="form-label">Photo Id (Upload Passport or Driving License)</label>
-								<input class="form-control" type="file" id="flPhotoId" name="flPhotoId" >
-                                
-                                 <?php if ($row['pres_photo_id']!="") { ?>
-                                <div style="height:5px"></div>
-                                <span class="font-weight-semibold"><?php if ($row['pres_photo_id']!="") { ?> <a href="<?php echo URL?>prescriber/documents/<?php echo $row['pres_photo_id']?>" style="color:#06F; text-decoration:underline" download>View Uploaded file</a><?php } ?></span>
-                                <?php } ?>
-					</div>
-                    
-                    <div class="form-group">
-								<label class="form-label">Upload Address Proof 1</label>
-								<input class="form-control" type="file" id="flProof1" name="flProof1" >
-                                
-                                <?php if ($row['pres_proof_address1']!="") { ?>
-                                <div style="height:5px"></div>
-                                <span class="font-weight-semibold"><?php if ($row['pres_proof_address1']!="") { ?> <a href="<?php echo URL?>prescriber/documents/<?php echo $row['pres_proof_address1']?>" style="color:#06F; text-decoration:underline" download>View Uploaded file</a><?php } ?></span>
-                                <?php } ?>
-					</div>
-                    
-                     <div class="form-group">
-								<label class="form-label">Upload Address Proof 2</label>
-								<input class="form-control" type="file" id="flProof2" name="flProof2" >
-                                
-                                <?php if ($row['pres_proof_address2']!="") { ?>
-                                <div style="height:5px"></div>
-                                <span class="font-weight-semibold"><?php if ($row['pres_proof_address2']!="") { ?> <a href="<?php echo URL?>prescriber/documents/<?php echo $row['pres_proof_address2']?>" style="color:#06F; text-decoration:underline" download>View Uploaded file</a><?php } ?></span>
-                                <?php } ?>
-					</div>
-                    
-                     <div class="form-group">
-								<label class="form-label">DBS Number (if required)</label>
-								<input class="form-control mb-4" type="text" id="txtDBS" name="txtDBS" value="<?php echo $row['pres_dbs_number']?>">
-							</div>
-                            
-                      <div class="form-group ">
-						<div class="form-label">Regulatory body</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoRegBody" id="rdoRegBody" value="1" <?php if($row['pres_regulatory_body']==1 && $row['pres_id']!='') echo 'checked="checked"'; ?> >
-								<span class="custom-control-label">GPhC</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoRegBody" id="rdoRegBody" value="2" <?php if($row['pres_regulatory_body']==2 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">GMC </span>
-							</label>
-                            <label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoRegBody" id="rdoRegBody" value="3" <?php if($row['pres_regulatory_body']==3 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">NMC </span>
-							</label>
-                             <label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoRegBody" id="rdoRegBody" value="4" <?php if($row['pres_regulatory_body']==4 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Not Applicable </span>
-							</label>
-					
-						</div>
-					</div>     
-                    
-                    <div class="form-group ">
-						<div class="form-label">Prescribing qualification certificate</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoQC" id="rdoQC" value="1" <?php if($row['pres_qualification_check']==1 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Yes</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoQC" id="rdoQC" value="0" <?php if($row['pres_qualification_check']==0 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">No</span>
-							</label>
-                            
-                            Upload Certificate &nbsp;&nbsp;
-                            <input class="" type="file" id="flCert" name="flCert">
-                            
-                             <?php if ($row['pres_indemnity_doc']!="") { ?>
-                                <div style="height:5px"></div>
-                                <span class="font-weight-semibold"><?php if ($row['pres_indemnity_doc']!="") { ?> <a href="<?php echo URL?>prescriber/documents/<?php echo $row['pres_indemnity_doc']?>" style="color:#06F; text-decoration:underline" download>View Uploaded file</a><?php } ?></span>
-                                <?php } ?>
-					
-						</div>
-					</div> 
-                    
-                    		<div class="form-group">
-								<label class="form-label">Professional reference check 1</label>
-								<textarea class="form-control mb-4" type="text" id="txtProRefChk1" placeholder="Provide Details" name="txtProRefChk1" ><?php echo $row['pres_ref_check1']; ?></textarea>
-							</div>
-                            
-                            <div class="form-group">
-								<label class="form-label">Professional reference check 2</label>
-								<textarea class="form-control mb-4" type="text" id="txtProRefChk2" placeholder="Provide Details" name="txtProRefChk2" ><?php echo $row['pres_ref_check2']; ?></textarea>
-							</div>
-                            
-                            
+                            <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
+            					<h6>Profile Page Updates</h6>
+           					 </div> 
                              
+                            <div class="form-group">
+								<label class="form-label">About us</label>
+								<textarea name="txtAboutus" class="form-control" rows="8"><?php echo $row['pharmacy_about_us']?></textarea>
+							</div>
                             
-                            <div class="form-group ">
-						<div class="form-label">Indeminity cover Check (if applicable)</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoInd" id="rdoInd" value="1" <?php if($row['pres_indemnity']==1 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Yes</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoInd" id="rdoInd" value="2" <?php if($row['pres_indemnity']==2 && $row['pres_id']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">No</span>
-							</label>
+                             <div class="form-group">
+								<label class="form-label">Website Link</label>
+								<input class="form-control mb-4" type="text" id="txtWebsite" name="txtWebsite" value="<?php echo $row['pharmacy_website']?>" >
+							</div>
                             
-                           
-                            	
-					
-						</div>
-					</div>
-                    
-                    <div class="form-group ">
-						<div class="form-label">Upload Certificate</div>
-						<div class="custom-controls-stacked">
-							
-                           <input class="" type="file" id="flIndCert" name="flIndCert" value="<?php echo $row['blog_title']?>">
-                           <br /> <br />
-                           <div class="form-label">Expiry Date of Indeminity Cover Check</div>
-                           <input type="date" class="form-control col-md-3"  name="txtExpDate" value="<?php echo $row['pres_expiry_date'] ?>" />
+                          <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
+            					<h6>Bank Account Details</h6>
+           					 </div> 
+                             
+                              <div class="form-group">
+								<label class="form-label">Account Name</label>
+								<input class="form-control mb-4" type="text" id="txtAccountName" name="txtAccountName" value="<?php echo $row['pharmacy_account_name']?>" >
+							</div>
                             
-                             <?php if ($row['pres_qualification_cert']!="") { ?>
-                                <div style="height:5px"></div>
-                                <span class="font-weight-semibold"><?php if ($row['pres_qualification_cert']!="") { ?> <a href="<?php echo URL?>prescriber/documents/<?php echo $row['pres_qualification_cert']?>" style="color:#06F; text-decoration:underline" download>View Uploaded file</a><?php } ?></span>
-                                <?php } ?>	
-					
-						</div>
-					</div>
-                    
-                    <div style="height:20px"></div>
-                
-                <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
-            	<h6>Contact Details</h6>
-            </div>
-            
-            <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Home Telephone</label>
-												<input class="form-control mb-4" placeholder="" type="text" value="<?php echo $row['pres_home_phone']?>" name="txtHomeTelephone">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Mobile Telephone *</label>
-												<input class="form-control mb-4" placeholder="" type="text" value="<?php echo $row['pres_mobile']?>" name="txtMobile" data-validation="required" data-validation-error-msg="Please enter your mobile number">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Email Address *</label>
-												<input class="form-control mb-4" placeholder="" type="email" value="<?php echo $row['pres_email']?>" name="txtEmail" data-validation="email required" data-validation-error-msg="Please enter your email address">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<div class="form-group password-strength">
-                        <label class="label-control" for="password">Password</label>
-                        <input class="form-control" type="text" id="password" name="txtPassword" value="" data-validation="strength" data-validation-strength="3">
-                    </div>
-											</div>											
-										</div>
-            
-            <div style="height:20px"></div>
-             <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
-            	<h6>Job Information</h6>
-            </div>
-            <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Employment Status</label>
-												<input class="form-control mb-4" name="txtEmpStatus" placeholder="PAYE/Umbrella/Self Employed/Limited Company" type="text" value="<?php echo $row['pres_employment_status'] ?>">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">If limited company, IR35 Status:</label>
-												<input class="form-control mb-4" name="txtIR35" placeholder="" type="text" value="<?php echo $row['pres_ir35'] ?>">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">If Self Employed, UTR Number</label>
-												<input class="form-control mb-4" name="txtUTR" placeholder="" value="<?php echo $row['pres_utr'] ?>" type="text">
-											</div>											
-										</div>
-             <div class="row">
-            	<div class="col-sm-12">
-                    <div class="form-group ">
-						<div class="form-label">Work Location</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoWorkLocation" id="rdoWorkLocation" value="Office" <?php if($row['pres_work_location']=="Office" ) echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Office</span>
-							</label>
-						  <label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoWorkLocation" id="rdoWorkLocation" value="Remote" <?php if($row['pres_work_location']=="Remote" ) echo 'checked="checked"'; ?>>
-							  <span class="custom-control-label">Remote</span>
-                          </label>
+                             <div class="form-group">
+								<label class="form-label">Account Number:</label>
+								<input class="form-control mb-4" type="text" id="txtAccountNumber" name="txtAccountNumber" value="<?php echo $row['pharmacy_account_number']?>" >
+							</div>
                             
-                          <div style="height:20px"></div> 
-                         <div class="row">
-            				<div class="col-sm-12">
-                    			<div class="form-group ">     	
+                             <div class="row">
+                            		<div class="col-sm-6 col-md-6">
                             
-                            <div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-                            If working remote, please confirm you are located within the UK and will undertake all the work while in the UK  &nbsp;&nbsp;<br>
-								<input type="radio" class="custom-control-input" name="rdoRemote" id="rdoRemote" value="1" <?php if($row['pres_work_in_uk']==1 && $row['page_status']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Yes</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoRemote" id="rdoRemote" value="0" <?php if($row['pres_work_in_uk']==0 && $row['page_status']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">No</span>
-							</label>
-                          </div>
-                       
-                       </div>
-                     </div>
-                   </div>
-					
-						</div>
-					</div>
-                </div>
-            </div>
-            
-            <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
-            	<h6>Emergency Contact</h6>
-            </div>
-            
-            <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Forename/s</label>
-												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Forename" value="<?php echo $row['pres_e_name'] ?>">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Surname</label>
-												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Surname" value="<?php echo $row['pres_e_surname'] ?>">
-											</div>											
-										</div>
-                                        
-                                        <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Home Telephone</label>
-												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Telephone" value="<?php echo $row['pres_e_phone'] ?>">
-											</div>											
-										</div>
-                                        
-                                         <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Mobile Telephone</label>
-												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Mobile" value="<?php echo $row['pres_e_mobile'] ?>">
-											</div>											
-										</div>
-                                        
-                                         <div class="row row-sm">
-											<div class="col-lg-8">
-                                            	<label class="form-label">Address</label>
-												<input class="form-control mb-4" placeholder="" type="text" name="txt_e_Address" value="<?php echo $row['pres_e_address'] ?>">
-											</div>											
-										</div>
-            
-            <div class="row" style="background:#015280; padding:10px 15px 7px 15px; color:#fff; margin-bottom:15px">
-            	<h6>Staff Pension Scheme, PAYE Staff only:</h6>
-            </div>
+                                         <div class="form-group">
+                                            <label class="form-label">Sort Code</label>
+                                            <input class="form-control mb-4" type="text" id="txtAccountSortCode" name="txtAccountSortCode" value="<?php echo $row['pharmacy_account_sortno']?>" >
+                                        </div>
+                                     </div>
+                             
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Name of Bank</label>
+                                    <input class="form-control mb-4" type="text" id="txtBankName" name="txtBankName" value="<?php echo $row['pharmacy_account_bankname']?>" >
+                                </div>
+                            </div>
+                           </div>
             
             
              
@@ -510,11 +388,9 @@ include PATH."include/headerhtml.php"
                  <div class="checkbox form-group">
                     <label class="custom_checkbox">
                         <input type="checkbox" name="CkTerms" id="CkTerms" value="1" class="form-check-input" data-validation="required" data-validation-error-msg="Please accept terms and conditions">
-                        I have read, understood and agree to Pharma Health <a href="#">Terms & Conditions, </a><a href="#">Privacy Notice</a> and <a href="#">Terms of Sale</a>
-                    </label>
+                    I have read, understood and agree to Pharma Health <a href="#">Terms & Conditions</a></label>
                  </div>
-                    <label class="custom_checkbox">
-                        <input type="checkbox" name="CkMarketing" value="1" class="form-check-input">I would like to receive marketing messages & updates from Pharma Health.</label>
+                    
 <div><input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6Lc38CkUAAAAAGSzBr9awm5tAfiMLHitD5f21vI4"></div>
                       
                          <div class="button_box">
@@ -523,7 +399,7 @@ include PATH."include/headerhtml.php"
                         
                         
                         <div class="signup_box">                           
-                            <h6>Already registered? <a href="<?php echo URL?>patient/login">Sign in</a></h6>
+                            <h6>Already registered? <a href="<?php echo URL?>pharmacy/account/">Sign in</a></h6>
                         
                     </div>
                 </div>
@@ -539,6 +415,9 @@ include PATH."include/headerhtml.php"
 
 <script src="<?php echo URL?>js/form-validator/jquery.form-validator.js"></script>
 <script src="<?php echo URL?>js/jquery.inputmask.bundle.js"></script>
+
+<script type="text/javascript" src="orakuploader/jquery-ui.min.js"></script>
+<script type="text/javascript" src="orakuploader/orakuploader.js"></script>
 			
 				<script>
 				
@@ -656,13 +535,6 @@ include PATH."include/headerhtml.php"
 							// alert('Valid '+$form.attr('id'));
 							
 							
-							var isChecked = $("#CkTerms").is(":checked");
-							if (!isChecked) { 
-							alert ("Please accept the terms and conditions");
-							return false;
-							}
-							
-							
 							
 			
 							 $("#submitBtn").attr('disabled','disabled');
@@ -677,7 +549,7 @@ include PATH."include/headerhtml.php"
 			
 								   $.ajax({		
 								   type: "POST",			
-								   url: "<?php echo URL?>prescriber/ajax/insert-prescriber.php",			
+								   url: "<?php echo URL?>pharmacy/ajax/insert-record.php",			
 								   data: fd,			
 								   cache: false,			
 								   processData: false,			
@@ -688,13 +560,13 @@ include PATH."include/headerhtml.php"
 								   success: function(msg){	
 								  // alert (msg);		
 									if (msg==1)			
-									  window.location='<?php echo URL?>prescriber/thanks';	
+									  window.location='<?php echo URL?>pharmacy/thanks';	
 									   else if (msg==2)			
 									   {
 			
 										$("#submitBtn").removeAttr("disabled");			
 										$("#submitBtn").html("Submit");	
-										$("#error-container").html("Your email id is already registered with us, please click here to login");	
+										$("#error-container").html("Your email id is already registered with us, please login to your account");	
 			
 									   }
 			
@@ -734,6 +606,47 @@ include PATH."include/headerhtml.php"
 			
 				})(jQuery, window);
 			
+			
+			function openDiv(id)
+			 {
+				 
+				if ($("#ck_"+id).prop('checked')== true)
+				$("#timings_"+id).show();
+				else
+				$("#timings_"+id).hide();
+				 
+				
+				
+				 
+			 }
+			 
+			 $(document).ready(function(){
+		$('#images4ex').orakuploader({
+		orakuploader : true,
+		orakuploader_path : 'orakuploader/',
+
+		orakuploader_main_path : '../images/pharmacies',
+		orakuploader_thumbnail_path : '../images/pharmacies',
+		
+		orakuploader_use_main : true,
+		orakuploader_use_sortable : true,
+		orakuploader_use_dragndrop : true,
+		
+		orakuploader_add_image : 'orakuploader/images/add.png',
+		orakuploader_add_label : 'Browser for images',
+		
+		orakuploader_resize_to	     : 600,
+		orakuploader_thumbnail_size  : 400,
+		orakuploader_maximum_uploads : 1,
+		orakuploader_attach_images: [],
+		
+		orakuploader_main_changed    : function (filename) {
+			$("#mainlabel-images").remove();
+			$("div").find("[filename='" + filename + "']").append("<div id='mainlabel-images' class='maintext'>Main Image</div>");
+		}
+
+	});
+});
 			
 			
 			</script>

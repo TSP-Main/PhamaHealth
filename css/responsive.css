@@ -620,7 +620,47 @@ ul.setup_nav {
 	max-width: 100%;
 
 } 
-
+.treatment_options_bx p{ 
+display:none;
+}
+.treatment_options_bx .in{
+	background:#0d6efd;
+	color:#fff;
+	border:none;
+	border-radius:8px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	padding:12px 0px 8px 12px;
+ 	}
+.mobile-show {
+	display:block;
+	padding-bottom:12px;
+	}
+.mobile-hide{
+	display:none;
+	}	
+.quick_easy h3 {
+	margin:0px 0px 5px 0px;
+	}	
+ul.breadcrumbs_list {
+	padding-left:0px;
+	padding-top:20px;
+	}
+.breadcrumbs {
+	padding:27px 0px 10px 0px;
+	}
+	
+.how_to_order_list li {
+	padding-left:110px;
+	}	
+.how_to_order_list li h4 {
+	font-size:17px;
+	color:#000;
+	}
+.how_to_order_list li .img_box h3 {
+	font-size:20px;
+	padding-top:6px;
+	}				
 .simply_collect .list_item {
 
 	margin-top: 40px;
@@ -882,11 +922,20 @@ ul.page_navi li {
 
 .treatment_listing div[class*="col-"] {
 
-	flex: 0 0 100%;
+	flex: 0 0 50%;
 
-	max-width: 100%;
+	max-width: 50%;
 
 }
+
+.treatment_listing_box .img_box img {
+	max-width:150px;
+	}
+	
+.treatment_listing_box {
+	min-height:330px;
+	}
+	
 
 .a_z_treatment{padding-bottom: 60px;}
 
@@ -1079,12 +1128,14 @@ ul.tabs_navi li a{padding: 15px;}
 	max-width: 100%;
 
 	flex: 0 0 100%;
+	padding:15px 20px 10px 40px;
 
 } 
 
 .quick_easy_section .d-flex {
 
 	display: inline-block !important;
+	margin-bottom:60px;
 
 }
 
@@ -1166,7 +1217,7 @@ ul.tabs_navi li a{padding: 15px;}
 
 .banner_01 {
 
-	padding-bottom: 141px;
+	padding-bottom: 0px;
 
 	background-position: bottom center;
 
@@ -1191,6 +1242,9 @@ ul.tabs_navi li a{padding: 15px;}
 	margin-top: 40px;
 
 }
+.how_to_order_list {
+	margin-top:40px;
+	}
 
 .hair_products_box .img_box img {
 
@@ -1338,6 +1392,10 @@ ul.setup_nav li {
 	margin-top: 20px;
 
 } 
+.product_detail_top .right {
+	margin-top:0px;
+	}
+	
  .article-list .at-thumbnail .blog-tag { 
  display:none;
  }
@@ -1617,7 +1675,7 @@ ul.setup_nav li {
 .custom_tab .nav-tabs .nav-item .nav-link{font-size: 12px;}
 .banner .left p{margin-bottom: 3px;}
 .banner .custom_tab{margin-top: 15px;}
-.serch_box .form-control{font-size: 11px;}
+.serch_box .form-control{font-size: 13px;}
 .banner .left{width: 100%;}
 .treatment .treatment_box h4 {
 	 

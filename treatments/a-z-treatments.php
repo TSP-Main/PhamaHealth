@@ -77,7 +77,7 @@ include PATH."include/headerhtml.php"
 		
 		?>
             
-				<div class="col-sm-4">
+				<div class="col-md-4 col-sm-6">
 					<div class="treatment_listing_box" onClick="window.location='<?php echo URL?>treatments/medicine?m=<?php echo $rowMed['med_id']; ?>'">
 						<div class="img_box">
 							<img src="<?php echo URL?>images/medication/<?php echo $rowMed['med_image']; ?>" style="max-height:400px">
