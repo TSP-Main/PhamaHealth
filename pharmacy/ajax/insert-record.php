@@ -99,7 +99,7 @@ if ($_POST['txtPharmacyName']!="" && !empty($recaptcha))
         </tr>
         <tr>
             <td><strong>Primary Contact Name</strong></td>
-            <td>[xx]</td>
+            <td>'.$_POST['txtPrimaryName'].'</td>
         </tr>
         <tr>
             <td><strong>Primary Contact Email</strong></td>
