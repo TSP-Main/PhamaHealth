@@ -99,6 +99,7 @@
 		$closeTiming=serialize($arrTime2);		
 	
 	}
+	}
 	
 			$update = array(
 
@@ -191,7 +192,7 @@
 		}
 
 		
-	}
+	
 			 
 
 }

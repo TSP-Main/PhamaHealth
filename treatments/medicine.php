@@ -40,6 +40,7 @@ include PATH."include/headerhtml.php";
   </style>
   <body>
   	<?php include PATH."include/header.php"; ?> 
+    <div class="clearfix"></div>
 <div class="product_detail">
 	<div class="product_detail_top">
 <section class="breadcrumbs">
@@ -63,6 +64,7 @@ include PATH."include/headerhtml.php";
 <div class="container">
 	<div class="row">
 		<div class="col-sm-4">
+        <h2 class="title_h2 mobile-show"><?php echo $rowMedicine['med_title'] ?></h2>
         <?php //print_r ($_SESSION['sessCart_common']); ?>
 			<div class="product_img">
 				<img src="<?php echo URL?>images/medication/<?php echo $rowMedicine['med_image']; ?>">
@@ -101,7 +103,7 @@ foreach ($items as $item) {
 		<div class="col-md-5">
 			<div class="right">
              <form action="add-to-cart" method="POST">
-				<h2 class="title_h2"><?php echo $rowMedicine['med_title'] ?></h2>
+				<h2 class="title_h2 mobile-hide"><?php echo $rowMedicine['med_title'] ?></h2>
 				<p><?php echo fnUpdateHTML($rowMedicine['med_small_description']); ?></p>
                 
                 <?php
@@ -343,19 +345,19 @@ foreach ($items as $item) {
 		<div class="d-flex w100p">
 		<div class="quick_easy"> 
 			<h3>Quick & Easy</h3>
-			<p>No appointment or long <br>waiting times</p>
+			<p>No appointment or long waiting times</p>
 		</div>
 		<div class="quick_easy"> 
 			<h3>Confidential Service</h3>
-			<p>Your information always <br> remains private</p>
+			<p>Your information always remains private</p>
 		</div>
 		<div class="quick_easy"> 
 			<h3>Trusted Clinicians</h3>
-			<p>All our doctors & pharmacists  <br>are qualified & based in the UK</p>
+			<p>All our doctors & pharmacists are qualified & based in the UK</p>
 		</div>	
 		<div class="quick_easy"> 
 			<h3>Registered Pharmacies</h3>
-			<p>Dispensed by our UK <br>partner pharmacies </p>
+			<p>Dispensed by our UK partner pharmacies </p>
 		</div> 
 	</div> 
 	</div>
@@ -516,8 +518,8 @@ foreach ($items as $item) {
             		<table width="100%" style="color:#393939; background-color:#fff;border:1px solid" cellpadding="10" cellspacing="10">
                     	
                        <tr><td height="20px"></td></tr>
-                       <tr><td ><a href="javascript:;" class="tab-link active" onClick="openSearchOpt(1)" style="font-size:15px">Search by Name</a> &nbsp;&nbsp;
-<a href="javascript:;" class="tab-link" onClick="openSearchOpt(2)" style="font-size:15px">Search by Postcode</a>
+                       <tr><td ><a href="javascript:;" class="tab-link active" onClick="openSearchOpt(1)" style="font-size:13px">Search by Name</a> &nbsp;&nbsp;
+<a href="javascript:;" class="tab-link" onClick="openSearchOpt(2)" style="font-size:13px">Search by Postcode</a>
 </td></tr>
                        <tr>
                        	<td style="padding-top:20px">
@@ -539,7 +541,7 @@ foreach ($items as $item) {
                         
                         	<div class="row" id="rowSearch2" style="display:none;">
                        					 <div class="col-xl-4 col-md-4">
-                                          <h6 style="font-size:15px">Search  by Postcode</h6>
+                                          <h6 style="font-size:14px">Search  by Postcode</h6>
                                           <input class="form-control d-flex mr-3"  name="postcode" id="postcode" placeholder="" style="text-transform:uppercase">
                                          </div>
                                          <div class="col-xl-4 col-md-4">

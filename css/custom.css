@@ -1060,7 +1060,15 @@ ul.social_media li a{float: left;margin-right: 7px;}
 	right: 0px;
 
 }  
-
+.clearfix {
+clear:both;
+}
+.mobile-show {
+	display:none;
+	}
+.mobile-hide{
+	display:block;
+	}
 .mega_menu_box h3{font-size: 15px;margin-bottom: 15px;}
 
 .mega_menu_box ul{margin: 0px;padding: 0px;list-style: none;}
@@ -1079,7 +1087,7 @@ ul.social_media li a{float: left;margin-right: 7px;}
 
 } 
 
-body{padding-top: 88px;color:#888787 !important}
+body{padding-top: 88px;color:#555 !important}
 
 .top-navbar {
 

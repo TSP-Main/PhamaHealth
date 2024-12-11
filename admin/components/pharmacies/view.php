@@ -226,13 +226,13 @@
                                                 <?php } ?>
 											
 									</td>
-                                     <td class="align-middle"><?php echo $row['pharmacy_o_name']; ?></td>
+                                     <td class="align-middle"><?php echo $row['pharmacy_primary_name']; ?></td>
                                     
                                     
-                                    <td class="align-middle"><?php echo $row['pharmacy_o_mobile']; ?></td>
+                                    <td class="align-middle"><?php echo $row['pharmacy_primary_mobile']; ?></td>
                                      <td class="align-middle">
 										
-												<?php echo $row['pharmacy_o_email']; ?>
+												<?php echo $row['pharmacy_primary_email']; ?>
 											
 									</td>
                                     
