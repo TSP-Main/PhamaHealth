@@ -84,11 +84,11 @@ include PATH."include/headerhtml.php";
 
  	<div class="row">
 
-    	<div class="col-sm-6 col-md-7">
+    	<div class="col-sm-6 col-md-7" style="padding:10px 30px">
 
-        	<h3>In Partnership With</h3>
+        	<h3 style="font-size:16px">In Partnership With</h3>
 
-            <p><strong><?php echo $rowPharmacy['pharmacy_name'] ?></strong>, 
+            <p><span style="font-size:19px"><strong><?php echo $rowPharmacy['pharmacy_name'] ?></strong></span>, 
 
            <?php $address=fnPharmacyAddressStr($rowPharmacy['pharmacy_address'],$rowPharmacy['pharmacy_address2'],$rowPharmacy['pharmacy_city'],$rowPharmacy['pharmacy_postcode']);
 
@@ -409,7 +409,7 @@ Independent Pharmacy</p>
 
 		<div class="row">
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">
@@ -440,7 +440,7 @@ Independent Pharmacy</p>
 
 			</div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">
@@ -466,6 +466,34 @@ Independent Pharmacy</p>
 
 					</div>
 				</div>
+
+				</div>
+
+			</div>
+            
+            <div class="col-sm-3">
+
+				<div class="treatments_box">
+
+					<img class="icon_img" src="<?php echo URL?>images/ChildrensHealth.png">
+
+					<h3>Minor Ailments</h3>
+
+					<ul class="list_item_1">
+
+						<li><a href="<?php echo URL?>treatments/tdetail?c=34"><span>Ear Infection</span></a></li>
+
+						<li><a href="<?php echo URL?>treatments/tdetail?c=42"><span>Nausea/Vomiting</span></a></li>
+
+						<li><a href="<?php echo URL?>treatments/tdetail?c=41"><span>Pain Relief</span></a></li>
+
+					</ul>
+
+					<div class="mt-auto">
+
+						<a href="<?php echo URL?>treatments/a-z-conditions" class="btn btn-danger btn-sm float-end">View All</a>
+
+					</div>
 
 				</div>
 
@@ -499,7 +527,7 @@ Independent Pharmacy</p>
 
 			</div>-->
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">
@@ -532,7 +560,7 @@ Independent Pharmacy</p>
 
 			</div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">
@@ -592,7 +620,7 @@ Independent Pharmacy</p>
 
 			</div>-->
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">
@@ -625,7 +653,7 @@ Independent Pharmacy</p>
 
 			</div>
 
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 					<div class="treatments_mobile treatments_toggle">

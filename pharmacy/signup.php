@@ -5,12 +5,12 @@ include PATH."include/headerhtml.php"
 <section class="register_screen">
     <div class="container">
         <div class="logo_box">
-        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/logo.png"></a>
+        <a href="<?php echo URL?>" class="logo"><img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:220px"></a>
         </div>
         <div class="register_box">
         <form id="frmApp" name="frmApp" method="POST" class="grid spacer-24">
             <div class="top">
-            <h2 class="title_h2" style="text-align:center">Prescriber Sign up</h2>
+            <h2 class="title_h2" style="text-align:center">Pharmacy Sign up</h2>
              <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
