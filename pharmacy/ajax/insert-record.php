@@ -14,7 +14,7 @@ if ($_POST['txtPharmacyName']!="" && !empty($recaptcha))
 	{
 		
 		 
-		$curDate=date("Y-m-d");		
+	$curDate = date("Y-m-d H:i:s");	
 		
 				if (is_array($_POST['ckWeek']))	
 			{
@@ -64,7 +64,9 @@ if ($_POST['txtPharmacyName']!="" && !empty($recaptcha))
 			'pharmacy_account_sortno' => $_POST['txtAccountSortCode'],	
 			'pharmacy_account_bankname' => $_POST['txtBankName'],
 			
-			'pharmacy_website' => $_POST['txtWebsite'] 
+			'pharmacy_website' => $_POST['txtWebsite'],
+			'pharmacy_status' => 0,
+			'pharmacy_reg_date' => $curDate 
 			
 			);
 

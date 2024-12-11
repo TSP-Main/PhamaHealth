@@ -151,7 +151,7 @@
 											</div>
 										</div>
 								<div class="table-responsive table-lg mt-3">
-									<table class="table table-bordered border-top text-nowrap" id="example1">
+									<table class="table table-bordered border-top" id="example1">
 										<thead>
 											<tr>
 												<th width="9%" class="border-bottom-0 wd-5" style="width:10%">
@@ -222,7 +222,7 @@
                                     
                                     			<?php if ($row['pharmacy_logo']!="") { ?>
 										
-												<img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $row['pharmacy_logo']; ?>&w=150&h=70&zc=1">
+												<img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $row['pharmacy_logo']; ?>&w=150&zc=1">
                                                 <?php } ?>
 											
 									</td>
@@ -1090,7 +1090,7 @@ $("#adminForm").validate({
 														<td>:</td>
 														<td>
 															<span class="font-weight-semibold">
-															<?php echo $row['pharmacy_o_name'];
+															<?php echo $row['pharmacy_primary_name'];
 															
 															?>
                                                             </span>
@@ -1102,7 +1102,7 @@ $("#adminForm").validate({
 														</td>
 														<td>:</td>
 														<td>
-															<span class="font-weight-semibold"><?php echo $row['pharmacy_o_email']; ?></span>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_primary_email']; ?></span>
 														</td>
 													</tr>
 													<tr>
@@ -1111,7 +1111,7 @@ $("#adminForm").validate({
 														</td>
 														<td>:</td>
 														<td>
-															<span class="font-weight-semibold"><?php echo $row['pharmacy_o_mobile']; ?></span>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_primary_mobile']; ?></span>
 														</td>
 													</tr>
 													
