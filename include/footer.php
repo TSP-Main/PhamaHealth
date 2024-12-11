@@ -8,25 +8,20 @@
 
 			<div class="col-sm-3">
 
-				<div class="footer_links">
+				
+                	<div class="footer_info">
 
-					<h3>Online Services</h3>
+					<a href="<?php echo URL?>" class="footer_logo">
 
-					<ul>
+						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg">
 
-						<li><a href="<?php echo URL?>all-services">All Services</a></li>
+					</a>
+                    
+                    <p style="line-height:25px">Empowering community pharmacies to offer a wide range of prescription medications without requiring GP appointments.</p>
+                    </div>
 
-						<li><a href="<?php echo URL?>blood-tests">Blood Tests</a></li>
-
-						<li><a href="<?php echo URL?>gp-consultation">GP Consultation</a></li>
-
-						<li><a href="<?php echo URL?>travel-vaccination-pgds">Travel Vaccination PGDs	</a></li>
-
-						
-
-					</ul>
-
-				</div>
+					
+				
 
 			</div>
 
@@ -42,15 +37,9 @@
 
 						<li><a href="<?php echo URL?>about-us#team">Clinical Team </a></li>
 
-						<li><a href="<?php echo URL?>partner-pharmacy">Partner Pharmacies </a></li>
-
-						
+						<li><a href="<?php echo URL?>partner-pharmacy">Partner Pharmacies </a></li>						
 
 						<li><a href="<?php echo URL?>patient-how-it-works">How it works </a></li>
-
-                        
-
-						
 
 						<li><a href="<?php echo URL?>blogs/listing">Health Blog</a></li>
 
@@ -66,41 +55,43 @@
 
 				<div class="footer_links">
 
-					<h3>Customer Service </h3>
+					<h3> Services </h3>
 
-					<ul>
+					<ul style="margin-bottom:15px">
 
-						
+						<li><a href="<?php echo URL?>all-services">All Services</a></li>
+
+						<li><a href="<?php echo URL?>blood-tests">Blood Tests</a></li>
+
+						<li><a href="<?php echo URL?>gp-consultation">GP Consultation</a></li>
+
+						<li><a href="<?php echo URL?>travel-vaccination-pgds">Travel Vaccination PGDs	</a></li>
 
 						<li><a href="<?php echo URL?>refunds-and-returns">Refund & Returns</a></li>
 
 						<li><a href="<?php echo URL?>complaints-and-feedback">Complaints & Feedback</a></li> 
 
 					</ul>
-
+                    
+                    
 				</div>
 
 			</div>
             
             <div class="col-sm-3">
+            <div class="footer_links">
+
+					<h3>Contact</h3>
+                    </div>
 
 				<div class="footer_info">
-
-					<a href="<?php echo URL?>" class="footer_logo">
-
-						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg">
-
-					</a>
-
 
 
 		<p>14/2G Docklands Business Centre <br>
 
 10-16 Tiller Road <br>
 
-London <br />
-
-E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
+London E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
 
 <ul class="social_media">
 
