@@ -15,7 +15,7 @@ include PATH."include/headerhtml.php"
 <section class="about_pharma_health">
 	<div class="container">
 		<div class="row align-items-center">
-			<div class="col-sm-5">
+			<div class="col-sm-5 mobile-hide">
 				<img src="<?php echo URL?>images/heart.png">
 			</div>
 			<div class="col-sm-7">
@@ -70,7 +70,7 @@ additional services that is faster than any comparable online service</p>
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					<a href="<?php echo URL?>partner-pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5 mt-3">View All Partner Pharmacies</a>
 				</div>
-				<div class="col-sm-5">
+				<div class="col-sm-5 mobile-hide">
 					<img class="w100p" src="<?php echo URL?>images/logos_img.jpg">
 				</div>
 			</div>
@@ -89,7 +89,7 @@ additional services that is faster than any comparable online service</p>
 		{
 			$rowCTeam=$resCTeam[$r];		
 		?>
-			<div class="col-sm-12">
+			<div class="col-sm-6 col-md-12">
 				<div class="our-team-box">
 					<div class="img_box">
 						<img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/team/<?php echo $rowCTeam['team_image']?>&w=400&h=410&zc=1">
