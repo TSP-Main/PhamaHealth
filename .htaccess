@@ -7,12 +7,12 @@ Options +FollowSymLinks
 </IfModule>
 
 
-#RewriteCond %{HTTP_HOST} ^pharmahealth.co.uk [NC] 
-#RewriteRule ^(.*)$ https://www.pharmahealth.co.uk/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^pharmacinta.co.uk [NC] 
+RewriteRule ^(.*)$ https://www.pharmacinta.co.uk/$1 [L,R=301]
 
-#RewriteCond %{HTTP_HOST} pharmahealth\.co.uk [NC]
-#RewriteCond %{SERVER_PORT} 80
-#RewriteRule ^(.*)$ https://www.pharmahealth.co.uk/$1 [R,L]
+RewriteCond %{HTTP_HOST} pharmacinta\.co.uk [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.pharmacinta.co.uk/$1 [R,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
@@ -53,6 +53,11 @@ RewriteRule  ^pricing-policy pages/pricing-policy.php [L,NC,END]
 
 RewriteRule  ^treatments/hairloss treatments/tdetail.php [L,NC,END]
 
+RewriteRule  ^all-services pages/all-services.php [L,NC,END]
+
+RewriteRule  ^blood-tests pages/blood-tests.php [L,NC,END]
+RewriteRule  ^gp-consultation pages/gp-consulation.php [L,NC,END]
+RewriteRule  ^travel-vaccination-pgds pages/travel-vaccination-pgds.php [L,NC,END]
 
 
 <ifModule mod_gzip.c>

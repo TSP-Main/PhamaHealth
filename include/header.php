@@ -485,7 +485,7 @@ $patientMode=1;
 
 				 ?>
 
-            <li class="nav-item dropdown how_it_dropdown" style="padding:0px 15px">
+            <li class="nav-item dropdown how_it_dropdown" style="padding:0px 7px">
 
                 <a class="nav-link dropdown-toggle" href="#" style="font-size:16px !important" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -528,6 +528,8 @@ $patientMode=1;
 							
 
 							 ?>
+                             
+                             <?php if ($rowTreatMenu['condition_id']!=23) { ?>
 
                             <li>
 
@@ -535,15 +537,20 @@ $patientMode=1;
 
                             </li>
 
-                         <?php }
+                         <?php } 
+						 }
 
 								}?>
-
+                                
+                                
+ 							
                   
 
                 </ul>
 
             </li>
+            
+             
 
 
 
@@ -553,7 +560,12 @@ $patientMode=1;
 
 
 
-            
+            <li class="nav-item " style="padding:0px 7px ">
+              <a class="nav-link" href="<?php echo URL?>treatments/tdetail?c=23" style="font-size:16px !important" role="button"  aria-expanded="false">
+              Weight Loss
+              </a>
+             
+             </li>
 
 
 

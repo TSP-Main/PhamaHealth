@@ -110,13 +110,13 @@ or online pharmacies</h5>
 					<li>Electronic private prescriptions issued same or next day</li>
 				  <li>UK qualified pharmacist prescribers and doctors</li>
 				  <li>Regulated by the Care Quality Commission (CQC)</li>
-				  <li><a href="#">View full medication list</a></li>
+				  <li><a href="<?php echo URL?>treatments/a-z-treatments">View full medication list</a></li>
 				</ul>
 				<div class="btn_group">
 					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Read More 
 						<i class="fa-regular fa-arrow-right"></i>
 					</a>
-					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Pharmacy FAQ</a>
+					<a href="#pharmacyfaq" class="d-inline-flex align-items-center btn btn-outline-primary">Pharmacy FAQ</a>
 				</div>
 			</div>
 		</div>
@@ -422,7 +422,7 @@ patients
 		</div>
 	</div>
 </section>
-<section class="faqs">
+<section class="faqs" id="pharmacyfaq">
 	<div class="container wow fadeInUp" data-wow-delay="0.5s">
 		<h2 class="title_h2 text-center">Frequently Asked <br> Questions <span>?</span></h2>
 		<div class="row">

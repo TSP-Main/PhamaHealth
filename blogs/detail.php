@@ -98,7 +98,7 @@ include PATH."include/headerhtml.php"
 									?> 
                                     
 									<div class="news-block d-flex align-items-center pt-20 pb-20 border-top">
-										<div><img src="<?php print URL;?>classes/timthumb.php?src=<?php echo URL?>images/blogs/<?php echo $BlogSide['blog_image']?>&w=73&h=73&zc=1"></div>
+										<div><img src="<?php print URL;?>classes/timthumb.php?src=<?php echo URL?>images/blogs/<?php echo $BlogSide['blog_image']?>&w=180&h=80&zc=1" style="max-width:100px !important;width: 180px; height: 80px; object-fit: cover; border-radius: 4px;"></div>
 										<div class="post ps-4">
 											<h4 class="mb-5"><a style="color:#333; font-size:14px" href="<?php echo URL?>blogs/listing?bid=<?php echo $BlogSide['id']; ?>" class="title tran3s"><?php echo $BlogSide['blog_title']; ?></a></h4>
 											<!--<div class="date">23 July, 2022</div>-->

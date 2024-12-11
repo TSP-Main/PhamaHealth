@@ -5,7 +5,7 @@ include PATH."include/headerhtml.php"
   	<?php include PATH."include/header.php"; ?> 
 <section class="top_info">
 	<div class="container">
-		<div class="d-inline-flex w100p">
+		<div class="d-inline-flex w100p" style="padding-top:50px">
 			<div>
 			<h2 class="title_h2">We provide the following treatments</h2>
 			<p>Select from the list below to view all medications</p>

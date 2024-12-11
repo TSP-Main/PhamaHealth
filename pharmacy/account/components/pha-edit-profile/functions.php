@@ -124,6 +124,11 @@
 			'pharmacy_notes' => $_POST['txtNotes'], 			
 			'pharmacy_logo' => $_POST['images4ex'][0],							
 			'pharmacy_about_us' => $_POST['txtAboutus'], 
+			'pharmacy_account_name' => $_POST['txtAccountName'], 
+			'pharmacy_account_number' => $_POST['txtAccountNumber'], 
+			'pharmacy_account_sortno' => $_POST['txtAccountSortCode'],	
+			'pharmacy_account_bankname' => $_POST['txtBankName'],
+			
 			'pharmacy_website' => $_POST['txtWebsite'] 
 			
 			);

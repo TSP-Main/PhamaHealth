@@ -535,7 +535,7 @@ else
                                                             
                                                            <div id="timings_<?php echo $val?>" <?php if (!in_array($val,$arrWeek)) echo 'style="display:none"'; ?>>
                                                             <div class="row" >
-                                                            	<div class="col-md-4">
+                                                            	<div class="col-md-8">
                                                                 
                                                                 <div class="row">
                                                                 	<div class="col-md-4" style="padding-top:6px">
@@ -586,7 +586,7 @@ else
                                                                </div>
                                                                
                                                                <div class="row">
-                                                            	<div class="col-md-4">
+                                                            	<div class="col-md-8">
                                                                 
                                                                 <div class="row">
                                                                 	<div class="col-md-4" style="padding-top:6px">
@@ -711,7 +711,7 @@ else
                             
                             <div class="form-group">
 								<label class="form-label">About us</label>
-								<textarea name="txtAboutus" class="form-control"><?php echo $row['pharmacy_about_us']?></textarea>
+								<textarea name="txtAboutus" class="form-control" rows="8"><?php echo $row['pharmacy_about_us']?></textarea>
 							</div>
                             
                              <div class="form-group">
@@ -733,6 +733,30 @@ else
                                     <option value="3" <?php if ($row['pharmacy_tier']==3) echo "selected"; ?>>Tier 3</option>
                                     
                                 </select>
+							</div>
+                     
+                      <div style="height:20px"></div>
+                            
+                            <h4 style="text-transform:uppercase"><u>Bank Account details</u></h4>
+                            
+                            <div class="form-group">
+								<label class="form-label">Account Name</label>
+								<input class="form-control mb-4" type="text" id="txtAccountName" name="txtAccountName" value="<?php echo $row['pharmacy_account_name']?>" >
+							</div>
+                            
+                             <div class="form-group">
+								<label class="form-label">Account Number:</label>
+								<input class="form-control mb-4" type="text" id="txtAccountNumber" name="txtAccountNumber" value="<?php echo $row['pharmacy_account_number']?>" >
+							</div>
+                            
+                             <div class="form-group">
+								<label class="form-label">Sort Code</label>
+								<input class="form-control mb-4" type="text" id="txtAccountSortCode" name="txtAccountSortCode" value="<?php echo $row['pharmacy_account_sortno']?>" >
+							</div>
+                            
+                            <div class="form-group">
+								<label class="form-label">Name of Bank</label>
+								<input class="form-control mb-4" type="text" id="txtBankName" name="txtBankName" value="<?php echo $row['pharmacy_account_bankname']?>" >
 							</div>
                     
                     <div class="card">
@@ -1192,6 +1216,46 @@ $("#adminForm").validate({
 															?>
                                                             
                                                              </span>
+														</td>
+													</tr>
+                                                    
+                                                    <tr>
+														<td>
+															<span class="w-50">Account Name</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_name']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                    <tr>
+														<td>
+															<span class="w-50">Bank Account Number</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_number']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                     <tr>
+														<td>
+															<span class="w-50">Bank Sort Code</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_sortno']; ?> </span>
+														</td>
+													</tr>
+                                                    
+                                                     <tr>
+														<td>
+															<span class="w-50">Bank Name</span>
+														</td>
+														<td>:</td>
+														<td>
+															<span class="font-weight-semibold"><?php echo $row['pharmacy_account_bankname']; ?> </span>
 														</td>
 													</tr>
                                                     

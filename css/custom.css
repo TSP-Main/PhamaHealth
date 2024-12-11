@@ -12,6 +12,12 @@
 
 .top-navbar .navbar-nav li.login_btn2 a:hover, .top-navbar .navbar-nav li.login_btn a:focus{background-color:#F6C;color: #FFF;}
 
+.blog-heading {
+	color:#333;
+	font-size:30px
+	
+}
+
 .med-text1 {
 	font-size:14px;
 	text-decoration:none;
@@ -3449,7 +3455,7 @@ ul.list_items li::after {
 
 } 
 
-.our-team-box .img_box{width: 241px;position: absolute;top: 15px;left: 15px;}
+.our-team-box .img_box{width: 196px;position: absolute;top: 15px;left: 15px;}
 
 .our-team-box h3{font-size: 18px;color: #204066;font-weight: bold;margin-top: 15px;}
 
