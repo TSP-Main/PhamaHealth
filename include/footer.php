@@ -4,41 +4,7 @@
 
 		<div class="row">
 
-			<div class="col-sm-3">
-
-				<div class="footer_info">
-
-					<a href="<?php echo URL?>" class="footer_logo">
-
-						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg">
-
-					</a>
-
-
-
-		<p>14/2G Docklands Business Centre <br>
-
-10-16 Tiller Road <br>
-
-London <br />
-
-E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
-
-<ul class="social_media">
-
-	<li><a href="#"><img src="<?php echo URL?>images/f_icon.png"></a></li>
-
-	<li><a href="#"><img src="<?php echo URL?>images/t_icon.png"></a></li>
-
-	<li><a href="#"><img src="<?php echo URL?>images/i_icon.png"></a></li>
-
-	<li><a href="#"><img src="<?php echo URL?>images/y_icon.png"></a></li>
-
-</ul>
-
-				</div>
-
-			</div>
+			
 
 			<div class="col-sm-3">
 
@@ -111,6 +77,42 @@ E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
 						<li><a href="<?php echo URL?>complaints-and-feedback">Complaints & Feedback</a></li> 
 
 					</ul>
+
+				</div>
+
+			</div>
+            
+            <div class="col-sm-3">
+
+				<div class="footer_info">
+
+					<a href="<?php echo URL?>" class="footer_logo">
+
+						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg">
+
+					</a>
+
+
+
+		<p>14/2G Docklands Business Centre <br>
+
+10-16 Tiller Road <br>
+
+London <br />
+
+E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
+
+<ul class="social_media">
+
+	<li><a href="#"><img src="<?php echo URL?>images/f_icon.png"></a></li>	
+    
+    <li><a href="#"><img src="<?php echo URL?>images/twitter-x.png" style="max-height:30px"></a></li>
+
+	<li><a href="#"><img src="<?php echo URL?>images/i_icon.png"></a></li>
+
+	<li><a href="#"><img src="<?php echo URL?>images/y_icon.png"></a></li>
+
+</ul>
 
 				</div>
 
