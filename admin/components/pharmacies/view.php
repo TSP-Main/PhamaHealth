@@ -974,7 +974,7 @@ $("#adminForm").validate({
                                                 
                                                 <?php if ($row['pharmacy_logo']!="") { ?>
 										
-												<img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $row['pharmacy_logo']; ?>&w=150&h=70&zc=1">
+												<img src="<?php echo URL; ?>classes/timthumb.php?src=<?php echo URL ?>images/pharmacies/<?php echo $row['pharmacy_logo']; ?>&w=180&zc=1">
                                                 <?php } ?>
                                                 </td></tr>
 													<tr>
