@@ -75,7 +75,7 @@ if (isset($_GET['code'])) {
            
 				<div class="left text-center">
 					<a href="<?php echo URL?>" class="logo">
-						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg">
+						<img src="<?php echo URL?>images/Pharmacy-health-final-logo.svg" style="max-width:300px">
 					</a>
                     
                     <?php if ($_GET['reset']==1)

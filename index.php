@@ -474,11 +474,13 @@ Independent Pharmacy</p>
             <div class="col-sm-3">
 
 				<div class="treatments_box">
-
+					<div class="treatments_mobile treatments_toggle">
 					<img class="icon_img" src="<?php echo URL?>images/ChildrensHealth.png">
 
 					<h3>Minor Ailments</h3>
-
+                    <i class="treatments_toggle fa-solid fa-angle-down" style="display: none;"></i>
+                    </div>
+			<div class="level-box">
 					<ul class="list_item_1">
 
 						<li><a href="<?php echo URL?>treatments/tdetail?c=34"><span>Ear Infection</span></a></li>
@@ -488,12 +490,13 @@ Independent Pharmacy</p>
 						<li><a href="<?php echo URL?>treatments/tdetail?c=41"><span>Pain Relief</span></a></li>
 
 					</ul>
+                    <div class="mt-auto">
 
-					<div class="mt-auto">
+					<a href="<?php echo URL?>treatments/a-z-conditions?c=3" class="btn btn-danger btn-sm float-end">View All</a>
 
-						<a href="<?php echo URL?>treatments/a-z-conditions" class="btn btn-danger btn-sm float-end">View All</a>
-
-					</div>
+				</div>
+				</div>
+					
 
 				</div>
 
