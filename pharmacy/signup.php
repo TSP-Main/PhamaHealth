@@ -1,8 +1,9 @@
 <?php include "../private/settings.php";
 include PATH."include/headerhtml.php"
  ?>
-  <link type="text/css" href="<?php echo URL?>patient/orakuploader/orakuploader.css" rel="stylesheet"/>
-  <body style="padding-top:0px;">  
+
+<link type="text/css" href="<?php echo URL?>patient/orakuploader/orakuploader.css" rel="stylesheet"/>
+  <body style="padding-top:0px; ">  
 <section class="register_screen">
     <div class="container">
         <div class="logo_box">
