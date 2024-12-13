@@ -147,11 +147,11 @@ additional services that is faster than any comparable online service</p>
 				<div class="regulatory_details_box">
 					<h3 class="title_h3">Regulation</h3>
 					<p class="mb-3">PharmaHealth and it's Clinicians are regulated by the following regulatory bodies:</p>
-<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/care_logo.png"><br>
+<p class="mb-3"><img  src="<?php echo URL?>images/care_logo.png" width="30%" style="padding-bottom:10px"><br>
 	<span>CQC :</span> Pro UK Health Ltd t/a PharmaHealth is regulated by the Care Quality Commission (CQC), Location ID: 1-11457399511. <br>Our clinicians are regulated by the following regulatory bodies:</p>
-	<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/gphc.png"><br>
+	<p class="mb-3"><!--<img class="w100p" src="<?php echo URL?>images/logos_img.jpg"><br>-->
 		<span>GPhC : </span>Our Pharmacist Prescribors and Partner Pharmacies are regulated by the General Pharmaceutical Council (GPhC).</p>
-	<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/logos_img.jpg"><br>
+	<p class="mb-3"><!--<img class="w100p" src="<?php echo URL?>images/logos_img.jpg"><br>-->
 		<span>GMC : </span>Our Doctors are regulated by the General Medical Council (GMC).</p>
 	<p class="mb-3"><a href="<?php echo URL?>regulations" class="btn btn-danger btn-sm float-end">Read More</a>			  </p>
 				</div>

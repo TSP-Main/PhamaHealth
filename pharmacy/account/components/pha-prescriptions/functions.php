@@ -789,7 +789,7 @@ function changepresStatus()
 			if ($_POST['rdChange']==3 || $_POST['rdChange']==5)
 			{
 				
-				$sqlPayments = "SELECT * FROM tbl_payments WHERE payment_pres_id='" . $database->filter($_POST['hdId']) . "'";
+				 $sqlPayments = "SELECT * FROM tbl_payments WHERE payment_pres_id='" . $database->filter($_POST['hdId']) . "'";
        			$resPayments = $database->get_results($sqlPayments);
 				if (count($resPayments) > 0) {
 					$rowPayments = $resPayments[0];
@@ -797,9 +797,24 @@ function changepresStatus()
 					$result="success";
 					else
 					{
-					$charge_id = $rowPayments['payment_stripe_charge_id'];
-					include PATH . "patient/questionnaire/capture-payment.php";
+						
+						$payment_date = $rowPayments['payment_date']; // Replace with your actual datetime value
+						$five_days_ago = strtotime('-5 days');
+						$payment_date_timestamp = strtotime($payment_date);
+						if ($payment_date_timestamp > $five_days_ago) {
+						
+						$charge_id = $rowPayments['payment_stripe_charge_id'];
+						include PATH . "patient/questionnaire/capture-payment.php";
+						}
+						else
+						{
 					
+							$customer_id = $rowPayments['payment_stripe_customer_id'];
+							$amountCharge=$rowPayments['payment_amount'];
+							$presId=$rowPayments['payment_pres_id'];
+							include PATH . "patient/questionnaire/autocharge.php";
+						}
+							
 						if ($result=="success")
 						{
 							$updatePayStatus = array(
@@ -813,8 +828,11 @@ function changepresStatus()
 						}
 						else
 						{
-							 echo "Payment is not charged, prescription couldn't be approved, please contact admin";
-							 exit;
+							echo "Payment is not charged, prescription couldn't be approved, please contact admin";
+							exit;
+						
+							 
+							 
 						}
 					}
 				}

@@ -449,16 +449,6 @@ Independent Pharmacy</p>
 
 		<?php } ?>	
 
-			
-
-			
-
-			
-
-			
-
-			
-
 		</div>
 
 	</div>

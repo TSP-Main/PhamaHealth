@@ -151,7 +151,7 @@ London E14 8PX <br><a href="<?php echo URL?>contact-us">Contact Us</a></p>
 
 <script src="<?php echo URL?>/js/wow.min.js"></script>
 
-<?php if ($frontPageName=="index.php" || $frontPageName=="pharmacy.php" || $frontPageName=="tdetail.php") { ?>
+<?php if ($frontPageName=="index.php" || $frontPageName=="pharmacy.php" || $frontPageName=="about-us.php" || $frontPageName=="tdetail.php") { ?>
 
 
 
