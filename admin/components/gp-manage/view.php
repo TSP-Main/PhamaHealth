@@ -328,7 +328,7 @@ $pagingObject->displayLinks_Front();
 <!--Page header-->
 <div class="page-header d-lg-flex d-block">
 	<div class="page-leftheader">
-	<h4 class="page-title">GP Details : <?php if (@count($row)>0) echo 'Edit'; else echo 'Add'; ?></h4>
+	<h4 class="page-title">GP Details : <?php if ($_GET['task=']=="edit") echo 'Edit'; else echo 'Add'; ?></h4>
 	</div>
 	<div class="page-rightheader ml-md-auto">
 		<div class=" btn-list">
@@ -420,7 +420,7 @@ $pagingObject->displayLinks_Front();
 <!--Page header-->
 <div class="page-header d-lg-flex d-block">
 	<div class="page-leftheader">
-	<h4 class="page-title">GP Details : <?php if (@count($row)>0) echo 'Edit'; else echo 'Add'; ?></h4>
+	<h4 class="page-title">GP Details : <?php if ($_GET['task=']=="edit") echo 'Edit'; else echo 'Add'; ?></h4>
 	</div>
 	<div class="page-rightheader ml-md-auto">
 		<div class=" btn-list">

@@ -649,18 +649,28 @@ ul.breadcrumbs_list {
 .breadcrumbs {
 	padding:27px 0px 10px 0px;
 	}
-	
+.how_to_order_list {
+	padding-left:15px;
+	}	
 .how_to_order_list li {
-	padding-left:110px;
+	padding-left:120px;
+	margin-bottom:15px;
 	}	
 .how_to_order_list li h4 {
 	font-size:17px;
 	color:#000;
 	}
+.how_to_order_list li .img_box {
+	width:110px;
+	}	
 .how_to_order_list li .img_box h3 {
 	font-size:20px;
 	padding-top:6px;
-	}				
+	}
+	
+.banner_1 {
+	min-height:162px;
+	}					
 .simply_collect .list_item {
 
 	margin-top: 40px;
@@ -1362,10 +1372,24 @@ ul.setup_nav li {
 
 } 
 
+.about_pharma_health {
+	padding-top:40px;
+	}
 
-
-
-
+.about_pharma_health p {
+	font-size:16px;
+	}
+.our_vision .our_vision_in p {
+	font-size:16px;
+	}
+.our_vision .our_vision_in {
+	padding-top:0px;
+	}
+.pe-5 {
+	padding-right:10px !important;}
+.ps-5 {
+	padding-left:10px !important;
+	}		
 }
 
 
@@ -1628,6 +1652,11 @@ ul.setup_nav li {
 }
 .title_h5 {
   font-size: 16px;}
+  
+ .banner_1 .title_h3 {
+ 	font-size:30px;
+	padding-left:12px;
+	} 
 .simply_collect .btn {
 	margin-top: 25px;
 	margin-left: 20px;

@@ -4,7 +4,22 @@
 $searchTerm = $_GET['term']; 
  
 // Fetch matched data from the database 
-$query = $database->get_results("SELECT * FROM tbl_gps WHERE (gp_name LIKE '%".$database->filter($searchTerm)."%' || gp_address LIKE '%".$database->filter($searchTerm)."%') AND gp_status = 1 ORDER BY gp_name ASC limit 0,12"); 
+$query = $database->get_results("
+    SELECT * 
+    FROM tbl_gps 
+    WHERE 
+        (gp_name LIKE '%".$database->filter($searchTerm)."%' 
+         OR gp_address LIKE '%".$database->filter($searchTerm)."%') 
+        AND gp_status = 1 
+    ORDER BY 
+        CASE 
+            WHEN gp_name LIKE '".$database->filter($searchTerm)."%' THEN 1
+            ELSE 2
+        END, 
+        gp_name ASC 
+    LIMIT 0,12
+");
+
  
 // Generate array with skills data 
 $gpData = array();

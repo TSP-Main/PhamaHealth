@@ -15,7 +15,7 @@ include PATH."include/headerhtml.php"
 <section class="about_pharma_health">
 	<div class="container">
 		<div class="row align-items-center">
-			<div class="col-sm-5">
+			<div class="col-sm-5 mobile-hide">
 				<img src="<?php echo URL?>images/heart.png">
 			</div>
 			<div class="col-sm-7">
@@ -43,14 +43,13 @@ additional services that is faster than any comparable online service</p>
 		<div class="our_vision_in">
 			<div class="row">
 				<div class="col-sm-7 pe-5">
-					<h2 class="title_h2">Our Vision</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
-					<p>veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				  <h2 class="title_h2">Our Vision</h2>
+					<div>
+					  <p>Our mission at Pharmacinta is to empower independent community pharmacies to play a more active role in community healthcare by providing them with a cutting-edge clinical prescribing platform that enables them to offer prescription medications through private electronic prescriptions to their patients. We are dedicated to bridging primary healthcare access by positioning local pharmacies as trusted healthcare partners, delivering enhanced patient care, strengthening pharmacy-patient relationships, and creating new revenue opportunities in a competitive healthcare landscape. </p>
+					 <p>Moreover, our service strengthens the competitive position of community pharmacies against online-only pharmacies. With same-day medication collection and established patient relationships, community pharmacies hold distinct advantages. The pharmacy-patient relationship is often second only to that of doctors, and our service enables pharmacies to leverage this trust by providing patients with a convenient, reliable, and cost-effective alternative to solely online services.</p>
+		          </div>
+					
+					
 				</div>
 				<div class="col-sm-5">
 					<img class="w100p" src="<?php echo URL?>images/vision.jpg">
@@ -61,16 +60,10 @@ additional services that is faster than any comparable online service</p>
 			<div class="row">
 				<div class="col-sm-7 order-2 ps-5">
 					<h2 class="title_h2">Our Partner Pharmacies</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
-					<p>veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>We are currently rolling out our service with partner pharmacies, starting with our first cohort in London. Over the next six months, we anticipate rapid growth and aim to expand our availability to most major cities across the UK.</p>
 					<a href="<?php echo URL?>partner-pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5 mt-3">View All Partner Pharmacies</a>
 				</div>
-				<div class="col-sm-5">
+				<div class="col-sm-5 mobile-hide">
 					<img class="w100p" src="<?php echo URL?>images/logos_img.jpg">
 				</div>
 			</div>
@@ -78,31 +71,56 @@ additional services that is faster than any comparable online service</p>
 	</div>
 </section>
  
-<section class="our-team" id="team">
-	<div class="container">
-		<h2 class="title_h2">Our Clinical Team</h2>
-		<div class="row">
-		<?php $sqlCTeam="select * from tbl_clinical_team where team_status=1 order by team_id"; 
+<section class="our_team">
+
+	<div class="container wow fadeInUp" data-wow-delay="0.5s">
+
+		<h2 class="title_h2 text-center">Our Clinical Team</h2>
+
+		<div class="owl-carousel-2 owl-carousel">
+
+        
+
+        
+
+        <?php $sqlCTeam="select * from tbl_clinical_team where team_status=1 order by team_id"; 
+
 		
+
 		$resCTeam=$database->get_results($sqlCTeam);
+
 		for ($r=0;$r<count($resCTeam);$r++)
+
 		{
-			$rowCTeam=$resCTeam[$r];		
+
+			$rowCTeam=$resCTeam[$r];
+
+		
+
 		?>
-			<div class="col-sm-12">
-				<div class="our-team-box">
-					<div class="img_box">
-						<img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/team/<?php echo $rowCTeam['team_image']?>&w=400&h=410&zc=1">
-					</div>
-					<h3><?php echo $rowCTeam['team_name']?></small></h3>
+
+			<div class="item">
+
+				<div class="our_team_box">
+
+					<a href="<?php echo URL?>about-us#team"><img src="<?php echo URL?>classes/timthumb.php?src=<?php echo URL?>images/team/<?php echo $rowCTeam['team_image']?>&w=400&h=300&zc=1"></a>
+
+					<h3><?php echo $rowCTeam['team_name']?></h3>
+
 					<h6><?php echo $rowCTeam['team_designation']?></h6>
-					<p><?php echo fnUpdateHTML($rowCTeam['team_description'])?></p>
+
 				</div>
+
 			</div>
+
 			
+
 		<?php } ?>	
+
 		</div>
+
 	</div>
+
 </section>
 
 <section class="regulatory_details">
@@ -129,11 +147,13 @@ additional services that is faster than any comparable online service</p>
 				<div class="regulatory_details_box">
 					<h3 class="title_h3">Regulation</h3>
 					<p class="mb-3">PharmaHealth and it's Clinicians are regulated by the following regulatory bodies:</p>
-<p class="mb-3"><span>CQC :</span> Pro UK Health Ltd t/a PharmaHealth is regulated by the Care Quality Commission                            (CQC), Location ID: 1-11457399511.</p>
-<p class="mb-3">Our clinicians are regulated by the following regulatory bodies:</p>
-<p class="mb-3"><span>GPhC : </span>Our Pharmacist Prescribors and Partner Pharmacies are regulated by the General Pharmaceutical Council (GPhC).</p>
-<p class="mb-3"><span>GMC : </span>Our Doctors are regulated by the General Medical Council (GMC).</p>
-<p class="mb-3"><a href="<?php echo URL?>regulations" class="btn btn-danger btn-sm float-end">Read More</a>			  </p>
+<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/care_logo.png"><br>
+	<span>CQC :</span> Pro UK Health Ltd t/a PharmaHealth is regulated by the Care Quality Commission (CQC), Location ID: 1-11457399511. <br>Our clinicians are regulated by the following regulatory bodies:</p>
+	<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/gphc.png"><br>
+		<span>GPhC : </span>Our Pharmacist Prescribors and Partner Pharmacies are regulated by the General Pharmaceutical Council (GPhC).</p>
+	<p class="mb-3"><img class="w100p" src="<?php echo URL?>images/logos_img.jpg"><br>
+		<span>GMC : </span>Our Doctors are regulated by the General Medical Council (GMC).</p>
+	<p class="mb-3"><a href="<?php echo URL?>regulations" class="btn btn-danger btn-sm float-end">Read More</a>			  </p>
 				</div>
 			</div>
 			<!--<div class="col-sm-4">
