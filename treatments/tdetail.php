@@ -86,7 +86,7 @@ include PATH."include/headerhtml.php"
 
 .banner_01 h6{font-size: 19px;margin:0 0 25px 0; color:#414040;font-weight: bold;}
 
-.banner_01 p{font-size: 18px;color: #757575;}
+.banner_01 p{font-size: 17px;color: #757575;}
 
 .banner_01 .right{padding-top: 42px;padding-bottom: 35px;}
 
@@ -98,7 +98,7 @@ include PATH."include/headerhtml.php"
 
  background-position: top;
 
- background-size:80%;
+ background-size:75%;
 
  } 
 
