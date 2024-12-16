@@ -65,7 +65,7 @@ include PATH."include/headerhtml.php"
 		<div class="how_to_works_one d-flex">
 			<div class="left">
 				<h3 class="title_h3">Collect Medication from Nominated Pharmacy</h3>
-				<p>Your nominated pharmacy will receive the  electronic private prescription. They will dispense your medication and have it  ready for collection. You will receive an email confirmation from Pharma Health  once the medication is ready for collection. </p>
+				<p>Your nominated pharmacy will receive the  electronic private prescription. They will dispense your medication and have it  ready for collection. You will receive an email confirmation from Pharmacinta  once the medication is ready for collection. </p>
 </div>
 			<div class="center">
 				<h5>STEP</h5>
@@ -76,7 +76,7 @@ include PATH."include/headerhtml.php"
 			</div>
 		</div>
 		<div class="w100p text-center">
-			<a href="<?php echo URL?>patient/signup"><button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</button></a>
+			<a href="<?php echo URL?>patient/signup"><button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharmacinta</button></a>
 		</div>
 	</div>
 </section>

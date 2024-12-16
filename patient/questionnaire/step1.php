@@ -29,7 +29,7 @@ include PATH."include/headerhtml.php";
          
             <?php /*$strDisclaimer='<table><tr><td><p>Please ensure you read and understand the following information prior to completing the medical 
 assessment. The consultation should not take longer than 3-5 minutes to complete.</p>
-<p>It is important that you answer all the questions correctly and honestly to allow the Pharma Health 
+<p>It is important that you answer all the questions correctly and honestly to allow the Pharmacinta 
 clinical team to assess your needs and ensure the treatment is safe and effective for you. </p>
 <p>The information you provide us is treated with the utmost confidentiality & will be reviewed by a UK 
 registered pharmacist prescriber. The questions listed in this medical assessment will help provide 
@@ -51,7 +51,7 @@ whether the treatment is suitable for your condition.</p>
   </li>
   <li>Are happy for us to contact you if we have any queries about your  condition.<br>
   </li>
-  <li>Agree to follow any additional advice given by the Pharma Health  clinical team.<br>
+  <li>Agree to follow any additional advice given by the Pharmacinta  clinical team.<br>
   </li>
   <li>Have read, understood and agreed to our Terms &amp; Conditions,  Privacy Notice and Terms of Sale.&nbsp; </li>
 </ul>

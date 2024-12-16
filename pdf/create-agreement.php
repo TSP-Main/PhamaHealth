@@ -29,7 +29,7 @@ body {
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <table width="90%" >
-<tr><td align="left"><img  src="'.PATH.'images/pharma-logo-admin.png" style="max-width:250px" alt="Pharma Health"></td>
+<tr><td align="left"><img  src="'.PATH.'images/pharma-logo-admin.png" style="max-width:250px" alt="Pharmacinta"></td>
 
 </tr>
 <tr><td><h3>Agreement</h3></td></tr>

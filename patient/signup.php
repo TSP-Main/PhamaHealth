@@ -20,7 +20,7 @@ include PATH."include/headerhtml.php"
         <form id="frmApp" name="frmApp" method="POST" class="grid spacer-24">
             <div class="top">
             <h2 class="title_h2">Create Your Account</h2>
-            <p>Creating your Pharma Health account is quick and easy.</p>
+            <p>Creating your Pharmacinta account is quick and easy.</p>
             </div>
             <div class="row">
                 <div class="col-sm-4">
@@ -252,11 +252,11 @@ include PATH."include/headerhtml.php"
                  <div class="checkbox form-group">
                     <label class="custom_checkbox">
                         <input type="checkbox" name="CkTerms" id="CkTerms" value="1" class="form-check-input" data-validation="required" data-validation-error-msg="Please accept terms and conditions">
-                        I have read, understood and agree to Pharma Health <a href="#">Terms & Conditions, </a><a href="#">Privacy Notice</a> and <a href="#">Terms of Sale</a>
+                        I have read, understood and agree to Pharmacinta <a href="#">Terms & Conditions, </a><a href="#">Privacy Notice</a> and <a href="#">Terms of Sale</a>
                     </label>
                  </div>
                     <label class="custom_checkbox">
-                        <input type="checkbox" name="CkMarketing" value="1" class="form-check-input">I would like to receive marketing messages & updates from Pharma Health.</label>
+                        <input type="checkbox" name="CkMarketing" value="1" class="form-check-input">I would like to receive marketing messages & updates from Pharmacinta.</label>
 <div><input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6Lc38CkUAAAAAGSzBr9awm5tAfiMLHitD5f21vI4"></div>
                       
                          <div class="button_box">

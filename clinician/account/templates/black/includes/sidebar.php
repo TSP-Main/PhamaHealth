@@ -50,9 +50,9 @@ if ($_GET['c']!="")
 
 			
 
-			<img src="<?php echo URL?>images/logo.png" class="header-brand-img dark-logo" alt="Pharma Health">
+			<img src="<?php echo URL?>images/logo.png" class="header-brand-img dark-logo" alt="Pharmacinta">
 
-			<img src="<?php echo URL?>images/heart-logo.png" class="header-brand-img mobile-logo" alt="Pharma Health">
+			<img src="<?php echo URL?>images/heart-logo.png" class="header-brand-img mobile-logo" alt="Pharmacinta">
 
 			
 

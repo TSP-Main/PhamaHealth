@@ -162,7 +162,7 @@ additional services that is faster than any comparable online service</p>
 					<p class="mb-3">Medicines & Healthcare products Regulatory 
 Agency regulates medicines and medical 
 devices in the UK.</p>
-<h5>Contact Pharma Health</h5>
+<h5>Contact Pharmacinta</h5>
 <p class="mb-3">10 South Colonnade, Canary Wharf, 
 London E14 4PU</p>
 <p class="mb-2">Email: <span>help@pharmahealth.co.uk</span></p>

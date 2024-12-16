@@ -9,7 +9,12 @@
 .top-navbar .navbar-nav li.login_btn a:hover, .top-navbar .navbar-nav li.login_btn a:focus{background-color: #0c74ae;color: #FFF;}
 
 
-
+.img-220px {
+    height: 170px; /* Set a fixed height for all images */
+    width: auto;   /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fills the height */
+    display: block; /* Prevents inline spacing issues */
+}
 
 
 
@@ -1412,7 +1417,7 @@ img{max-width: 100%;}
 
 
 
-.owl-dots {text-align: center;}
+.owl-dots {text-align: center;margin-top:15px}
 
 
 
@@ -4405,37 +4410,16 @@ align-items: center;font-size: 16px;min-height: 44px; color: #4c4c4c;line-height
 
 
 .commonly_item {
-
-
-
-    flex: 1;
-
-
-
-    min-width: 200px; /* Minimum width for a product */
-
-
-
-    max-width: calc(100% / 5 - 10px); /* Adjust based on the number of products you want per row */
-
-
-
+	flex: 1;
+	min-width: 200px; /* Minimum width for a product */
+    /*max-width: calc(100% / 5 - 10px); */
+    max-width: 100%;
+    /* Adjust based on the number of products you want per row */
+    width: 100%;
     padding: 10px;
-
-
-
 	box-sizing: border-box;
-
-
-
     background-color: #fff;
-
-
-
 	border:1px solid #f2f2f2;
-
-
-
 }
 
 
@@ -8709,6 +8693,8 @@ ul.contact_list{margin-bottom: 30px;}
 
 
 }
+
+.mpt-0{padding-top: 0!important}
 
 
 

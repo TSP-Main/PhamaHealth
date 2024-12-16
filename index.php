@@ -259,7 +259,11 @@ $bannerExists=1;
 
 		<ul class="our_partner_logos wow fadeInUp" data-wow-delay="0.2s">
 
-			<li><h4 class="title_h4">Our Partner Pharmacies</h4></li>
+			<li><h4 class="title_h4">Our Partner Pharmacies</h4>
+            
+            <br>
+            <a href="<?php echo URL?>partner-pharmacy">View all Partner Pharmacies</a>
+            </li>
 
 			<li class="item wow fadeInUp" data-wow-delay="0.2s"><img src="<?php echo URL?>images/well_logo.png"></li>
 
@@ -295,7 +299,7 @@ requiring a GP appointment.</h3>
 
 	<h5 class="title_h5">Simply, collect from your Local Pharmacy</h5>
 
-	<a href="<?php echo URL?>patient/signup" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</a>
+	<a href="<?php echo URL?>patient/signup" class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharmacinta</a>
 
 			</div>
 

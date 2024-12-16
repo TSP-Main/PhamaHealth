@@ -56,7 +56,7 @@ include_once PATH."mail/sendmail.php";
 				$FromEmail=ADMIN_FORM_EMAIL;
 				$FromName=FROM_NAME;
 				
-				$SubjectSend="Welcome to Pharma Health";
+				$SubjectSend="Welcome to Pharmacinta";
 				$BodySend=$mailBody;	
 
 				SendMail($ToEmail, $FromEmail, $FromName, $SubjectSend, $BodySend);

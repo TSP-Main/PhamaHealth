@@ -420,7 +420,7 @@ if ($_POST['txtForename']!="" && $_POST['txtEmail']!=""  && !empty($recaptcha))
 			
 				/*include PATH."include/email-templates/email-template.php";
 	
-				$headingTemplate="Activate your Pharma Health account";	
+				$headingTemplate="Activate your Pharmacinta account";	
 				$headingContent='<table align="left" cellpadding="0" cellspacing="0" border="0" width="100%">
  				<tr><td height=30 colspan=2><p>We’re glad you\'re here. Click on link below to activate your account <br> <br><a href="'.URL.'patient/activate?auth='.$verificationCode.'&e='.base64_encode($lastInsertedId).'">Activate Account</a> </p></td></tr>
 				</table>';
@@ -436,7 +436,7 @@ if ($_POST['txtForename']!="" && $_POST['txtEmail']!=""  && !empty($recaptcha))
 				$FromEmail=ADMIN_FORM_EMAIL;
 				$FromName=FROM_NAME;
 				
-				$SubjectSend="Activate your Pharma Health Account";
+				$SubjectSend="Activate your Pharmacinta Account";
 				$BodySend=$mailBody;	
 
 				SendMail($ToEmail, $FromEmail, $FromName, $SubjectSend, $BodySend);

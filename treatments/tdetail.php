@@ -202,9 +202,12 @@ include PATH."include/headerhtml.php"
 
         
 
-        <?php if (count($resMedicine)>1)
+        <?php 
+		$col=12;
+		if (count($resMedicine)>1)
 
 		{
+			$col=6;
 
 			?>
 
@@ -238,7 +241,7 @@ include PATH."include/headerhtml.php"
 
 		 } ?>
 
-			<div class="col-6 col-sm-4 <?php echo $offset?>">
+			<div class="col-<?php echo $col?> col-sm-4 <?php echo $offset?>">
 
            <a href="#medicines" id="id_medicine" style="text-decoration:none">
 
@@ -736,14 +739,14 @@ include PATH."include/headerhtml.php"
  		</div>
 
  	</div>
- 	<div class="accordion mobile_accordion" style="display: none;" id="accordionExample1">
+ 	<div class="accordion mobile_accordion" style="display: none;" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne1">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-        Overview
+        Overview 01
       </button>
     </h2>
-    <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1" data-bs-parent="#accordionExample1">
+    <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1">
       <div class="accordion-body">
         <?php echo fnUpdateHTML($rowTreatments['condition_overview']);?>
       </div>
@@ -755,7 +758,7 @@ include PATH."include/headerhtml.php"
        Symptoms
       </button>
     </h2>
-    <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample1">
+    <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2">
       <div class="accordion-body">
         <?php echo fnUpdateHTML($rowTreatments['condition_symptoms']);?>
       </div>
@@ -767,7 +770,7 @@ include PATH."include/headerhtml.php"
        Causes
       </button>
     </h2>
-    <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3" data-bs-parent="#accordionExample1">
+    <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3">
       <div class="accordion-body">
         <?php echo fnUpdateHTML($rowTreatments['condition_causes']);?>
       </div>
@@ -780,7 +783,7 @@ include PATH."include/headerhtml.php"
        Our Treatments
       </button>
     </h2>
-    <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4" data-bs-parent="#accordionExample1">
+    <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4" >
       <div class="accordion-body">
         <?php echo fnUpdateHTML($rowTreatments['condition_treatments']);?>
       </div>
@@ -793,7 +796,7 @@ include PATH."include/headerhtml.php"
        Other Treatments
       </button>
     </h2>
-    <div id="collapseThree5" class="accordion-collapse collapse" aria-labelledby="headingThree5" data-bs-parent="#accordionExample1">
+    <div id="collapseThree5" class="accordion-collapse collapse" aria-labelledby="headingThree5">
       <div class="accordion-body">
         <?php echo fnUpdateHTML($rowTreatments['condition_alt_treatments']);?>
       </div>
@@ -806,7 +809,7 @@ include PATH."include/headerhtml.php"
       FAQs
       </button>
     </h2>
-    <div id="collapseThree6" class="accordion-collapse collapse" aria-labelledby="headingThree6" data-bs-parent="#accordionExample1">
+    <div id="collapseThree6" class="accordion-collapse collapse" aria-labelledby="headingThree6">
       <div class="accordion-body">
        <div class="accordion" id="accordionExample">
 
@@ -844,7 +847,7 @@ include PATH."include/headerhtml.php"
 
 				    </h2>
 
-				    <div id="collapse<?php echo $rowFaqs['faq_id']?>" class="accordion-collapse collapse <?php if ($f==0) echo 'show'; ?>" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+				    <div id="collapse<?php echo $rowFaqs['faq_id']?>" class="accordion-collapse collapse <?php if ($f==0) echo 'show'; ?>" aria-labelledby="headingOne">
 
 				      <div class="accordion-body">
 

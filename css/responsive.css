@@ -3488,4 +3488,54 @@ ul.list_item_1 li a{font-size: 15px;
 .accordion .accordion-header .accordion-button[aria-expanded="true"] {
 	color: #6b6b6b;
 } 
+
+.owl-carousel-5 .commonly_item {
+	min-width: 100%;
+}
+
+.product_detail .product_note {
+	padding-left: 0;
+	padding-right: 0;
+} 
+
+.product_detail .product_price_box {
+	padding-top: 0;
+} 
+.faqs.faqs_screen.mpt-0 {
+	padding-bottom: 50px;
+} 
+/*.owl-carousel-5 .commonly_item > div {
+	min-height: 130px !important;
+} */
+
+#myModal2 .modal-content table .tab-link {
+	font-size: 12px !important;
+	padding-left: 6px;
+	padding-right: 6px;
+} 
+#myModal2 .modal-content{padding: 10px 10px 10px 10px;}
+#myModal2 .modal-content .close{margin-right: 0;}
+ #myModal2 .modal-content {
+    width: 95%;
+  }
+    .modal-content {
+    width: 95%;
+  } 
+  #rowSearch2 .col-xl-4.col-md-4 {
+	margin-bottom: 10px;
+} 
+#myModal1 .tab-link{font-size: 12px;padding: 10px 7px;}
+#myModal1 .form-control{font-size: 13px;}
+.owl-carousel-5 .owl-dots {
+	margin-top: 17px;
+} 
+
+.owl-carousel-5 .commonly_item{min-height: 279px !important;}
+.hair_products_box h4 {
+	position: static;
+	margin-bottom: 0px;
+	height: auto;
+	float: left;
+	width: 100%;
+}
 }

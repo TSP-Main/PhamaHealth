@@ -99,7 +99,7 @@ prescribing service.</h3>
 or online pharmacies</h5>
 
 
-	<a href="<?php echo URL?>contact-us?contact=pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center " style="background-color:#0D6EFD; color:#FFF;font-size:15px;border-color:#0D6EFD">Register your interest with Pharma Health</a> <br>
+	<a href="<?php echo URL?>contact-us?contact=pharmacy" class="btn btn-danger btn-lg d-inline-flex align-items-center " style="background-color:#0D6EFD; color:#FFF;font-size:15px;border-color:#0D6EFD">Register your interest with Pharmacinta</a> <br>
 	
 			</div>
 			<div class="col-sm-6  wow fadeInRight">
@@ -149,14 +149,14 @@ or online pharmacies</h5>
 			<div class="treatment_box text-center">
 				<img src="<?php echo URL?>images/treatment-icon-4.png">
 				<h4><span>1.</span>Refer <br>Patients</h4>
-				<p> Refer patients to Pharma Health</p>
+				<p> Refer patients to Pharmacinta</p>
 			</div>
 			</div>	
 			<div class="col-sm-3 wow fadeInUp" data-wow-delay="0.3s">
 			<div class="treatment_box text-center">
 				<img src="<?php echo URL?>images/treatment-icon-5.png">
 				<h4><span>2.</span> Medical Questionnaire <br>Reviewed</h4>
-				<p>Pharma Health clinical team will 
+				<p>Pharmacinta clinical team will 
 review questionnaire and approve 
 accordingly</p>
 			</div>
@@ -167,7 +167,7 @@ accordingly</p>
 				<h4><span>3.</span> Private <br>
 Prescription Issued</h4>
 				<p>Receive private prescription from
-Pharma Health via dedicated
+Pharmacinta via dedicated
 online pharmacy portal</p>
 			</div>
 			</div>
@@ -198,14 +198,14 @@ patients
 			<div class="treatment_box text-center">
 				<img src="<?php echo URL?>images/treatment-icon-4.png">
 				<h4><span>1.</span>Refer <br>Patients</h4>
-				<p> Refer patients to Pharma Health</p>
+				<p> Refer patients to Pharmacinta</p>
 			</div>
 			</div>	
 			<div class="col-sm-3">
 			<div class="treatment_box text-center">
 				<img src="<?php echo URL?>images/treatment-icon-5.png">
 				<h4><span>2.</span> Medical Questionnaire <br>Reviewed</h4>
-				<p>Pharma Health clinical team will 
+				<p>Pharmacinta clinical team will 
 review questionnaire and approve 
 accordingly</p>
 			</div>
@@ -216,7 +216,7 @@ accordingly</p>
 				<h4><span>3.</span> Private <br>
 Prescription Issued</h4>
 				<p>Receive private prescription from
-Pharma Health via dedicated
+Pharmacinta via dedicated
 online pharmacy portal</p>
 			</div>
 			</div>

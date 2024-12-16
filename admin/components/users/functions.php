@@ -159,7 +159,7 @@
 					$FromEmail=ADMIN_FORM_EMAIL;
 					$FromName=FROM_NAME;
 					
-					$SubjectSend="Welcome to Pharma Health - Admin Account Activation";
+					$SubjectSend="Welcome to Pharmacinta - Admin Account Activation";
 					 $BodySend=$mailBody;	
 					
 					

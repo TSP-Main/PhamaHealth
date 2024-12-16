@@ -121,7 +121,7 @@ exit;
                         <h2 style="font-size:50px; color:#F6C">Scan &amp; Register</h2>
                         
                         <p style="font-size:30px;padding:10px">
-                            Scan the QR code to register with our Partner: Pharma Health. Order your common prescription medications without having to wait for your GP!
+                            Scan the QR code to register with our Partner: Pharmacinta. Order your common prescription medications without having to wait for your GP!
                         </p>
                         
                         <p><img src="qrcode/<?php echo $PNG_WEB_DIR.basename($filename) ?>" style="height:400px; border:3px solid #F6C" /></p>

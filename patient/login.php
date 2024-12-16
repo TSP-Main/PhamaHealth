@@ -98,7 +98,7 @@ if (isset($_GET['code'])) {
 					<div class="signup_box">
 						<div class="or_line"><span>or</span></div>
 						<a href="<?php echo $client->createAuthUrl(); ?>" class="btn btn-outline-blue"><img src="<?php echo URL?>images/google_icon.png"> Sign in with Google</a>
-						<a href="<?php echo URL?>patient/signup" class="btn btn-outline-blue">Register with Pharma Health</a>
+						<a href="<?php echo URL?>patient/signup" class="btn btn-outline-blue">Register with Pharmacinta</a>
 					</div>
 				</div>
                

@@ -50,7 +50,7 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
 												<div class="p-3 text-center border-bottom">
-													<a href="#" class="text-center user pb-0 font-weight-bold">Pharma Health</a>
+													<a href="#" class="text-center user pb-0 font-weight-bold">Pharmacinta</a>
 													<p class="text-center user-semi-title">Admin</p>
 												</div>
 												

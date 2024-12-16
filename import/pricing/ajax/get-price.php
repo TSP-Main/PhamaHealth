@@ -69,7 +69,7 @@ $pharmacyGrossProfit=$pharmacyProfit+$totalCostPrice;
  ?>
  <table width="50%">
  	<tr><td width="25%">Cost to charge from patient</td><td><strong>$<?php echo round($priceTocharge,2)+$expressPrice;?></strong></td></tr>
-    <tr><td>Profit for Pharma Health</td><td><strong>$<?php echo round($profitPharma,2)+$addPharmaProfit;?></strong></td></tr>
+    <tr><td>Profit for Pharmacinta</td><td><strong>$<?php echo round($profitPharma,2)+$addPharmaProfit;?></strong></td></tr>
     <tr><td>Profit before excluding Medication cost</td><td><strong>$<?php echo round($pharmacyGrossProfit,2);?></strong></td></tr>
     <tr><td>Net Pharmacy Profit</td><td><strong>$<?php echo round($pharmacyProfit,2)+$addPharmacyProfit;?></strong></td></tr>
     <tr><td>Medication cost</td><td><strong>$<?php echo round($totalCostPrice,2);?></strong></td></tr>

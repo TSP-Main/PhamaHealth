@@ -486,7 +486,7 @@ td[class="spechide"]
 
                                     <br>
 
-                                    <span style='color:#222222;'>Pharma Health Team</span>
+                                    <span style='color:#222222;'>Pharmacinta Team</span>
 
                                   </p>
 
@@ -786,7 +786,7 @@ table.body .article {
 						$headingContent
                         <br><br>
 						Kind Regards <br>
-						Pharma Health <br>
+						Pharmacinta <br>
 						<img src="$logoURL" style="max-width:100px">
 						
                         
@@ -964,7 +964,7 @@ table.body .article {
 						$headingContent
                         <br><br>
 						Kind Regards <br>
-						Pharma Health <br>
+						Pharmacinta <br>
 						
 
 						<img src="$logoURL" style="max-width:100px">

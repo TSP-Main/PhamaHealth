@@ -27,10 +27,10 @@ include PATH."include/headerhtml.php"
 		<div class="how_to_works_one d-flex">
 			<div class="left">
 				<h3 class="title_h3">Patient Referral</h3>
-			  <p>The  patient visits a partner pharmacy to request a treatment for a medical  condition that usually requires a prescription from their regular GP. The  pharmacist or the pharmacy staff will direct the patient to our clinical  service, which is accessed via our Pharma Health website.</p>
+			  <p>The  patient visits a partner pharmacy to request a treatment for a medical  condition that usually requires a prescription from their regular GP. The  pharmacist or the pharmacy staff will direct the patient to our clinical  service, which is accessed via our Pharmacinta website.</p>
 				<p>				  The  pharmacy staff will be required to check that the condition is covered by our  service; then advise the patient of the treatment options available and inform  the patient of the medication price range.<br>
 				  The  patient will be required to undergo the following process:</p>
-				<p>Sign up as a patient on the Pharma Health website </p>
+				<p>Sign up as a patient on the Pharmacinta website </p>
 				<ol style="color:#666">
                   <li>Select a condition and/or treatment</li>
                   <li>Complete online medical  assessment form </li>
@@ -89,7 +89,7 @@ include PATH."include/headerhtml.php"
         
         
 		<div class="w100p text-center">
-			<button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</button>
+			<button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharmacinta</button>
 		</div>
 	</div>
 </section>
