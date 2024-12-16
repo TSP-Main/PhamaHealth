@@ -69,8 +69,8 @@
 			'condition_short_desc' => $_POST['txtShortDesc'],
 			
 			'condition_overview' => $_POST['txtOverview'],
-			'condition_home_icon' => $_POST['images4ex'][0],
 			
+			'condition_home_icon' => $_POST['images4ex'][0],			
 			'condition_listing_icon' => $_POST['imgListing'][0],
 			'condition_detail_banner' => $_POST['imgDetail'][0],
 						
@@ -167,10 +167,10 @@
 			'condition_sub_title' => $_POST['txtSubTitle'], 
 			'condition_category' => $strCategory, 
 			'condition_short_desc' => $_POST['txtShortDesc'],			
-			'condition_overview' => $_POST['txtOverview'],
+			'condition_overview' => $_POST['txtOverview'],			
 			'condition_home_icon' => $_POST['images4ex'][0],			
 			'condition_listing_icon' => $_POST['imgListing'][0],
-			'condition_detail_banner' => $_POST['imgDetail'][0],						
+			'condition_detail_banner' => $_POST['imgDetail'][0],									
 			'condition_symptoms' => $_POST['txtSymptoms'],
 			'condition_causes' => $_POST['txtCauses'],
 			'condition_treatments' => $_POST['txtTreatments'],
@@ -189,6 +189,8 @@
 			'condition_id' => $pageId
 
 		);
+		
+		$updated = $database->update( 'tbl_conditions', $update, $where_clause, 1 );
 		
 			if ($_POST['ckDiscount']==1)
 			{

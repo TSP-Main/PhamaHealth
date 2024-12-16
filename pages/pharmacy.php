@@ -239,37 +239,7 @@ patients
 </div>
 </section>
 <?php include PATH."include/our-treatment.php"; ?>
-<section class="additional_clinical text-center wow fadeInUp" data-wow-delay="0.5s">
-	<div class="container">
-		<h2 class="title_h2">Additional Clinical Services</h2>
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="additional_clinical_box">
-					<div class="img_box">
-					<img src="<?php echo URL?>images/additional_icon_1.png">
-					</div>
-					<h5>Blood Test Service</h5>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="additional_clinical_box">
-					<div class="img_box">
-					<img src="<?php echo URL?>images/additional_icon_2.png">
-					</div>
-					<h5>GP Consultation</h5>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="additional_clinical_box">
-					<div class="img_box">
-					<img src="<?php echo URL?>images/additional_icon_3.png">
-					</div> 
-					<h5>Travel Vaccination PGDs </h5>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+
 <section class="our_team">
 	<div class="container wow fadeInUp" data-wow-delay="0.5s">
 		<h2 class="title_h2 text-center">Our Clinical Team</h2>

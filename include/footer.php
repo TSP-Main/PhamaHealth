@@ -89,10 +89,14 @@
 
 
                         <li><a href="<?php echo URL?>useful-links">Useful Links</a></li>
+                      
+                        <li><a href="<?php echo URL?>refunds-and-returns">Refund & Returns</a></li>
 
+						<li><a href="<?php echo URL?>complaints-and-feedback">Complaints & Feedback</a></li> 
 
+						</ul>
 
-					</ul>
+					
 
 
 
@@ -136,11 +140,7 @@
 
 
 
-						<li><a href="<?php echo URL?>refunds-and-returns">Refund & Returns</a></li>
-
-
-
-						<li><a href="<?php echo URL?>complaints-and-feedback">Complaints & Feedback</a></li> 
+						
 
 
 

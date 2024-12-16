@@ -3,12 +3,14 @@ include PATH."include/headerhtml.php"
  ?>
   <body>
   	<?php include PATH."include/header.php"; ?> 
+    <div style="clear:both"></div>
+    <div style="height:20px"></div>
 <section class="breadcrumbs">
 	<div class="container">
 		<ul class="breadcrumbs_list">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">How it works</a></li>
-			<li>Patient</li> 
+			<li><a href="<?php echo URL?>pharmacy-be-our-partner">Pharmacy</a></li>
+			<li>How it works</li>
+			
 		</ul>
 	</div>
 </section>
@@ -89,7 +91,9 @@ include PATH."include/headerhtml.php"
         
         
 		<div class="w100p text-center">
-			<button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharmacinta</button>
+			<a href="<?php echo URL?>contact-us?contact=pharmacy"><button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Register your interest with Pharmacinta</button></a>
+            
+           
 		</div>
 	</div>
 </section>

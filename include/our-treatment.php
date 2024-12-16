@@ -99,7 +99,7 @@
 
 			</div>
 
-			<!--<div class="col-sm-3">
+			<div class="col-sm-3">
 
 				<div class="treatments_box">
 
@@ -107,7 +107,7 @@
 
 					<h3>Children’s Health</h3>
 
-					<ul class="list_item_1">
+					<!--<ul class="list_item_1">
 
 						<li><a href="#"><span>Asthma</span></a></li>
 
@@ -115,7 +115,8 @@
 
 						<li><a href="#"><span>Dental Problem</span></a></li>
 
-					</ul>
+					</ul>-->
+                    Coming soon..
 
 					<div class="mt-auto">
 
@@ -125,7 +126,7 @@
 
 				</div>
 
-			</div>-->
+			</div>
 
 			<div class="col-sm-3">
 
