@@ -98,7 +98,7 @@ include PATH."include/headerhtml.php"
 
  background-position: top;
 
- background-size:75%;
+ background-size:65%;
 
  } 
 

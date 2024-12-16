@@ -691,20 +691,7 @@ else
 
 
 
-						<div class="form-group ">
-						<div class="form-label">Enabled</div>
-						<div class="custom-controls-stacked">
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoPublished" id="rdoPublished" value="1" <?php if($row['pharmacy_status']=="1" || $row['pharmacy_status']=='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">Yes</span>
-							</label>
-							<label class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" name="rdoPublished" id="rdoPublished" value="0" <?php if($row['pharmacy_status']==0 && $row['pharmacy_status']!='') echo 'checked="checked"'; ?>>
-								<span class="custom-control-label">No</span>
-							</label>
-					
-						</div>
-					</div>
+						
                     
                      <div style="height:20px"></div>
                              <h4 style="text-transform:uppercase"><u>Profile page updates</u></h4>
@@ -787,6 +774,21 @@ else
                                      </div>
                                   </div>	
                    				</div>
+                                
+                                <div class="form-group ">
+						<div class="form-label">Enabled</div>
+						<div class="custom-controls-stacked">
+							<label class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" name="rdoPublished" id="rdoPublished" value="1" <?php if($row['pharmacy_status']=="1" || $row['pharmacy_status']=='') echo 'checked="checked"'; ?>>
+								<span class="custom-control-label">Yes</span>
+							</label>
+							<label class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" name="rdoPublished" id="rdoPublished" value="0" <?php if($row['pharmacy_status']==0 && $row['pharmacy_status']!='') echo 'checked="checked"'; ?>>
+								<span class="custom-control-label">No</span>
+							</label>
+					
+						</div>
+					</div>
 				
 						
 					<div class="row row-sm">
