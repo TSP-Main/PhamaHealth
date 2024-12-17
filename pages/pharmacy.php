@@ -113,7 +113,7 @@ or online pharmacies</h5>
 				  <li><a href="<?php echo URL?>treatments/a-z-treatments">View full medication list</a></li>
 				</ul>
 				<div class="btn_group">
-					<a href="#" class="d-inline-flex align-items-center btn btn-outline-primary">Read More 
+					<a href="<?php echo URL?>all-services" class="d-inline-flex align-items-center btn btn-outline-primary">Read More 
 						<i class="fa-regular fa-arrow-right"></i>
 					</a>
 					<a href="#pharmacyfaq" class="d-inline-flex align-items-center btn btn-outline-primary">Pharmacy FAQ</a>

@@ -8630,6 +8630,9 @@ ul.contact_list{margin-bottom: 30px;}
 
 } 
 
+.modal table {
+  border-collapse: inherit; }
+
 
 
 
