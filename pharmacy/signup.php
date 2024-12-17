@@ -206,7 +206,7 @@ include PATH."include/headerhtml.php"
                                             			<div class="row" >
                                                         	<div class="col-md-12">
 														<label class="custom-control custom-checkbox" >
-															<input type="checkbox" class="custom-control-input" name="ckWeek[]" id="ck_<?php echo $val?>" onclick="openDiv(<?php echo $val?>)" value="<?php echo $val?>" <?php if (in_array($val,$arrWeek)) echo "checked"; ?> > 
+															<input type="checkbox" class="custom-control-input" name="ckWeek[]" id="ck_<?php echo $val?>" onClick="openDiv(<?php echo $val?>)" value="<?php echo $val?>" <?php if (in_array($val,$arrWeek)) echo "checked"; ?> > 
                                                          </label>      
 															<span class="custom-control-label"><?php echo $mydays[$j] ?></span>
                                                           </div>
@@ -389,7 +389,7 @@ include PATH."include/headerhtml.php"
                  <div class="checkbox form-group">
                     <label class="custom_checkbox">
                         <input type="checkbox" name="CkTerms" id="CkTerms" value="1" class="form-check-input" data-validation="required" data-validation-error-msg="Please accept terms and conditions">
-                    I have read, understood and agree to Pharma Health <a href="#">Terms & Conditions</a></label>
+                    I have read, understood and agree to Pharmacinta <a href="#">Terms & Conditions</a></label>
                  </div>
                     
 <div><input class="g-recaptcha" data-validation="recaptcha" data-validation-recaptcha-sitekey="6Lc38CkUAAAAAGSzBr9awm5tAfiMLHitD5f21vI4"></div>

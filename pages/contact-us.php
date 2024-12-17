@@ -81,7 +81,7 @@ or via email. We are always happy to help, whether you actually want to buy from
 			</div>
 			<div class="form-group">
 				<textarea name="txtMessage" placeholder="Message" id="txtMessage" class="form-control" data-validation="required" data-validation-error-msg="Enter Message"><?php if ($_GET['contact'] == "pharmacy") { ?>
-Dear Pharma Health,
+Dear Pharmacinta,
 
 We are interested in signing up to your service or wish to discuss it. Can you please contact us:
 (Please type preferred contact method and time)

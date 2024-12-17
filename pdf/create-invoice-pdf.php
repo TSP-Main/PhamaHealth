@@ -333,10 +333,10 @@ footer .end {
 				<thead>
 				<tr><td width="60%" height="50px"></td></tr>
                     <tr><td colspan=2><figure>
-                    <img class="logo" src="'.$websiteLogo.'" style="max-width:200px;padding-left:20px" alt="Pharma Health">
+                    <img class="logo" src="'.$websiteLogo.'" style="max-width:200px;padding-left:20px" alt="Pharmacinta">
                     </figure>
                     <td width="25%"><div class="company-info">
-				<h2 class="title">Pharma Health <br>T/A Pro UK Health Ltd</h2>
+				<h2 class="title">Pharmacinta <br>T/A Pro UK Health Ltd</h2>
 				<div class="address">
 					
 					<p style="font-size:11px !important">

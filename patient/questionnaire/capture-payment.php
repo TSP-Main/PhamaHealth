@@ -24,6 +24,16 @@ if ($params['testmode'] == "on") {
 			$charge = Stripe_Charge::retrieve($charge_id);
 			$charge->capture();
 			 $result = "success";
+			 
+			 
+			/* $balanceTransaction = Stripe_BalanceTransaction::retrieve($charge->balance_transaction);
+				$transactionFee = $balanceTransaction->fee / 100; // Convert from cents to dollars (or appropriate currency unit)
+			
+				$result = [
+					"status" => "success",
+					"transaction_fee" => $transactionFee
+				];*/
+			 
 			} 
 	catch(Stripe_CardError $e) {			
 

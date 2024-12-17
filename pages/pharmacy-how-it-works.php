@@ -3,12 +3,14 @@ include PATH."include/headerhtml.php"
  ?>
   <body>
   	<?php include PATH."include/header.php"; ?> 
+    <div style="clear:both"></div>
+    <div style="height:20px"></div>
 <section class="breadcrumbs">
 	<div class="container">
 		<ul class="breadcrumbs_list">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">How it works</a></li>
-			<li>Patient</li> 
+			<li><a href="<?php echo URL?>pharmacy-be-our-partner">Pharmacy</a></li>
+			<li>How it works</li>
+			
 		</ul>
 	</div>
 </section>
@@ -27,10 +29,10 @@ include PATH."include/headerhtml.php"
 		<div class="how_to_works_one d-flex">
 			<div class="left">
 				<h3 class="title_h3">Patient Referral</h3>
-			  <p>The  patient visits a partner pharmacy to request a treatment for a medical  condition that usually requires a prescription from their regular GP. The  pharmacist or the pharmacy staff will direct the patient to our clinical  service, which is accessed via our Pharma Health website.</p>
+			  <p>The  patient visits a partner pharmacy to request a treatment for a medical  condition that usually requires a prescription from their regular GP. The  pharmacist or the pharmacy staff will direct the patient to our clinical  service, which is accessed via our Pharmacinta website.</p>
 				<p>				  The  pharmacy staff will be required to check that the condition is covered by our  service; then advise the patient of the treatment options available and inform  the patient of the medication price range.<br>
 				  The  patient will be required to undergo the following process:</p>
-				<p>Sign up as a patient on the Pharma Health website </p>
+				<p>Sign up as a patient on the Pharmacinta website </p>
 				<ol style="color:#666">
                   <li>Select a condition and/or treatment</li>
                   <li>Complete online medical  assessment form </li>
@@ -89,7 +91,9 @@ include PATH."include/headerhtml.php"
         
         
 		<div class="w100p text-center">
-			<button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Sign up with Pharma Health</button>
+			<a href="<?php echo URL?>contact-us?contact=pharmacy"><button class="btn btn-danger btn-lg d-inline-flex align-items-center ps-5 pe-5">Register your interest with Pharmacinta</button></a>
+            
+           
 		</div>
 	</div>
 </section>

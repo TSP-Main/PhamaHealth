@@ -29,7 +29,7 @@ agree to act on it.</h5>
 
 <?php $strAgreement.='<ul class="list_items">
     <li>I have answered all the questions honestly, and provided complete and accurate information that 
-reflects my up to date medical history and information. I understand that the Pharma Health clinical 
+reflects my up to date medical history and information. I understand that the Pharmacinta clinical 
 team takes my answers in good faith and base their prescribing decisions accordingly; and that 
 incorrect information can potentially harm my health.</li>
 <li>I have read the key facts about this medication & condition, including the medication effectiveness

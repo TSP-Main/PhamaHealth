@@ -1,4 +1,8 @@
-<?php include "../../../private/settings.php";
+<?php if (file_exists("../../private/settings.php")) {
+    include "../../private/settings.php";
+	} elseif (file_exists("../../../private/settings.php")) {
+		include "../../../private/settings.php";
+	}
 //include PATH."include/headerhtml.php";
 
 require 'stripe/Stripe.php';

@@ -8,7 +8,7 @@ include PATH."include/headerhtml.php"
 		<div class="d-inline-flex w100p">
 			<div>
 			<h2 class="title_h2">We treat a variety of common acute & chronic conditions</h2>
-			<p>Pharma Health treats a range of conditions through our online prescribing service. The service is safe, discreet and convenient <br>
+			<p>Pharmacinta treats a range of conditions through our online prescribing service. The service is safe, discreet and convenient <br>
 and all medicines are dispensed by our local partner pharmacies</p>
 </div>
 <div class="ms-auto">
