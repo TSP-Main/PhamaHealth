@@ -89,10 +89,10 @@
 				  $status=$data[12];
 				  $phone=$data[17];
 				  
-				  if ($status=="A")
+				 // if ($status=="A")
 				  $statusVal=1;
-				  else
-				  $statusVal=0;	
+				 // else
+				 // $statusVal=0;	
 				  
 				 
 				 $sqlGP="select * from tbl_gps where gp_name='".$database->filter($name)."'";

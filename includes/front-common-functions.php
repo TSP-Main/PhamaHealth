@@ -106,6 +106,34 @@ function displayDateFormat($getdate)
     return $formattedDatetime;
 }
 
+function timeAgo($dateTime) {
+    $timestamp = strtotime($dateTime); // Convert MySQL datetime to a Unix timestamp
+    $currentTime = time(); // Get the current Unix timestamp
+    $timeDifference = $currentTime - $timestamp; // Calculate the difference
+    $timeUnits = array(
+        'year' => 31536000, // 60 * 60 * 24 * 365
+        'month' => 2592000, // 60 * 60 * 24 * 30
+        'week' => 604800,   // 60 * 60 * 24 * 7
+        'day' => 86400,     // 60 * 60 * 24
+        'hour' => 3600,     // 60 * 60
+        'minute' => 60,
+        'second' => 1,
+    );
+
+    if ($timeDifference < 0) {
+        return "In the future"; // Handle future dates gracefully
+    }
+
+    foreach ($timeUnits as $unit => $seconds) {
+        if ($timeDifference >= $seconds) {
+            $value = floor($timeDifference / $seconds);
+            return "$value $unit" . ($value > 1 ? "s" : "") . " ago";
+        }
+    }
+
+    return "Just now"; // For very small time differences
+}
+
 
 function fnDateOrTime($date) {
     $currentDate = date("d/m/Y");
