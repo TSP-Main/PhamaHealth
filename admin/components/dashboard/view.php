@@ -147,7 +147,51 @@ global $database;
 						</div>
 						<!-- End Row -->
 
+						<div class="row">
+                        
+                        <?php
+						 $time24HoursAgoCtrdb1 = date('Y-m-d H:i:s', strtotime('-24 hours'));
+			 		  
+						  $sqlCtrdb1 = "SELECT count(pres_id) as ctrTicket FROM tbl_prescriptions WHERE pres_pharmacy_stage = 1 AND pres_clincian_update <= '$time24HoursAgoCtrdb1'";
+						  $resCtrdb1=$database->get_results($sqlCtrdb1);
+						  $ctrTicketdb1=$resCtrdb1[0]['ctrTicket'];
+						  if ($ctrTicketdb1>0)
+						  {
+					  ?>
+                        
+                        				<div class="col-sm-6 col-md-6" style="cursor:pointer" onclick="window.location='index.php?c=alert-order-pharmacy'">
+												<div class="alert alert-warning">
+													<!--<button  class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
+													<strong>Overdue action by Pharmacy  for "Ready for Collection.</strong>
+													<hr class="message-inner-separator">
+													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb1; ?></span> overdue actions <a href="#" style="color:#00F">View more</a></p>
+												</div>
+											</div>
+                          <?php } ?>
+                          
+                          <?php
+						 $time24HoursAgoCtrdb2 = date('Y-m-d H:i:s', strtotime('-24 hours'));
+			 		  					 
+						$sqlCtrdb2="SELECT count(pres_id) as ctrTicket FROM tbl_prescriptions WHERE pres_pharmacy_stage = 3 AND pres_pharmacy_action_date <= '$time24HoursAgoCtrdb2'"; 
+						$resCtrdb2=$database->get_results($sqlCtrdb2);
 						
+						$ctrTicketdb2=$resCtrdb2[0]['ctrTicket'];
+						  if ($ctrTicketdb2>0)
+						  {
+					  ?>
+											<div class="col-sm-6 col-md-6" style="cursor:pointer" onclick="window.location='index.php?c=alert-patient-collection'">
+											  <div class="alert alert-warning" style="background-color:#f9b6dd">
+													
+													<strong>Pending collection by Patient</strong>
+													<hr class="message-inner-separator">
+													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb2; ?></span> order pending to collect <a href="#" style="color:#00F">View more</a></p>
+                                                    
+												</div>
+											</div>
+                                            
+                                 <?php } ?>
+                        
+                        </div>
 
 						<!--Row-->
 						<div class="row">

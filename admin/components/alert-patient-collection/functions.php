@@ -17,7 +17,7 @@
 	 $time24HoursAgo = date('Y-m-d H:i:s', strtotime('-24 hours'));
 	// $sql = "SELECT * FROM tbl_prescriptions WHERE pres_pharmacy_stage = 1 AND pres_clincian_update <= '$time24HoursAgo' order by pres_clincian_update desc";
 		
-		$sql = "SELECT * FROM tbl_prescriptions WHERE pres_pharmacy_stage = 1 AND pres_clincian_update <= '$time24HoursAgo'";
+		$sql = "SELECT * FROM tbl_prescriptions WHERE pres_pharmacy_stage = 3 AND pres_pharmacy_action_date <= '$time24HoursAgo'";
 	
 		
 		//print_r($sql);
@@ -29,7 +29,7 @@
 		
 		}
 		
-		$sql.=" order by pres_clincian_update asc";
+		$sql.=" order by pres_pharmacy_action_date asc";
 		
 
 		$pagingObject->setMaxRecords(PAGELIMIT); 
