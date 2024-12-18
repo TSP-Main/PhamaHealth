@@ -98,35 +98,31 @@
 				</div>
 
 			</div>
-
-			<div class="col-sm-3">
+            
+            <div class="col-sm-3">
 
 				<div class="treatments_box">
-
+					<div class="treatments_mobile treatments_toggle">
 					<img class="icon_img" src="<?php echo URL?>images/ChildrensHealth.png">
 
 					<h3>Children’s Health</h3>
+                    <i class="treatments_toggle fa-solid fa-angle-down" style="display: none;"></i>
+                    </div>
+			<div class="level-box">
+					 Coming soon..
+                    <div class="mt-auto">
 
-					<!--<ul class="list_item_1">
+					<a href="<?php echo URL?>treatments/a-z-conditions?c=3" class="btn btn-danger btn-sm float-end">View All</a>
 
-						<li><a href="#"><span>Asthma</span></a></li>
-
-						<li><a href="#"><span>Acne</span></a></li>
-
-						<li><a href="#"><span>Dental Problem</span></a></li>
-
-					</ul>-->
-                    Coming soon..
-
-					<div class="mt-auto">
-
-						<a href="<?php echo URL?>treatments/a-z-conditions" class="btn btn-danger btn-sm float-end">View All</a>
-
-					</div>
+				</div>
+				</div>
+					
 
 				</div>
 
 			</div>
+
+			
 
 			<div class="col-sm-3">
 

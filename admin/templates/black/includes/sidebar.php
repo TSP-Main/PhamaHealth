@@ -130,10 +130,47 @@ if ($_GET['c']!="")
                    	<?php echo $ctrTicket; ?>
                     </span> 
 					<?php } 
+					} else if ($valueDirect['component_id']==267) { ?>
+                     <?php 
+					 
+					  $time24HoursAgoCtr = date('Y-m-d H:i:s', strtotime('-24 hours'));
+			 		  
+					  $sqlCtr = "SELECT count(pres_id) as ctrTicket FROM tbl_prescriptions WHERE pres_pharmacy_stage = 1 AND pres_clincian_update <= '$time24HoursAgoCtr'";
+					  $resCtr=$database->get_results($sqlCtr);
+					  $ctrTicket=$resCtr[0]['ctrTicket'];
+					  
+					
+					if ($ctrTicket>0)
+					{	
+					
+					?>
+                    <span class="alert-number">
+                   	<?php echo $ctrTicket; ?>
+                    </span> 
+					<?php } 
+					} else if ($valueDirect['component_id']==268) { ?>
+                     <?php 
+					 	$time24HoursAgoCtr = date('Y-m-d H:i:s', strtotime('-24 hours'));
+					 
+						$sqlCtr="SELECT count(pres_id) as ctrTicket FROM tbl_prescriptions WHERE pres_pharmacy_stage = 3 AND pres_pharmacy_action_date <= '$time24HoursAgoCtr'"; 
+						$resCtr=$database->get_results($sqlCtr);
+						
+						$ctrTicket=$resCtr[0]['ctrTicket'];
+						
+					
+					if ($ctrTicket>0)
+					{	
+					
+					?>
+                    <span class="alert-number">
+                   	<?php echo $ctrTicket; ?>
+                    </span> 
+					<?php } 
 					} ?>
                     
                     <?php
                     
+					
                     if ($valueDirect['component_id']==201) { ?>
                      <?php 
 						$sqlCtr="select count(pr_id) as ctrReq from tbl_pharmacy_request where pr_status=0"; 
