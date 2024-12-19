@@ -4013,7 +4013,7 @@ ul.tabs_navi li.active a, ul.tabs_navi li a.active{background-color: #ebf1f6;col
 
 
 
-	margin-right: 20px;
+	margin-right: 12px;
 
 
 
@@ -8036,7 +8036,36 @@ ul.timings_list li span{min-width: 110px;float: left;}
 
 
 
-
+.radio_button > .custom_radio span {
+	background-color: #e9f5fa;
+	border: 1px solid #0C93C6;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	padding: 10px;
+	min-width: 85px;
+	border-radius: 5px;
+}
+.radio_button .custom_radio .form-check-input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+}
+.radio_button .custom_radio {
+	position: relative;
+	min-width: auto !important;
+}
+.radio_button .custom_radio .form-check-input:checked + span {
+	background-color: #0c93c6;
+	color: #FFF;
+	border-color: #0c93c6;
+} 
+.textarea_box{margin-top: 8px;margin-bottom: 8px;}
 
 
 
@@ -8701,4 +8730,34 @@ ul.contact_list{margin-bottom: 30px;}
 
 
 
+}
+
+
+
+ul.conditions_list_2 li {
+	border: none;
+	padding: 0;
+	margin-bottom: 5px;
+}
+ul.conditions_list_2 li label {
+	width: 100%;
+	position: relative;
+}
+ul.conditions_list_2 li label .form-check-input {
+	position: absolute;
+	left: 10px;
+	opacity: 0;
+	top: calc(50% - 11px);
+}
+ul.conditions_list_2 li label .form_check_list {
+	padding: 8px 75px 8px 35px;
+	border: 1px solid #0c93c6;
+}
+ul.conditions_list_2 li label .form-check-input:checked + .form_check_list {
+	border-color: #0d6efd;
+	background-color: #0C93C6;
+	color:#FFF;
+}
+ul.conditions_list_2 li label .form-check-input:checked {
+	opacity: 1;
 }

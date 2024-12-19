@@ -164,7 +164,7 @@ global $database;
 													<!--<button  class="close" data-dismiss="alert" aria-hidden="true">×</button>-->
 													<strong>Overdue action by Pharmacy  for "Ready for Collection.</strong>
 													<hr class="message-inner-separator">
-													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb1; ?></span> overdue actions <a href="#" style="color:#00F">View more</a></p>
+													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb1; ?></span> Overdue actions <a href="#" style="color:#00F">View more</a></p>
 												</div>
 											</div>
                           <?php } ?>
@@ -184,7 +184,7 @@ global $database;
 													
 													<strong>Pending collection by Patient</strong>
 													<hr class="message-inner-separator">
-													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb2; ?></span> order pending to collect <a href="#" style="color:#00F">View more</a></p>
+													<p><span class="alert-number" style="font-size:20px"><?php echo $ctrTicketdb2; ?></span> Order pending to collect <a href="#" style="color:#00F">View more</a></p>
                                                     
 												</div>
 											</div>

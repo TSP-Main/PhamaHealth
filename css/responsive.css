@@ -2599,7 +2599,7 @@ ul.setup_nav{flex-wrap: wrap;background-color: transparent;
 
 
 
-gap: 6px 5px;justify-content: space-between;}
+gap: 6px 5px;justify-content: space-between;display: none;}
 
 
 
@@ -3547,4 +3547,15 @@ ul.list_item_1 li a{font-size: 15px;
 	border-radius: 5px;
 	display: block !important;
 } 
+}
+
+.radio_inline_box.radio_button {
+	margin-bottom: 9px;
+}
+
+@media ( max-width: 767px ) {
+	.medication-questionaire h1{margin-bottom: 0px;}
+	.header_2 > img {
+	padding-left: 0 !important;
+}
 }
